@@ -5,12 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.prefs.Preferences;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 
 
 public class MainApp extends Application {
@@ -46,7 +53,16 @@ public class MainApp extends Application {
 
         Scene scene = new Scene(rootLayout, 1200, 675);
         stage.setScene(scene);
+
+        RootLayoutController controller = fxmlLoader.getController();
+        controller.setMainApp(this);
+
         stage.show();
+
+        File file = getDataFilePath();
+        if(file != null){
+            loadDataFile(file);
+        }
 
     }
 
@@ -74,6 +90,80 @@ public class MainApp extends Application {
 
     public ObservableList<Character> getCharaList() {
         return charaData;
+    }
+
+    public File getDataFilePath(){
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        String filePath = prefs.get("filePath", null);
+        if(filePath != null){
+            return new File(filePath);
+        }
+        else{
+            return null;
+        }
+    }
+
+    public void setDataFilePath(File file){
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        if(file != null){
+            prefs.put("filePath", file.getAbsolutePath());
+            stage.setTitle("Character Planner - " + file.getName());
+        }else{
+            prefs.remove("filePath");
+            stage.setTitle("Character Planner");
+        }
+    }
+
+    public void loadDataFile(File file){
+        try{
+            JAXBContext context = JAXBContext
+                    .newInstance(CharaListWrapper.class);
+            Unmarshaller um = context.createUnmarshaller();
+
+            // Reading XML from the file and unmarshalling.
+            CharaListWrapper wrapper = (CharaListWrapper) um.unmarshal(file);
+
+            charaData.clear();
+            charaData.addAll(wrapper.getCharacters());
+
+            // Save the file path to the registry.
+            setDataFilePath(file);
+        }catch (Exception exception){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not load data");
+            alert.setContentText("Could not load data from file:\n" + file.getPath());
+            setDataFilePath(null);
+
+            alert.showAndWait();
+        }
+    }
+
+    public void saveCharaDataToFile(File file){
+        try {
+            JAXBContext context = JAXBContext
+                    .newInstance(CharaListWrapper.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Wrapping our person data.
+            CharaListWrapper wrapper = new CharaListWrapper();
+            wrapper.setCharacters(charaData);
+
+            // Marshalling and saving XML to the file.
+            m.marshal(wrapper, file);
+
+            // Save the file path to the registry.
+            setDataFilePath(file);
+        } catch (Exception exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not save data");
+            alert.setContentText("Could not save data to file:\n" + file.getPath());
+
+            alert.showAndWait();
+            System.out.println(exception);
+        }
     }
 
     public static void main(String[] args) {

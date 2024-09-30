@@ -50,7 +50,28 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>
+    <!-- JAXB API -->
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>4.0.0</version> <!-- Use the latest stable version -->
+    </dependency>
+
+    <!-- JAXB Runtime (GlassFish implementation) -->
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>4.0.0</version> <!-- Match the API version -->
+    </dependency>
+
+    <!-- Activation framework for JAXB (needed for data types like javax.activation.DataHandler) -->
+    <dependency>
+      <groupId>jakarta.activation</groupId>
+      <artifactId>jakarta.activation-api</artifactId>
+      <version>2.1.0</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
