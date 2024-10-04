@@ -22,6 +22,10 @@ public class CharaOverviewController {
     private Label ageLabel;
     @FXML
     private Label birthDateLabel;
+    @FXML
+    private Label jobLabel;
+    @FXML
+    private Label jobPositionLabel;
 
     @FXML
     private VBox vBox;
@@ -40,12 +44,12 @@ public class CharaOverviewController {
         //Center horizontally elements of VBox
         vBox.setAlignment(Pos.BASELINE_CENTER);
 
-        nameColumn.setCellValueFactory(data -> data.getValue().getFirstNameProperty());
+        nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         showCharaDetails(null);
 
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));
 
-        //Creates a custom TalbeRow object for each row in the TableView to specify each row's behavior
+        //Creates a custom TableRow object for each row in the TableView to specify each row's behavior
         tableView.setRowFactory(tv -> {
             TableRow<Character> row = new TableRow<>();
 
@@ -94,7 +98,9 @@ public class CharaOverviewController {
             genderLabel.setText(chara.getGender());
             ageLabel.setText(chara.getAge());
             birthDateLabel.setText(chara.getBirthDate());
-            nameRightLabel.setText(chara.getFirstName());
+            nameRightLabel.setText(chara.getDisplayName());
+            jobLabel.setText(chara.getJob());
+            jobPositionLabel.setText(chara.getJobPosition());
         }
         else{
             firstNameLabel.setText("");
@@ -103,11 +109,13 @@ public class CharaOverviewController {
             ageLabel.setText("");
             birthDateLabel.setText("");
             nameRightLabel.setText("");
+            jobLabel.setText("");
+            jobPositionLabel.setText("");
         }
     }
 
     @FXML
-    private void handleDeleteChara(){
+    public void handleDeleteChara(){
         int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
         if(selectedIndex >=0) {
             tableView.getItems().remove(selectedIndex);
@@ -124,16 +132,16 @@ public class CharaOverviewController {
     }
 
     @FXML
-    private void handleNewChara() {
+    public void handleNewChara() {
         Character tempChara = new Character();
-        boolean okClicked = mainApp.showCharaEditDialog(tempChara);
+        boolean okClicked = mainApp.showCharaNewDialog(tempChara);
         if (okClicked) {
             mainApp.getCharaList().add(tempChara);
         }
     }
 
     @FXML
-    private void handleEditChara() {
+    public void handleEditChara() {
         Character selectedChara = tableView.getSelectionModel().getSelectedItem();
         if (selectedChara != null) {
             boolean okClicked = mainApp.showCharaEditDialog(selectedChara);

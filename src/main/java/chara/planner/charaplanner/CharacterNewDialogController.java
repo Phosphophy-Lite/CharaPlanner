@@ -5,25 +5,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import chara.planner.charaplanner.Character;
 
-public class CharacterEditDialogController {
+public class CharacterNewDialogController {
     @FXML
     private TextField displayNameField;
-    @FXML
-    private TextField firstNameField;
-    @FXML
-    private TextField lastNameField;
-    @FXML
-    private TextField birthDateField;
-    @FXML
-    private TextField genderField;
-    @FXML
-    private TextField ageField;
-    @FXML
-    private TextField jobField;
-    @FXML
-    private TextField jobPositionField;
 
     private Stage dialogStage;
     private Character character;
@@ -40,13 +25,6 @@ public class CharacterEditDialogController {
     public void setCharacter(Character character) {
         this.character = character;
         displayNameField.setText(character.getDisplayName());
-        firstNameField.setText(character.getFirstName());
-        lastNameField.setText(character.getLastName());
-        birthDateField.setText(character.getBirthDate());
-        genderField.setText(character.getGender());
-        ageField.setText(character.getAge());
-        jobField.setText(character.getJob());
-        jobPositionField.setText(character.getJobPosition());
     }
 
     public boolean isOkClicked() {
@@ -60,13 +38,11 @@ public class CharacterEditDialogController {
     private void handleOk() {
         if (isInputValid()) {
             character.setDisplayName(displayNameField.getText());
-            character.setFirstName(firstNameField.getText());
-            character.setLastName(lastNameField.getText());
-            character.setBirthDate(birthDateField.getText());
-            character.setAge(ageField.getText());
-            character.setGender(genderField.getText());
-            character.setJob(jobField.getText());
-            character.setJobPosition(jobPositionField.getText());
+            character.setFirstName("");
+            character.setLastName("");
+            character.setBirthDate("");
+            character.setAge("");
+            character.setGender("");
 
             okClicked = true;
             dialogStage.close();
@@ -102,6 +78,5 @@ public class CharacterEditDialogController {
             return false;
         }
     }
-
 
 }

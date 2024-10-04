@@ -20,7 +20,9 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleNewChara" text="New Character" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleEditChara" text="Edit Character" />
+              <MenuItem mnemonicParsing="false" onAction="#handleDeleteChara" text="Delete Character" />
             </items>
           </Menu>
         </menus>

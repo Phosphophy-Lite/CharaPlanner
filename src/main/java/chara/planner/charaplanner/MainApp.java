@@ -30,8 +30,8 @@ public class MainApp extends Application {
     private ObservableList<Character> charaData = FXCollections.observableArrayList();
 
     public MainApp(){
-        charaData.add(new Character("Velleius", "Vitalis", "500 av JC", "Male", "1200+"));
-        charaData.add(new Character("Wolfgang", "Richthofer", "23/10/????", "Male", "22"));
+        charaData.add(new Character("Velleius(Mage)","Velleius", "Vitalis", "500 av JC", "Male", "1200+", "Sage of the Council", "Archivist/Mage"));
+        charaData.add(new Character("Wolfie","Wolfgang", "Richthofer", "23/10/????", "Male", "22", "Student", "Literature"));
 
     }
 
@@ -43,12 +43,14 @@ public class MainApp extends Application {
         stage.setMinHeight(675);
         stage.setMinWidth(800);
 
-        initRootLayout();
-        initCharaOverview();
+        RootLayoutController rootController = initRootLayout();
+        CharaOverviewController charaOverviewController = initCharaOverview();
+
+        rootController.setCharaOverviewController(charaOverviewController);
 
     }
 
-    public void initRootLayout() throws IOException {
+    public RootLayoutController initRootLayout() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("RootLayout.fxml"));
         rootLayout = (BorderPane) fxmlLoader.load();
 
@@ -64,10 +66,10 @@ public class MainApp extends Application {
         if(file != null){
             loadDataFile(file);
         }
-
+        return controller;
     }
 
-    public void initCharaOverview() throws IOException {
+    public CharaOverviewController initCharaOverview() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("CharaOverview.fxml"));
         AnchorPane charaOverview = (AnchorPane) fxmlLoader.load();
 
@@ -82,7 +84,7 @@ public class MainApp extends Application {
         CharaOverviewController charaOverviewController = fxmlLoader.getController();
         charaOverviewController.setMainApp(this);
 
-
+        return charaOverviewController;
     }
 
     public Stage getStage() {
@@ -184,6 +186,36 @@ public class MainApp extends Application {
 
             // Set the person into the controller.
             CharacterEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCharacter(character);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showCharaNewDialog(Character character){
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("CharacterNewDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Create Character");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(stage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            CharacterNewDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setCharacter(character);
 

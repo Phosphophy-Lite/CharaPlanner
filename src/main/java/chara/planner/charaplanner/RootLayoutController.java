@@ -3,13 +3,11 @@ package chara.planner.charaplanner;
 import java.io.File;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
-import chara.planner.charaplanner.MainApp;
 
 public class RootLayoutController {
     private MainApp mainApp;
+    private CharaOverviewController charaOverviewController;
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -18,6 +16,10 @@ public class RootLayoutController {
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+    }
+
+    public void setCharaOverviewController(CharaOverviewController charaOverviewController) {
+        this.charaOverviewController = charaOverviewController;
     }
     /**
      * Creates an empty address book.
@@ -89,5 +91,20 @@ public class RootLayoutController {
     @FXML
     private void handleExit() {
         System.exit(0);
+    }
+
+    @FXML
+    private void handleNewChara(){
+        charaOverviewController.handleNewChara();
+    }
+
+    @FXML
+    private void handleDeleteChara(){
+        charaOverviewController.handleDeleteChara();
+    }
+
+    @FXML
+    private void handleEditChara(){
+        charaOverviewController.handleEditChara();
     }
 }
