@@ -1,7 +1,5 @@
 package chara.planner.charaplanner;
 
-import chara.planner.charaplanner.Character;
-import chara.planner.charaplanner.MainApp;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -94,8 +92,8 @@ public class CharaOverviewController {
             firstNameLabel.setText(chara.getFirstName());
             lastNameLabel.setText(chara.getLastName());
             genderLabel.setText(chara.getGender());
-            ageLabel.setText(String.valueOf(chara.getAge()));
-            birthDateLabel.setText(String.valueOf(chara.getFormattedDate()));
+            ageLabel.setText(chara.getAge());
+            birthDateLabel.setText(chara.getBirthDate());
             nameRightLabel.setText(chara.getFirstName());
         }
         else{
@@ -105,6 +103,53 @@ public class CharaOverviewController {
             ageLabel.setText("");
             birthDateLabel.setText("");
             nameRightLabel.setText("");
+        }
+    }
+
+    @FXML
+    private void handleDeleteChara(){
+        int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
+        if(selectedIndex >=0) {
+            tableView.getItems().remove(selectedIndex);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Character Selected.");
+            alert.setContentText("Please select a character in the table");
+
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleNewChara() {
+        Character tempChara = new Character();
+        boolean okClicked = mainApp.showCharaEditDialog(tempChara);
+        if (okClicked) {
+            mainApp.getCharaList().add(tempChara);
+        }
+    }
+
+    @FXML
+    private void handleEditChara() {
+        Character selectedChara = tableView.getSelectionModel().getSelectedItem();
+        if (selectedChara != null) {
+            boolean okClicked = mainApp.showCharaEditDialog(selectedChara);
+            if (okClicked) {
+                showCharaDetails(selectedChara);
+            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Character Selected");
+            alert.setContentText("Please select a character in the table.");
+
+            alert.showAndWait();
         }
     }
 

@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
@@ -29,8 +30,8 @@ public class MainApp extends Application {
     private ObservableList<Character> charaData = FXCollections.observableArrayList();
 
     public MainApp(){
-        charaData.add(new Character("Velleius", "Vitalis", LocalDate.of(156,1,12), "Male", 1200));
-        charaData.add(new Character("Wolfgang", "Richthofer", LocalDate.of(2002,10,23), "Male", 22));
+        charaData.add(new Character("Velleius", "Vitalis", "500 av JC", "Male", "1200+"));
+        charaData.add(new Character("Wolfgang", "Richthofer", "23/10/????", "Male", "22"));
 
     }
 
@@ -163,6 +164,36 @@ public class MainApp extends Application {
 
             alert.showAndWait();
             System.out.println(exception);
+        }
+    }
+
+    public boolean showCharaEditDialog(Character character) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("CharacterEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Character");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(stage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            CharacterEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCharacter(character);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

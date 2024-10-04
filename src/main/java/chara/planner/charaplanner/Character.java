@@ -1,34 +1,26 @@
 package chara.planner.charaplanner;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-
 import javafx.beans.property.StringProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 
 public class Character {
-    private StringProperty firstName;
-    private StringProperty lastName;
-    private ObjectProperty<LocalDate> birthDate;
-    private StringProperty gender;
-    private IntegerProperty age;
+    private final StringProperty firstName;
+    private final StringProperty lastName;
+    private final StringProperty birthDate; //String and not LocalDate object because depending on the user's universe, it might not be a usual date format
+    private final StringProperty gender;
+    private final StringProperty age; //String and not integer depending on the user's desired metric/unknown age
 
 
     public Character() {
         this(null, null, null, null, null);
     }
 
-    public Character(String firstName, String lastName, LocalDate birthDate, String gender, Integer age) {
+    public Character(String firstName, String lastName, String birthDate, String gender, String age) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
-        this.birthDate = new SimpleObjectProperty<LocalDate>(birthDate);
+        this.birthDate = new SimpleStringProperty(birthDate);
         this.gender = new SimpleStringProperty(gender);
-        this.age = new SimpleIntegerProperty(age);
+        this.age = new SimpleStringProperty(age);
     }
 
     public String getFirstName() {
@@ -67,32 +59,27 @@ public class Character {
         return gender;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate.get();
     }
 
-    public void setBirthDate(LocalDate bD){
+    public void setBirthDate(String bD){
         this.birthDate.set(bD);
     }
 
-    public String getFormattedDate(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return this.birthDate.get().format(formatter);
-    }
-
-    public ObjectProperty<LocalDate> getBirthDateProperty(){
+    public StringProperty getBirthDateProperty(){
         return birthDate;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age.get();
     }
 
-    public void setAge(int age){
-        this.age.set(age); //age won't be calculated and left to the user to pick, depending on their story's timeline
+    public void setAge(String age){
+        this.age.set(age);
     }
 
-    public IntegerProperty getAgeProperty(){
+    public StringProperty getAgeProperty(){
         return age;
     }
 

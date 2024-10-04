@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
@@ -19,7 +21,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="448.0">
                <children>
-                  <TableView fx:id="tableView" layoutY="81.0" prefHeight="702.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableView" layoutY="27.0" prefHeight="675.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
                     <columns>
                       <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Character" />
                     </columns>
@@ -27,6 +29,13 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <ButtonBar buttonMinWidth="65.0" layoutY="1.0" prefHeight="26.0" prefWidth="225.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                    <buttons>
+                        <Button minWidth="54.0" mnemonicParsing="false" onAction="#handleNewChara" prefHeight="26.0" prefWidth="175.0" text="New" />
+                      <Button mnemonicParsing="false" onAction="#handleEditChara" prefHeight="26.0" text="Edit" />
+                        <Button minWidth="48.0" mnemonicParsing="false" onAction="#handleDeleteChara" prefHeight="26.0" text="Delete" />
+                    </buttons>
+                  </ButtonBar>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="11.0">
