@@ -3,9 +3,13 @@ package chara.planner.charaplanner;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
 import chara.planner.charaplanner.Character;
+
+import java.io.File;
 
 public class CharacterEditDialogController {
     @FXML
@@ -24,10 +28,13 @@ public class CharacterEditDialogController {
     private TextField jobField;
     @FXML
     private TextField jobPositionField;
+    @FXML
+    private Label labelSelectedFile;
 
     private Stage dialogStage;
     private Character character;
     private boolean okClicked = false;
+    private String pictureFilePath = "";
 
     @FXML
     private void initialize() {
@@ -47,6 +54,7 @@ public class CharacterEditDialogController {
         ageField.setText(character.getAge());
         jobField.setText(character.getJob());
         jobPositionField.setText(character.getJobPosition());
+        labelSelectedFile.setText(character.getProfilePicPath());
     }
 
     public boolean isOkClicked() {
@@ -67,6 +75,8 @@ public class CharacterEditDialogController {
             character.setGender(genderField.getText());
             character.setJob(jobField.getText());
             character.setJobPosition(jobPositionField.getText());
+
+            character.setProfilePicPath(pictureFilePath);
 
             okClicked = true;
             dialogStage.close();
@@ -103,5 +113,15 @@ public class CharacterEditDialogController {
         }
     }
 
-
+    @FXML
+    private void handleImportPicture() {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Open picture file");
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
+        File f = fc.showOpenDialog(null);
+        if(f!=null){
+            pictureFilePath = f.getAbsolutePath();
+            labelSelectedFile.setText("Selected File: " + f.getAbsolutePath());
+        }
+    }
 }

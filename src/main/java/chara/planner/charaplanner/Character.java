@@ -2,6 +2,7 @@ package chara.planner.charaplanner;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 
 public class Character {
     private final StringProperty displayName;
@@ -12,13 +13,13 @@ public class Character {
     private final StringProperty age; //String and not integer depending on the user's desired metric/unknown age
     private final StringProperty job;
     private final StringProperty jobPosition;
-
+    private final StringProperty profilePicPath;
 
     public Character() {
-        this(null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null);
     }
 
-    public Character(String displayName, String firstName, String lastName, String birthDate, String gender, String age, String job, String jobPosition) {
+    public Character(String displayName, String firstName, String lastName, String birthDate, String gender, String age, String job, String jobPosition, String profilePicPath) {
         this.displayName = new SimpleStringProperty(displayName);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
@@ -27,6 +28,7 @@ public class Character {
         this.age = new SimpleStringProperty(age);
         this.job = new SimpleStringProperty(job);
         this.jobPosition = new SimpleStringProperty(jobPosition);
+        this.profilePicPath = new SimpleStringProperty(profilePicPath);
     }
 
     public String getDisplayName() {
@@ -123,6 +125,18 @@ public class Character {
 
     public StringProperty getJobPositionProperty(){
         return jobPosition;
+    }
+
+    public String getProfilePicPath(){
+        return profilePicPath.get();
+    }
+
+    public void setProfilePicPath(String profilePicPath){
+        this.profilePicPath.set(profilePicPath);
+    }
+
+    public StringProperty getProfilePicPathProperty(){
+        return profilePicPath;
     }
 
 

@@ -3,7 +3,10 @@ package chara.planner.charaplanner;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import java.net.URL;
 
 public class CharaOverviewController {
     @FXML
@@ -31,6 +34,8 @@ public class CharaOverviewController {
     private VBox vBox;
     @FXML
     private Label nameRightLabel;
+    @FXML
+    private ImageView profilePicImageView;
 
 
     private MainApp mainApp;
@@ -98,9 +103,21 @@ public class CharaOverviewController {
             genderLabel.setText(chara.getGender());
             ageLabel.setText(chara.getAge());
             birthDateLabel.setText(chara.getBirthDate());
-            nameRightLabel.setText(chara.getDisplayName());
             jobLabel.setText(chara.getJob());
             jobPositionLabel.setText(chara.getJobPosition());
+
+            nameRightLabel.setText(chara.getDisplayName());
+            if(chara.getProfilePicPath().isEmpty()){
+                URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
+                if(defaultPicUrl != null){
+                    Image profilePic = new Image(defaultPicUrl.toExternalForm());
+                    profilePicImageView.setImage(profilePic);
+                }
+            }
+            else{
+                Image profilePic = new Image("file:" + chara.getProfilePicPath());
+                profilePicImageView.setImage(profilePic);
+            }
         }
         else{
             firstNameLabel.setText("");
@@ -111,6 +128,13 @@ public class CharaOverviewController {
             nameRightLabel.setText("");
             jobLabel.setText("");
             jobPositionLabel.setText("");
+
+            URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
+            if(defaultPicUrl != null){
+                Image profilePic = new Image(defaultPicUrl.toExternalForm());
+                profilePicImageView.setImage(profilePic);
+            }
+
         }
     }
 

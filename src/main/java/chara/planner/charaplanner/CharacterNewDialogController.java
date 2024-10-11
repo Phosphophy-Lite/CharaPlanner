@@ -43,6 +43,9 @@ public class CharacterNewDialogController {
             character.setBirthDate("");
             character.setAge("");
             character.setGender("");
+            character.setJob("");
+            character.setJobPosition("");
+            character.setProfilePicPath("");
 
             okClicked = true;
             dialogStage.close();
