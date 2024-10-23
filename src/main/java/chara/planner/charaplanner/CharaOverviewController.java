@@ -98,14 +98,25 @@ public class CharaOverviewController {
 
     private void showCharaDetails(Character chara){
         if(chara != null){
-            firstNameLabel.setText(chara.getFirstName());
-            lastNameLabel.setText(chara.getLastName());
-            genderLabel.setText(chara.getGender());
-            ageLabel.setText(chara.getAge());
-            birthDateLabel.setText(chara.getBirthDate());
-            jobLabel.setText(chara.getJob());
-            jobPositionLabel.setText(chara.getJobPosition());
-
+            if(chara.getBasicInfos() != null){
+                firstNameLabel.setText(chara.getBasicInfos().getFirstName());
+                lastNameLabel.setText(chara.getBasicInfos().getLastName());
+                genderLabel.setText(chara.getBasicInfos().getGender());
+                ageLabel.setText(chara.getBasicInfos().getAge());
+                birthDateLabel.setText(chara.getBasicInfos().getBirthDate());
+                jobLabel.setText(chara.getBasicInfos().getJob());
+                jobPositionLabel.setText(chara.getBasicInfos().getJobPosition());
+            }
+            else {
+                firstNameLabel.setText("");
+                lastNameLabel.setText("");
+                genderLabel.setText("");
+                ageLabel.setText("");
+                birthDateLabel.setText("");
+                nameRightLabel.setText("");
+                jobLabel.setText("");
+                jobPositionLabel.setText("");
+            }
             nameRightLabel.setText(chara.getDisplayName());
             if(chara.getProfilePicPath().isEmpty()){
                 URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");

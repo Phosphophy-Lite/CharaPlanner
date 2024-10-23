@@ -13,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.prefs.Preferences;
 
 import jakarta.xml.bind.JAXBContext;
@@ -30,9 +29,12 @@ public class MainApp extends Application {
     private ObservableList<Character> charaData = FXCollections.observableArrayList();
 
     public MainApp(){
-        charaData.add(new Character("Velleius(Mage)","Velleius", "Vitalis", "500 av JC", "Male", "1200+", "Sage of the Council", "Archivist/Mage", ""));
-        charaData.add(new Character("Wolfie","Wolfgang", "Richthofer", "23/10/????", "Male", "22", "Student", "Literature", ""));
-
+        /*BasicInfos viviInfos = new BasicInfos("Velleius", "Vitalis", "500 av JC", "Male", "1200+", "Sage of the Council", "Archivist/Mage");
+        charaData.add(new Character("Velleius(Mage)", viviInfos, ""));
+        System.out.println(charaData.get(0).getBasicInfos().getGender());
+        charaData.add(new Character("Wolfie", new BasicInfos("Wolfgang", "Richthofer", "23/10/????", "Male", "22", "Student", "Literature"), ""));
+        */
+        charaData.add(new Character("Velleius(Mage)", "Velleius", "Vitalis", "500 av JC", "Male", "1200+", "Sage of the Council", "Archivist/Mage", ""));
     }
 
     @Override

@@ -47,14 +47,16 @@ public class CharacterEditDialogController {
     public void setCharacter(Character character) {
         this.character = character;
         displayNameField.setText(character.getDisplayName());
-        firstNameField.setText(character.getFirstName());
-        lastNameField.setText(character.getLastName());
-        birthDateField.setText(character.getBirthDate());
-        genderField.setText(character.getGender());
-        ageField.setText(character.getAge());
-        jobField.setText(character.getJob());
-        jobPositionField.setText(character.getJobPosition());
+        firstNameField.setText(character.getBasicInfos().getFirstName());
+        lastNameField.setText(character.getBasicInfos().getLastName());
+        birthDateField.setText(character.getBasicInfos().getBirthDate());
+        genderField.setText(character.getBasicInfos().getGender());
+        ageField.setText(character.getBasicInfos().getAge());
+        jobField.setText(character.getBasicInfos().getJob());
+        jobPositionField.setText(character.getBasicInfos().getJobPosition());
         labelSelectedFile.setText(character.getProfilePicPath());
+
+        pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
     }
 
     public boolean isOkClicked() {
@@ -68,13 +70,13 @@ public class CharacterEditDialogController {
     private void handleOk() {
         if (isInputValid()) {
             character.setDisplayName(displayNameField.getText());
-            character.setFirstName(firstNameField.getText());
-            character.setLastName(lastNameField.getText());
-            character.setBirthDate(birthDateField.getText());
-            character.setAge(ageField.getText());
-            character.setGender(genderField.getText());
-            character.setJob(jobField.getText());
-            character.setJobPosition(jobPositionField.getText());
+            character.getBasicInfos().setFirstName(firstNameField.getText());
+            character.getBasicInfos().setLastName(lastNameField.getText());
+            character.getBasicInfos().setBirthDate(birthDateField.getText());
+            character.getBasicInfos().setAge(ageField.getText());
+            character.getBasicInfos().setGender(genderField.getText());
+            character.getBasicInfos().setJob(jobField.getText());
+            character.getBasicInfos().setJobPosition(jobPositionField.getText());
 
             character.setProfilePicPath(pictureFilePath);
 

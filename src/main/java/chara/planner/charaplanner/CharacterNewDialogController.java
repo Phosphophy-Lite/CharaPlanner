@@ -38,13 +38,13 @@ public class CharacterNewDialogController {
     private void handleOk() {
         if (isInputValid()) {
             character.setDisplayName(displayNameField.getText());
-            character.setFirstName("");
-            character.setLastName("");
-            character.setBirthDate("");
-            character.setAge("");
-            character.setGender("");
-            character.setJob("");
-            character.setJobPosition("");
+            character.getBasicInfos().setFirstName("");
+            character.getBasicInfos().setLastName("");
+            character.getBasicInfos().setBirthDate("");
+            character.getBasicInfos().setAge("");
+            character.getBasicInfos().setGender("");
+            character.getBasicInfos().setJob("");
+            character.getBasicInfos().setJobPosition("");
             character.setProfilePicPath("");
 
             okClicked = true;

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -43,50 +44,135 @@
                <children>
                   <TabPane layoutX="90.0" layoutY="70.0" prefHeight="702.0" prefWidth="471.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <tabs>
-                      <Tab text="Basic Informations">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <Label layoutX="20.0" layoutY="27.0" text="Details :" />
-                                    <GridPane layoutX="20.0" layoutY="70.0" prefHeight="353.0" prefWidth="433.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
+                        <Tab text="Basic Informations">
+                           <content>
+                              <ScrollPane fitToHeight="true" fitToWidth="true">
+                                 <content>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <Label text="First Name" />
-                                          <Label text="Last Name" GridPane.rowIndex="1" />
-                                          <Label text="Gender" GridPane.rowIndex="2" />
-                                          <Label text="Age" GridPane.rowIndex="3" />
-                                          <Label text="Date of Birth" GridPane.rowIndex="4" />
-                                          <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" />
-                                          <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label fx:id="genderLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Label fx:id="ageLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <Label fx:id="birthDateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                          <Label text="Job/Class" GridPane.rowIndex="5" />
-                                          <Label text="Job Position/Rank" GridPane.rowIndex="6" />
-                                          <Label fx:id="jobLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <Label fx:id="jobPositionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="150.0" prefWidth="158.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="284.0" prefWidth="288.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="First Name" wrapText="true" />
+                                                <Label text="Last Name" wrapText="true" GridPane.rowIndex="1" />
+                                                <Label text="Nicknames/Titles" wrapText="true" GridPane.rowIndex="2" />
+                                                <Label text="Gender" wrapText="true" GridPane.rowIndex="3" />
+                                                <Label text="Age" wrapText="true" GridPane.rowIndex="4" />
+                                                <Label fx:id="firstNameLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="genderLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="ageLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label text="Date of Birth" wrapText="true" GridPane.rowIndex="5" />
+                                                <Label text="Place of Birth" wrapText="true" GridPane.rowIndex="6" />
+                                                <Label fx:id="birthDateLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Nationality" wrapText="true" GridPane.rowIndex="7" />
+                                                <Label text="Specie/Race" wrapText="true" GridPane.rowIndex="8" />
+                                                <Label text="Affiliation/Organization" wrapText="true" GridPane.rowIndex="9" />
+                                                <Label text="Job/Class" wrapText="true" GridPane.rowIndex="10" />
+                                                <Label text="Job Position/Rank" wrapText="true" GridPane.rowIndex="11" />
+                                                <Label text="Religion" wrapText="true" GridPane.rowIndex="12" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="jobLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="jobPositionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                             </children>
+                                          </GridPane>
                                        </children>
-                                    </GridPane>
-                                 </children></AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab text="Appearance">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        </content>
-                      </Tab>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Appearance">
+                           <content>
+                              <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                           <content>
+                              <ScrollPane fitToHeight="true" fitToWidth="true">
+                                 <content>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="140.0" prefWidth="152.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Hair" wrapText="true" />
+                                                <Label text="Skin" wrapText="true" GridPane.rowIndex="1" />
+                                                <Label text="Eyes" wrapText="true" GridPane.rowIndex="2" />
+                                                <Label text="Facial features" wrapText="true" GridPane.rowIndex="3" />
+                                                <Label text="Height" wrapText="true" GridPane.rowIndex="4" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label text="Weight" wrapText="true" GridPane.rowIndex="5" />
+                                                <Label text="Body Type/Build" wrapText="true" GridPane.rowIndex="6" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Clothing" wrapText="true" GridPane.rowIndex="7" />
+                                                <Label text="Aesthetic/Style" wrapText="true" GridPane.rowIndex="8" />
+                                                <Label text="Accessories" wrapText="true" GridPane.rowIndex="9" />
+                                                <Label text="Relevant Item(s)" wrapText="true" GridPane.rowIndex="10" />
+                                                <Label text="Weapon(s)" wrapText="true" GridPane.rowIndex="11" />
+                                                <Label text="Medical Condition(s)" wrapText="true" GridPane.rowIndex="12" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
                     </tabs>
                   </TabPane>
                </children>
