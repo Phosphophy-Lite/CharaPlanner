@@ -77,13 +77,13 @@
                                                 <Label text="Gender" wrapText="true" GridPane.rowIndex="3" />
                                                 <Label text="Age" wrapText="true" GridPane.rowIndex="4" />
                                                 <Label fx:id="firstNameLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="nicknamesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label fx:id="genderLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <Label fx:id="ageLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                 <Label text="Date of Birth" wrapText="true" GridPane.rowIndex="5" />
                                                 <Label text="Place of Birth" wrapText="true" GridPane.rowIndex="6" />
                                                 <Label fx:id="birthDateLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="birthPlaceLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                 <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Label text="Nationality" wrapText="true" GridPane.rowIndex="7" />
                                                 <Label text="Specie/Race" wrapText="true" GridPane.rowIndex="8" />
@@ -91,12 +91,12 @@
                                                 <Label text="Job/Class" wrapText="true" GridPane.rowIndex="10" />
                                                 <Label text="Job Position/Rank" wrapText="true" GridPane.rowIndex="11" />
                                                 <Label text="Religion" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="nationalityLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="specieLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="affiliationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                                                 <Label fx:id="jobLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                                                 <Label fx:id="jobPositionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="religionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                                              </children>
                                           </GridPane>
                                        </children>

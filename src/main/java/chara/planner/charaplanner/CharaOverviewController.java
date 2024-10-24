@@ -29,6 +29,18 @@ public class CharaOverviewController {
     private Label jobLabel;
     @FXML
     private Label jobPositionLabel;
+    @FXML
+    private Label nicknamesLabel;
+    @FXML
+    private Label birthPlaceLabel;
+    @FXML
+    private Label nationalityLabel;
+    @FXML
+    private Label specieLabel;
+    @FXML
+    private Label affiliationLabel;
+    @FXML
+    private Label religionLabel;
 
     @FXML
     private VBox vBox;
@@ -96,6 +108,23 @@ public class CharaOverviewController {
         tableView.setItems(mainApp.getCharaList());
     }
 
+    private void setLabelsEmpty(){
+        firstNameLabel.setText("");
+        lastNameLabel.setText("");
+        genderLabel.setText("");
+        ageLabel.setText("");
+        birthDateLabel.setText("");
+        nameRightLabel.setText("");
+        jobLabel.setText("");
+        jobPositionLabel.setText("");
+        nicknamesLabel.setText("");
+        birthPlaceLabel.setText("");
+        nationalityLabel.setText("");
+        specieLabel.setText("");
+        affiliationLabel.setText("");
+        religionLabel.setText("");
+    }
+
     private void showCharaDetails(Character chara){
         if(chara != null){
             if(chara.getBasicInfos() != null){
@@ -106,16 +135,15 @@ public class CharaOverviewController {
                 birthDateLabel.setText(chara.getBasicInfos().getBirthDate());
                 jobLabel.setText(chara.getBasicInfos().getJob());
                 jobPositionLabel.setText(chara.getBasicInfos().getJobPosition());
+                nationalityLabel.setText(chara.getBasicInfos().getNationality());
+                birthPlaceLabel.setText(chara.getBasicInfos().getBirthPlace());
+                nicknamesLabel.setText(chara.getBasicInfos().getNicknames());
+                specieLabel.setText(chara.getBasicInfos().getSpecie());
+                affiliationLabel.setText(chara.getBasicInfos().getAffiliation());
+                religionLabel.setText(chara.getBasicInfos().getReligion());
             }
             else {
-                firstNameLabel.setText("");
-                lastNameLabel.setText("");
-                genderLabel.setText("");
-                ageLabel.setText("");
-                birthDateLabel.setText("");
-                nameRightLabel.setText("");
-                jobLabel.setText("");
-                jobPositionLabel.setText("");
+                setLabelsEmpty();
             }
             nameRightLabel.setText(chara.getDisplayName());
             if(chara.getProfilePicPath().isEmpty()){
@@ -131,14 +159,7 @@ public class CharaOverviewController {
             }
         }
         else{
-            firstNameLabel.setText("");
-            lastNameLabel.setText("");
-            genderLabel.setText("");
-            ageLabel.setText("");
-            birthDateLabel.setText("");
-            nameRightLabel.setText("");
-            jobLabel.setText("");
-            jobPositionLabel.setText("");
+            setLabelsEmpty();
 
             URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
             if(defaultPicUrl != null){
