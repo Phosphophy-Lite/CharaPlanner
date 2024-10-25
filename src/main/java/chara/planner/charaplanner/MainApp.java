@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TabPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
@@ -172,7 +173,7 @@ public class MainApp extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("CharacterEditDialog.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+            TabPane page = (TabPane) loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();

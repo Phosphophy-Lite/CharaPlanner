@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 public class Character {
     private final StringProperty displayName;
     private final ObjectProperty<BasicInfos> basicInfos;
+    private final ObjectProperty<Appearance> appearance;
     private final StringProperty profilePicPath;
 
     public Character() {
@@ -18,6 +19,7 @@ public class Character {
     public Character(String displayName, String firstName, String lastName, String birthDate, String gender, String age, String job, String jobPosition, String profilePicPath) {
         this.displayName = new SimpleStringProperty(displayName);
         this.basicInfos = new SimpleObjectProperty<BasicInfos>(new BasicInfos(firstName, lastName, birthDate, gender, age, job, jobPosition));
+        this.appearance = new SimpleObjectProperty<Appearance>(new Appearance());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
     }
 
@@ -43,6 +45,14 @@ public class Character {
 
     public void setBasicInfos(BasicInfos basicInfos) {
         this.basicInfos.set(basicInfos);
+    }
+
+    public Appearance getAppearance() {
+        return appearance.get();
+    }
+
+    public void setAppearance(Appearance appearance) {
+        this.appearance.set(appearance);
     }
 
     public String getProfilePicPath(){

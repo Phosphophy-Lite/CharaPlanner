@@ -6,22 +6,22 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<TabPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane prefHeight="719.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
    <tabs>
       <Tab text="Basic Informations">
          <content>
             <ScrollPane fitToHeight="true" fitToWidth="true">
                <content>
-                  <AnchorPane prefHeight="441.0" prefWidth="613.0" style="-fx-background-color: red;">
+                  <AnchorPane prefHeight="441.0" prefWidth="613.0">
                      <children>
-                        <GridPane layoutX="17.0" layoutY="29.0" prefHeight="309.0" prefWidth="577.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                        <GridPane layoutX="17.0" layoutY="29.0" prefHeight="588.0" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="150.0" prefWidth="192.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.0" minWidth="10.0" prefWidth="135.0" />
@@ -37,27 +37,120 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <Label text="First name" GridPane.rowIndex="1" />
                               <Label text="Last name" GridPane.rowIndex="2" />
-                              <Label text="Gender" GridPane.rowIndex="3" />
-                              <Label text="Age" GridPane.rowIndex="4" />
-                              <Label text="Date of Birth" GridPane.rowIndex="5" />
+                              <Label text="Gender" GridPane.rowIndex="4" />
+                              <Label text="Age" GridPane.rowIndex="5" />
+                              <Label text="Date of Birth" GridPane.rowIndex="6" />
                               <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                               <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                              <TextField fx:id="genderField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                              <TextField fx:id="ageField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-                              <TextField fx:id="birthDateField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                              <TextField fx:id="genderField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                              <TextField fx:id="ageField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                              <TextField fx:id="birthDateField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
                               <Label text="Display name" />
                               <TextField fx:id="displayNameField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-                              <Label text="Job/Class" GridPane.rowIndex="6" />
-                              <Label text="Job Position/Rank" GridPane.rowIndex="7" />
-                              <TextField fx:id="jobField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-                              <TextField fx:id="jobPositionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-                              <Label text="Profile picture" GridPane.rowIndex="8" />
-                              <Button mnemonicParsing="false" onAction="#handleImportPicture" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <Label fx:id="labelSelectedFile" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <Label text="Job/Class" GridPane.rowIndex="11" />
+                              <Label text="Job Position/Rank" GridPane.rowIndex="12" />
+                              <TextField fx:id="jobField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                              <TextField fx:id="jobPositionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                              <Label text="Profile picture" GridPane.rowIndex="14" />
+                              <Button mnemonicParsing="false" onAction="#handleImportPicture" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                              <Label fx:id="labelSelectedFile" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+                              <Label text="Nicknames/Titles" GridPane.rowIndex="3" />
+                              <Label text="Place of Birth" GridPane.rowIndex="7" />
+                              <Label text="Nationality" GridPane.rowIndex="8" />
+                              <Label text="Specie/Race" GridPane.rowIndex="9" />
+                              <Label text="Religion" GridPane.rowIndex="13" />
+                              <Label text="Affiliation/Organization" GridPane.rowIndex="10" />
+                              <TextField fx:id="nicknamesField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                              <TextField fx:id="birthPlaceField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                              <TextField fx:id="nationalityField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                              <TextField fx:id="specieField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                              <TextField fx:id="affiliationField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                              <TextField fx:id="religionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                           </children>
+                        </GridPane>
+                        <ButtonBar layoutX="305.0" layoutY="365.0" prefHeight="40.0" prefWidth="287.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="18.0">
+                           <buttons>
+                              <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
+                              <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+                           </buttons>
+                        </ButtonBar>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </content>
+      </Tab>
+      <Tab text="Appearance">
+         <content>
+            <ScrollPane fitToHeight="true" fitToWidth="true">
+               <content>
+                  <AnchorPane prefHeight="441.0" prefWidth="613.0">
+                     <children>
+                        <GridPane layoutX="17.0" layoutY="29.0" prefHeight="577.0" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="150.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.0" minWidth="10.0" prefWidth="135.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.0" minWidth="10.0" prefWidth="374.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="20.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Skin" GridPane.rowIndex="1" />
+                              <Label text="Eyes" GridPane.rowIndex="2" />
+                              <Label text="Height" GridPane.rowIndex="4" />
+                              <Label text="Weight" GridPane.rowIndex="5" />
+                              <Label text="Body Type/Build" GridPane.rowIndex="6" />
+                              <TextField fx:id="skinField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                              <TextField fx:id="eyesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                              <TextField fx:id="heightField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                              <TextField fx:id="weightField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                              <TextField fx:id="buildField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                              <Label text="Hair" />
+                              <TextField fx:id="hairField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                              <Label text="Relevant Item(s)" GridPane.rowIndex="11" />
+                              <Label text="Weapon(s)" GridPane.rowIndex="12" />
+                              <TextField fx:id="itemsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                              <TextField fx:id="weaponsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                              <Label text="Description" GridPane.rowIndex="14" />
+                              <Label fx:id="labelSelectedFile1" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+                              <Label text="Facial features" GridPane.rowIndex="3" />
+                              <Label text="Distinctive features" GridPane.rowIndex="7" />
+                              <Label text="Clothing" GridPane.rowIndex="8" />
+                              <Label text="Aesthetic/Style" GridPane.rowIndex="9" />
+                              <Label text="Medical Condition(s)" GridPane.rowIndex="13" />
+                              <Label text="Accessories" GridPane.rowIndex="10" />
+                              <TextField fx:id="facialFeaturesField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                              <TextField fx:id="distFeaturesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                              <TextField fx:id="clothingField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                              <TextField fx:id="aestheticField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                              <TextField fx:id="accessoriesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                              <TextField fx:id="medicalField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                              <TextArea fx:id="descArea" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="14" />
                            </children>
                         </GridPane>
                         <ButtonBar layoutX="305.0" layoutY="365.0" prefHeight="40.0" prefWidth="287.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="18.0">

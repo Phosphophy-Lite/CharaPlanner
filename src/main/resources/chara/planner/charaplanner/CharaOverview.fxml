@@ -137,6 +137,8 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Hair" wrapText="true" />
@@ -144,27 +146,31 @@
                                                 <Label text="Eyes" wrapText="true" GridPane.rowIndex="2" />
                                                 <Label text="Facial features" wrapText="true" GridPane.rowIndex="3" />
                                                 <Label text="Height" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="hairLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
+                                                <Label fx:id="eyesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="facialFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="heightLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                 <Label text="Weight" wrapText="true" GridPane.rowIndex="5" />
                                                 <Label text="Body Type/Build" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Clothing" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label text="Aesthetic/Style" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label text="Accessories" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label text="Relevant Item(s)" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Weapon(s)" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label text="Medical Condition(s)" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="weightLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="buildLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="skinLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Clothing" wrapText="true" GridPane.rowIndex="8" />
+                                                <Label text="Aesthetic/Style" wrapText="true" GridPane.rowIndex="9" />
+                                                <Label text="Accessories" wrapText="true" GridPane.rowIndex="10" />
+                                                <Label text="Relevant Item(s)" wrapText="true" GridPane.rowIndex="11" />
+                                                <Label text="Weapon(s)" wrapText="true" GridPane.rowIndex="12" />
+                                                <Label text="Medical Condition(s)" wrapText="true" GridPane.rowIndex="13" />
+                                                <Label fx:id="clothingLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="aestheticLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="accessoriesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="itemsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="weaponsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="medicalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                <Label text="Distinctive features" wrapText="true" GridPane.rowIndex="7" />
+                                                <Label text="Description" wrapText="true" GridPane.rowIndex="14" />
+                                                <Label fx:id="distFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="descLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                                              </children>
                                           </GridPane>
                                        </children>

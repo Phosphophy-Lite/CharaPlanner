@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
@@ -28,6 +29,52 @@ public class CharacterEditDialogController {
     private TextField jobField;
     @FXML
     private TextField jobPositionField;
+
+    @FXML
+    private TextField nicknamesField;
+    @FXML
+    private TextField birthPlaceField;
+    @FXML
+    private TextField nationalityField;
+    @FXML
+    private TextField specieField;
+    @FXML
+    private TextField affiliationField;
+    @FXML
+    private TextField religionField;
+
+    @FXML
+    private TextField hairField;
+    @FXML
+    private TextField skinField;
+    @FXML
+    private TextField eyesField;
+    @FXML
+    private TextField facialFeaturesField;
+    @FXML
+    private TextField heightField;
+    @FXML
+    private TextField weightField;
+    @FXML
+    private TextField buildField;
+    @FXML
+    private TextField distFeaturesField;
+    @FXML
+    private TextField clothingField;
+    @FXML
+    private TextField aestheticField;
+    @FXML
+    private TextField accessoriesField;
+    @FXML
+    private TextField itemsField;
+    @FXML
+    private TextField weaponsField;
+    @FXML
+    private TextField medicalField;
+    @FXML
+    private TextArea descArea;
+
+
     @FXML
     private Label labelSelectedFile;
 
@@ -54,8 +101,31 @@ public class CharacterEditDialogController {
         ageField.setText(character.getBasicInfos().getAge());
         jobField.setText(character.getBasicInfos().getJob());
         jobPositionField.setText(character.getBasicInfos().getJobPosition());
-        labelSelectedFile.setText(character.getProfilePicPath());
+        nicknamesField.setText(character.getBasicInfos().getNicknames());
+        birthPlaceField.setText(character.getBasicInfos().getBirthPlace());
+        nationalityField.setText(character.getBasicInfos().getNationality());
+        specieField.setText(character.getBasicInfos().getSpecie());
+        affiliationField.setText(character.getBasicInfos().getAffiliation());
+        religionField.setText(character.getBasicInfos().getReligion());
 
+        hairField.setText(character.getAppearance().getHair());
+        skinField.setText(character.getAppearance().getSkin());
+        eyesField.setText(character.getAppearance().getEyes());
+        facialFeaturesField.setText(character.getAppearance().getFacialFeatures());
+        heightField.setText(character.getAppearance().getHeight());
+        weightField.setText(character.getAppearance().getWeight());
+        buildField.setText(character.getAppearance().getBuild());
+        distFeaturesField.setText(character.getAppearance().getDistFeatures());
+        clothingField.setText(character.getAppearance().getClothing());
+        aestheticField.setText(character.getAppearance().getAesthetic());
+        accessoriesField.setText(character.getAppearance().getAccessories());
+        itemsField.setText(character.getAppearance().getItems());
+        weaponsField.setText(character.getAppearance().getWeapons());
+        medicalField.setText(character.getAppearance().getMedical());
+        descArea.setText(character.getAppearance().getDesc());
+
+
+        labelSelectedFile.setText(character.getProfilePicPath());
         pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
     }
 
@@ -77,6 +147,28 @@ public class CharacterEditDialogController {
             character.getBasicInfos().setGender(genderField.getText());
             character.getBasicInfos().setJob(jobField.getText());
             character.getBasicInfos().setJobPosition(jobPositionField.getText());
+            character.getBasicInfos().setNicknames(nicknamesField.getText());
+            character.getBasicInfos().setBirthPlace(birthPlaceField.getText());
+            character.getBasicInfos().setNationality(nationalityField.getText());
+            character.getBasicInfos().setSpecie(specieField.getText());
+            character.getBasicInfos().setAffiliation(affiliationField.getText());
+            character.getBasicInfos().setReligion(religionField.getText());
+
+            character.getAppearance().setHair(hairField.getText());
+            character.getAppearance().setSkin(skinField.getText());
+            character.getAppearance().setEyes(eyesField.getText());
+            character.getAppearance().setFacialFeatures(facialFeaturesField.getText());
+            character.getAppearance().setHeight(heightField.getText());
+            character.getAppearance().setWeight(weightField.getText());
+            character.getAppearance().setBuild(buildField.getText());
+            character.getAppearance().setDistFeatures(distFeaturesField.getText());
+            character.getAppearance().setClothing(clothingField.getText());
+            character.getAppearance().setAesthetic(aestheticField.getText());
+            character.getAppearance().setAccessories(accessoriesField.getText());
+            character.getAppearance().setItems(itemsField.getText());
+            character.getAppearance().setWeapons(weaponsField.getText());
+            character.getAppearance().setMedical(medicalField.getText());
+            character.getAppearance().setDesc(descArea.getText());
 
             character.setProfilePicPath(pictureFilePath);
 

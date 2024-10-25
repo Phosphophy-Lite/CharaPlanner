@@ -43,6 +43,38 @@ public class CharaOverviewController {
     private Label religionLabel;
 
     @FXML
+    private Label hairLabel;
+    @FXML
+    private Label skinLabel;
+    @FXML
+    private Label eyesLabel;
+    @FXML
+    private Label facialFeaturesLabel;
+    @FXML
+    private Label heightLabel;
+    @FXML
+    private Label weightLabel;
+    @FXML
+    private Label buildLabel;
+    @FXML
+    private Label distFeaturesLabel;
+    @FXML
+    private Label clothingLabel;
+    @FXML
+    private Label aestheticLabel;
+    @FXML
+    private Label accessoriesLabel;
+    @FXML
+    private Label itemsLabel;
+    @FXML
+    private Label weaponsLabel;
+    @FXML
+    private Label medicalLabel;
+    @FXML
+    private Label descLabel;
+
+
+    @FXML
     private VBox vBox;
     @FXML
     private Label nameRightLabel;
@@ -126,6 +158,7 @@ public class CharaOverviewController {
     }
 
     private void showCharaDetails(Character chara){
+        setLabelsEmpty();
         if(chara != null){
             if(chara.getBasicInfos() != null){
                 firstNameLabel.setText(chara.getBasicInfos().getFirstName());
@@ -142,9 +175,24 @@ public class CharaOverviewController {
                 affiliationLabel.setText(chara.getBasicInfos().getAffiliation());
                 religionLabel.setText(chara.getBasicInfos().getReligion());
             }
-            else {
-                setLabelsEmpty();
+            if(chara.getAppearance() != null) {
+                hairLabel.setText(chara.getAppearance().getHair());
+                skinLabel.setText(chara.getAppearance().getSkin());
+                eyesLabel.setText(chara.getAppearance().getEyes());
+                facialFeaturesLabel.setText(chara.getAppearance().getFacialFeatures());
+                heightLabel.setText(chara.getAppearance().getHeight());
+                weightLabel.setText(chara.getAppearance().getWeight());
+                buildLabel.setText(chara.getAppearance().getBuild());
+                distFeaturesLabel.setText(chara.getAppearance().getDistFeatures());
+                clothingLabel.setText(chara.getAppearance().getClothing());
+                aestheticLabel.setText(chara.getAppearance().getAesthetic());
+                accessoriesLabel.setText(chara.getAppearance().getAccessories());
+                itemsLabel.setText(chara.getAppearance().getItems());
+                weaponsLabel.setText(chara.getAppearance().getWeapons());
+                medicalLabel.setText(chara.getAppearance().getMedical());
+                descLabel.setText(chara.getAppearance().getDesc());
             }
+
             nameRightLabel.setText(chara.getDisplayName());
             if(chara.getProfilePicPath().isEmpty()){
                 URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
@@ -159,8 +207,6 @@ public class CharaOverviewController {
             }
         }
         else{
-            setLabelsEmpty();
-
             URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
             if(defaultPicUrl != null){
                 Image profilePic = new Image(defaultPicUrl.toExternalForm());
