@@ -85,6 +85,7 @@
 - Symbolisms (animals/plants/gemstone)
 - Favorites (season, food, drinks, ...)
 - Likes & Disklikes
+- Theme songs
 
 ## Stats
 - Physical strength
@@ -115,12 +116,16 @@
 
 # Implementations
 
+## Menu items
+- Recently opened files in File
+- About
+
 - Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
 - Link items when referenced in a character sheet
 - Multiple tabs to access Character sheets / World items / Story items
 - CSS UI styling
 
 # Ideas of potential additional features
-- Last opened file menu item
+- Contact/send error ticket/request menu item
 - User creating custom templates for the sheets
 
