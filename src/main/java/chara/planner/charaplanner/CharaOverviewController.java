@@ -71,8 +71,32 @@ public class CharaOverviewController {
     @FXML
     private Label medicalLabel;
     @FXML
-    private Label descLabel;
+    private Label physDescLabel;
 
+    @FXML
+    private Label traitsLabel;
+    @FXML
+    private Label strengthsLabel;
+    @FXML
+    private Label weaknessesLabel;
+    @FXML
+    private Label skillsLabel;
+    @FXML
+    private Label alignmentLabel;
+    @FXML
+    private Label mbtiEnneaLabel;
+    @FXML
+    private Label mentalHealthLabel;
+    @FXML
+    private Label fearsLabel;
+    @FXML
+    private Label hobbiesLabel;
+    @FXML
+    private Label iqLabel;
+    @FXML
+    private Label philosophyLabel;
+    @FXML
+    private Label personaDescLabel;
 
     @FXML
     private VBox vBox;
@@ -155,6 +179,35 @@ public class CharaOverviewController {
         specieLabel.setText("");
         affiliationLabel.setText("");
         religionLabel.setText("");
+        traitsLabel.setText("");
+        strengthsLabel.setText("");
+        weaknessesLabel.setText("");
+        skillsLabel.setText("");
+        alignmentLabel.setText("");
+        mbtiEnneaLabel.setText("");
+        mentalHealthLabel.setText("");
+        fearsLabel.setText("");
+        hobbiesLabel.setText("");
+        iqLabel.setText("");
+        philosophyLabel.setText("");
+        personaDescLabel.setText("");
+        hairLabel.setText("");
+        skinLabel.setText("");
+        eyesLabel.setText("");
+        facialFeaturesLabel.setText("");
+        heightLabel.setText("");
+        weightLabel.setText("");
+        buildLabel.setText("");
+        distFeaturesLabel.setText("");
+        clothingLabel.setText("");
+        aestheticLabel.setText("");
+        accessoriesLabel.setText("");
+        itemsLabel.setText("");
+        weaponsLabel.setText("");
+        medicalLabel.setText("");
+        physDescLabel.setText("");
+
+
     }
 
     private void showCharaDetails(Character chara){
@@ -190,7 +243,21 @@ public class CharaOverviewController {
                 itemsLabel.setText(chara.getAppearance().getItems());
                 weaponsLabel.setText(chara.getAppearance().getWeapons());
                 medicalLabel.setText(chara.getAppearance().getMedical());
-                descLabel.setText(chara.getAppearance().getDesc());
+                physDescLabel.setText(chara.getAppearance().getDesc());
+            }
+            if(chara.getPersonality() != null){
+                traitsLabel.setText(chara.getPersonality().getTraits());
+                strengthsLabel.setText(chara.getPersonality().getStrengths());
+                weaknessesLabel.setText(chara.getPersonality().getWeaknesses());
+                skillsLabel.setText(chara.getPersonality().getSkills());
+                alignmentLabel.setText(chara.getPersonality().getAlignment());
+                mbtiEnneaLabel.setText(chara.getPersonality().getMbtiEnnea());
+                mentalHealthLabel.setText(chara.getPersonality().getMentalHealth());
+                fearsLabel.setText(chara.getPersonality().getFears());
+                hobbiesLabel.setText(chara.getPersonality().getHobbies());
+                iqLabel.setText(chara.getPersonality().getIq());
+                philosophyLabel.setText(chara.getPersonality().getPhilosophy());
+                personaDescLabel.setText(chara.getPersonality().getDesc());
             }
 
             nameRightLabel.setText(chara.getDisplayName());

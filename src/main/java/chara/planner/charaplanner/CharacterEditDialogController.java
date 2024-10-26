@@ -72,8 +72,32 @@ public class CharacterEditDialogController {
     @FXML
     private TextField medicalField;
     @FXML
-    private TextArea descArea;
+    private TextArea physDescArea;
 
+    @FXML
+    private TextField traitsField;
+    @FXML
+    private TextField strengthsField;
+    @FXML
+    private TextField weaknessesField;
+    @FXML
+    private TextField skillsField;
+    @FXML
+    private TextField alignmentField;
+    @FXML
+    private TextField mbtiEnneaField;
+    @FXML
+    private TextField mentalHealthField;
+    @FXML
+    private TextField fearsField;
+    @FXML
+    private TextField hobbiesField;
+    @FXML
+    private TextField iqField;
+    @FXML
+    private TextField philosophyField;
+    @FXML
+    private TextArea personaDescArea;
 
     @FXML
     private Label labelSelectedFile;
@@ -122,7 +146,19 @@ public class CharacterEditDialogController {
         itemsField.setText(character.getAppearance().getItems());
         weaponsField.setText(character.getAppearance().getWeapons());
         medicalField.setText(character.getAppearance().getMedical());
-        descArea.setText(character.getAppearance().getDesc());
+        physDescArea.setText(character.getAppearance().getDesc());
+
+        traitsField.setText(character.getPersonality().getTraits());
+        strengthsField.setText(character.getPersonality().getStrengths());
+        weaknessesField.setText(character.getPersonality().getWeaknesses());
+        skillsField.setText(character.getPersonality().getSkills());
+        alignmentField.setText(character.getPersonality().getAlignment());
+        mbtiEnneaField.setText(character.getPersonality().getMbtiEnnea());
+        mentalHealthField.setText(character.getPersonality().getMentalHealth());
+        fearsField.setText(character.getPersonality().getFears());
+        hobbiesField.setText(character.getPersonality().getHobbies());
+        iqField.setText(character.getPersonality().getIq());
+        personaDescArea.setText(character.getPersonality().getDesc());
 
 
         labelSelectedFile.setText(character.getProfilePicPath());
@@ -168,7 +204,20 @@ public class CharacterEditDialogController {
             character.getAppearance().setItems(itemsField.getText());
             character.getAppearance().setWeapons(weaponsField.getText());
             character.getAppearance().setMedical(medicalField.getText());
-            character.getAppearance().setDesc(descArea.getText());
+            character.getAppearance().setDesc(physDescArea.getText());
+
+            character.getPersonality().setTraits(traitsField.getText());
+            character.getPersonality().setStrengths(strengthsField.getText());
+            character.getPersonality().setWeaknesses(weaknessesField.getText());
+            character.getPersonality().setSkills(skillsField.getText());
+            character.getPersonality().setAlignment(alignmentField.getText());
+            character.getPersonality().setMbtiEnnea(mbtiEnneaField.getText());
+            character.getPersonality().setMentalHealth(mentalHealthField.getText());
+            character.getPersonality().setFears(fearsField.getText());
+            character.getPersonality().setHobbies(hobbiesField.getText());
+            character.getPersonality().setIq(iqField.getText());
+            character.getPersonality().setPhilosophy(philosophyField.getText());
+            character.getPersonality().setDesc(personaDescArea.getText());
 
             character.setProfilePicPath(pictureFilePath);
 

@@ -10,6 +10,7 @@ public class Character {
     private final StringProperty displayName;
     private final ObjectProperty<BasicInfos> basicInfos;
     private final ObjectProperty<Appearance> appearance;
+    private final ObjectProperty<Personality> personality;
     private final StringProperty profilePicPath;
 
     public Character() {
@@ -20,6 +21,7 @@ public class Character {
         this.displayName = new SimpleStringProperty(displayName);
         this.basicInfos = new SimpleObjectProperty<BasicInfos>(new BasicInfos(firstName, lastName, birthDate, gender, age, job, jobPosition));
         this.appearance = new SimpleObjectProperty<Appearance>(new Appearance());
+        this.personality = new SimpleObjectProperty<Personality>(new Personality());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
     }
 
@@ -53,6 +55,22 @@ public class Character {
 
     public void setAppearance(Appearance appearance) {
         this.appearance.set(appearance);
+    }
+
+    public ObjectProperty<Appearance> getAppearanceProperty() {
+        return appearance;
+    }
+
+    public Personality getPersonality() {
+        return personality.get();
+    }
+
+    public void setPersonality(Personality personality) {
+        this.personality.set(personality);
+    }
+
+    public ObjectProperty<Personality> getPersonalityProperty() {
+        return personality;
     }
 
     public String getProfilePicPath(){
