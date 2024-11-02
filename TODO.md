@@ -2,10 +2,13 @@
 
 # Character Data
 
+- Display name (only mandatory field when creating a new character)
+
 ## Basics :
 - Fullname
 - Nicknames/Titles
 - Gender
+- Pronouns
 - Age
 - Birthdate
 - Birthplace
@@ -50,8 +53,6 @@
 - Plot role
 - Backstory
 - Goals/Ambitions/Dreams
-- Important past event date & desc 1
-- Important pas event date & desc 2
 - Achievements
 - Failures/Mistakes
 - Crimes
@@ -64,30 +65,34 @@
 - Orientation
 - Family Composition
 - Status
-- Parent A
-- Parent B
-- S/O
+
+For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option
+Can make registered character names to be clickable to go to their profile page
+
+- Parental figures + label
+- Love interests + label
 - Siblings
-- Family list/Tree ?
+- Family list + label
 - Best friend(s)
 - Friend(s)
 - Ennemies
-- Rival
-- Mentor
-- Apprentice
+- Rival(s)
+- Mentor(s)
+- Apprentice(s)
 
 ## Trivia
 - Native language(s)
 - Learnt languages(s)
 - Way of speaking/style
 - Voiceclaim
-- Main theme song 1, 2 (or list ?)
+- Theme songs
 - Symbolisms (animals/plants/gemstone)
 - Favorites (season, food, drinks, ...)
 - Likes & Disklikes
-- Theme songs
 
 ## Stats
+=> numbers from 0 to 10
+=> Display as cursor and scale 
 - Physical strength
 - Mind strength
 - Perception
@@ -113,12 +118,14 @@
 - Reference pictures
 - Profile pic
 - Custom template theme
+- Associated color (color picker option)
 
 # Implementations
 
 ## Menu items
 - Recently opened files in File
 - About
+- Shortcuts
 
 - Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
 - Link items when referenced in a character sheet
@@ -127,5 +134,5 @@
 
 # Ideas of potential additional features
 - Contact/send error ticket/request menu item
-- User creating custom templates for the sheets
+- User creating custom templates for the sheets or add a new custom row and field option
 
