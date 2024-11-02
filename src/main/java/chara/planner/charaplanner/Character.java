@@ -4,13 +4,13 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.image.Image;
 
 public class Character {
     private final StringProperty displayName;
     private final ObjectProperty<BasicInfos> basicInfos;
     private final ObjectProperty<Appearance> appearance;
     private final ObjectProperty<Personality> personality;
+    private final ObjectProperty<Story> story;
     private final StringProperty profilePicPath;
 
     public Character() {
@@ -22,6 +22,7 @@ public class Character {
         this.basicInfos = new SimpleObjectProperty<BasicInfos>(new BasicInfos(firstName, lastName, birthDate, gender, age, job, jobPosition));
         this.appearance = new SimpleObjectProperty<Appearance>(new Appearance());
         this.personality = new SimpleObjectProperty<Personality>(new Personality());
+        this.story = new SimpleObjectProperty<Story>(new Story());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
     }
 
@@ -71,6 +72,18 @@ public class Character {
 
     public ObjectProperty<Personality> getPersonalityProperty() {
         return personality;
+    }
+
+    public Story getStory() {
+        return story.get();
+    }
+
+    public void setStory(Story story) {
+        this.story.set(story);
+    }
+
+    public ObjectProperty<Story> getStoryProperty() {
+        return story;
     }
 
     public String getProfilePicPath(){

@@ -100,6 +100,34 @@ public class CharacterEditDialogController {
     private TextArea personaDescArea;
 
     @FXML
+    private TextField plotRoleField;
+    @FXML
+    private TextArea backstoryArea;
+    @FXML
+    private TextArea goalsArea;
+    @FXML
+    private TextArea achievementsArea;
+    @FXML
+    private TextArea failuresArea;
+    @FXML
+    private TextArea traumasArea;
+    @FXML
+    private TextArea crimesArea;
+    @FXML
+    private TextArea secretsArea;
+    @FXML
+    private TextArea powersArea;
+    @FXML
+    private TextField educationField;
+    @FXML
+    private TextField expertiseField;
+    @FXML
+    private TextField socialStatusField;
+    @FXML
+    private TextField wealthField;
+
+
+    @FXML
     private Label labelSelectedFile;
 
     private Stage dialogStage;
@@ -160,6 +188,19 @@ public class CharacterEditDialogController {
         iqField.setText(character.getPersonality().getIq());
         personaDescArea.setText(character.getPersonality().getDesc());
 
+        plotRoleField.setText(character.getStory().getPlotRole());
+        backstoryArea.setText(character.getStory().getBackstory());
+        goalsArea.setText(character.getStory().getGoals());
+        achievementsArea.setText(character.getStory().getAchievements());
+        failuresArea.setText(character.getStory().getFailures());
+        traumasArea.setText(character.getStory().getTraumas());
+        crimesArea.setText(character.getStory().getCrimes());
+        secretsArea.setText(character.getStory().getSecrets());
+        powersArea.setText(character.getStory().getPowers());
+        educationField.setText(character.getStory().getEducation());
+        expertiseField.setText(character.getStory().getExpertise());
+        socialStatusField.setText(character.getStory().getSocialStatus());
+        wealthField.setText(character.getStory().getWealth());
 
         labelSelectedFile.setText(character.getProfilePicPath());
         pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
@@ -218,6 +259,20 @@ public class CharacterEditDialogController {
             character.getPersonality().setIq(iqField.getText());
             character.getPersonality().setPhilosophy(philosophyField.getText());
             character.getPersonality().setDesc(personaDescArea.getText());
+
+            character.getStory().setPlotRole(plotRoleField.getText());
+            character.getStory().setBackstory(backstoryArea.getText());
+            character.getStory().setGoals(goalsArea.getText());
+            character.getStory().setAchievements(achievementsArea.getText());
+            character.getStory().setFailures(failuresArea.getText());
+            character.getStory().setTraumas(traumasArea.getText());
+            character.getStory().setCrimes(crimesArea.getText());
+            character.getStory().setSecrets(secretsArea.getText());
+            character.getStory().setPowers(powersArea.getText());
+            character.getStory().setEducation(educationField.getText());
+            character.getStory().setExpertise(expertiseField.getText());
+            character.getStory().setSocialStatus(socialStatusField.getText());
+            character.getStory().setWealth(wealthField.getText());
 
             character.setProfilePicPath(pictureFilePath);
 

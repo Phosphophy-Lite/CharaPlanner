@@ -99,6 +99,33 @@ public class CharaOverviewController {
     private Label personaDescLabel;
 
     @FXML
+    private Label plotRoleLabel;
+    @FXML
+    private Label backstoryLabel;
+    @FXML
+    private Label goalsLabel;
+    @FXML
+    private Label achievementsLabel;
+    @FXML
+    private Label failuresLabel;
+    @FXML
+    private Label traumasLabel;
+    @FXML
+    private Label crimesLabel;
+    @FXML
+    private Label secretsLabel;
+    @FXML
+    private Label powersLabel;
+    @FXML
+    private Label educationLabel;
+    @FXML
+    private Label expertiseLabel;
+    @FXML
+    private Label socialStatusLabel;
+    @FXML
+    private Label wealthLabel;
+
+    @FXML
     private VBox vBox;
     @FXML
     private Label nameRightLabel;
@@ -179,6 +206,7 @@ public class CharaOverviewController {
         specieLabel.setText("");
         affiliationLabel.setText("");
         religionLabel.setText("");
+
         traitsLabel.setText("");
         strengthsLabel.setText("");
         weaknessesLabel.setText("");
@@ -191,6 +219,7 @@ public class CharaOverviewController {
         iqLabel.setText("");
         philosophyLabel.setText("");
         personaDescLabel.setText("");
+
         hairLabel.setText("");
         skinLabel.setText("");
         eyesLabel.setText("");
@@ -207,7 +236,19 @@ public class CharaOverviewController {
         medicalLabel.setText("");
         physDescLabel.setText("");
 
-
+        plotRoleLabel.setText("");
+        backstoryLabel.setText("");
+        goalsLabel.setText("");
+        achievementsLabel.setText("");
+        failuresLabel.setText("");
+        traumasLabel.setText("");
+        crimesLabel.setText("");
+        secretsLabel.setText("");
+        powersLabel.setText("");
+        educationLabel.setText("");
+        expertiseLabel.setText("");
+        socialStatusLabel.setText("");
+        wealthLabel.setText("");
     }
 
     private void showCharaDetails(Character chara){
@@ -258,6 +299,21 @@ public class CharaOverviewController {
                 iqLabel.setText(chara.getPersonality().getIq());
                 philosophyLabel.setText(chara.getPersonality().getPhilosophy());
                 personaDescLabel.setText(chara.getPersonality().getDesc());
+            }
+            if(chara.getStory() != null){
+                plotRoleLabel.setText(chara.getStory().getPlotRole());
+                backstoryLabel.setText(chara.getStory().getBackstory());
+                goalsLabel.setText(chara.getStory().getGoals());
+                achievementsLabel.setText(chara.getStory().getAchievements());
+                failuresLabel.setText(chara.getStory().getFailures());
+                traumasLabel.setText(chara.getStory().getTraumas());
+                crimesLabel.setText(chara.getStory().getCrimes());
+                secretsLabel.setText(chara.getStory().getSecrets());
+                powersLabel.setText(chara.getStory().getPowers());
+                educationLabel.setText(chara.getStory().getEducation());
+                expertiseLabel.setText(chara.getStory().getExpertise());
+                socialStatusLabel.setText(chara.getStory().getSocialStatus());
+                wealthLabel.setText(chara.getStory().getWealth());
             }
 
             nameRightLabel.setText(chara.getDisplayName());
