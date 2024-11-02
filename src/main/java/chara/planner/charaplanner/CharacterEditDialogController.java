@@ -13,122 +13,86 @@ import chara.planner.charaplanner.Character;
 import java.io.File;
 
 public class CharacterEditDialogController {
-    @FXML
-    private TextField displayNameField;
-    @FXML
-    private TextField firstNameField;
-    @FXML
-    private TextField lastNameField;
-    @FXML
-    private TextField birthDateField;
-    @FXML
-    private TextField genderField;
-    @FXML
-    private TextField ageField;
-    @FXML
-    private TextField jobField;
-    @FXML
-    private TextField jobPositionField;
+    @FXML private TextField displayNameField;
+    @FXML private TextField firstNameField;
+    @FXML private TextField lastNameField;
+    @FXML private TextField birthDateField;
+    @FXML private TextField genderField;
+    @FXML private TextField ageField;
+    @FXML private TextField jobField;
+    @FXML private TextField jobPositionField;
+    @FXML private TextField pronounsField;
+    @FXML private TextField nicknamesField;
+    @FXML private TextField birthPlaceField;
+    @FXML private TextField nationalityField;
+    @FXML private TextField specieField;
+    @FXML private TextField affiliationField;
+    @FXML private TextField religionField;
 
-    @FXML
-    private TextField nicknamesField;
-    @FXML
-    private TextField birthPlaceField;
-    @FXML
-    private TextField nationalityField;
-    @FXML
-    private TextField specieField;
-    @FXML
-    private TextField affiliationField;
-    @FXML
-    private TextField religionField;
+    @FXML private TextField hairField;
+    @FXML private TextField skinField;
+    @FXML private TextField eyesField;
+    @FXML private TextField facialFeaturesField;
+    @FXML private TextField heightField;
+    @FXML private TextField weightField;
+    @FXML private TextField buildField;
+    @FXML private TextField distFeaturesField;
+    @FXML private TextField clothingField;
+    @FXML private TextField aestheticField;
+    @FXML private TextField accessoriesField;
+    @FXML private TextField itemsField;
+    @FXML private TextField weaponsField;
+    @FXML private TextField medicalField;
+    @FXML private TextArea physDescArea;
 
-    @FXML
-    private TextField hairField;
-    @FXML
-    private TextField skinField;
-    @FXML
-    private TextField eyesField;
-    @FXML
-    private TextField facialFeaturesField;
-    @FXML
-    private TextField heightField;
-    @FXML
-    private TextField weightField;
-    @FXML
-    private TextField buildField;
-    @FXML
-    private TextField distFeaturesField;
-    @FXML
-    private TextField clothingField;
-    @FXML
-    private TextField aestheticField;
-    @FXML
-    private TextField accessoriesField;
-    @FXML
-    private TextField itemsField;
-    @FXML
-    private TextField weaponsField;
-    @FXML
-    private TextField medicalField;
-    @FXML
-    private TextArea physDescArea;
+    @FXML private TextField traitsField;
+    @FXML private TextField strengthsField;
+    @FXML private TextField weaknessesField;
+    @FXML private TextField skillsField;
+    @FXML private TextField alignmentField;
+    @FXML private TextField mbtiEnneaField;
+    @FXML private TextField mentalHealthField;
+    @FXML private TextField fearsField;
+    @FXML private TextField hobbiesField;
+    @FXML private TextField iqField;
+    @FXML private TextField philosophyField;
+    @FXML private TextArea personaDescArea;
 
-    @FXML
-    private TextField traitsField;
-    @FXML
-    private TextField strengthsField;
-    @FXML
-    private TextField weaknessesField;
-    @FXML
-    private TextField skillsField;
-    @FXML
-    private TextField alignmentField;
-    @FXML
-    private TextField mbtiEnneaField;
-    @FXML
-    private TextField mentalHealthField;
-    @FXML
-    private TextField fearsField;
-    @FXML
-    private TextField hobbiesField;
-    @FXML
-    private TextField iqField;
-    @FXML
-    private TextField philosophyField;
-    @FXML
-    private TextArea personaDescArea;
+    @FXML private TextField plotRoleField;
+    @FXML private TextArea backstoryArea;
+    @FXML private TextArea goalsArea;
+    @FXML private TextArea achievementsArea;
+    @FXML private TextArea failuresArea;
+    @FXML private TextArea traumasArea;
+    @FXML private TextArea crimesArea;
+    @FXML private TextArea secretsArea;
+    @FXML private TextArea powersArea;
+    @FXML private TextField educationField;
+    @FXML private TextField expertiseField;
+    @FXML private TextField socialStatusField;
+    @FXML private TextField wealthField;
 
-    @FXML
-    private TextField plotRoleField;
-    @FXML
-    private TextArea backstoryArea;
-    @FXML
-    private TextArea goalsArea;
-    @FXML
-    private TextArea achievementsArea;
-    @FXML
-    private TextArea failuresArea;
-    @FXML
-    private TextArea traumasArea;
-    @FXML
-    private TextArea crimesArea;
-    @FXML
-    private TextArea secretsArea;
-    @FXML
-    private TextArea powersArea;
-    @FXML
-    private TextField educationField;
-    @FXML
-    private TextField expertiseField;
-    @FXML
-    private TextField socialStatusField;
-    @FXML
-    private TextField wealthField;
+    @FXML private TextField sexualOrientationField;
+    @FXML private TextField romanticOrientationField;
+    @FXML private TextField familyStatusField;
+    @FXML private TextField relationshipStatusField;
 
+    @FXML private TextField nativeLanguagesField;
+    @FXML private TextArea learntLanguagesArea;
+    @FXML private TextField speechField;
+    @FXML private TextField voiceclaimField;
+    @FXML private TextArea themeSongsArea;
+    @FXML private TextField animalField;
+    @FXML private TextField plantField;
+    @FXML private TextField gemstoneField;
+    @FXML private TextField seasonField;
+    @FXML private TextField placeField;
+    @FXML private TextField foodField;
+    @FXML private TextField drinkField;
+    @FXML private TextArea likesArea;
+    @FXML private TextArea dislikesArea;
 
-    @FXML
-    private Label labelSelectedFile;
+    @FXML private Label labelSelectedFile;
 
     private Stage dialogStage;
     private Character character;
@@ -153,6 +117,7 @@ public class CharacterEditDialogController {
         ageField.setText(character.getBasicInfos().getAge());
         jobField.setText(character.getBasicInfos().getJob());
         jobPositionField.setText(character.getBasicInfos().getJobPosition());
+        pronounsField.setText(character.getBasicInfos().getPronouns());
         nicknamesField.setText(character.getBasicInfos().getNicknames());
         birthPlaceField.setText(character.getBasicInfos().getBirthPlace());
         nationalityField.setText(character.getBasicInfos().getNationality());
@@ -202,6 +167,26 @@ public class CharacterEditDialogController {
         socialStatusField.setText(character.getStory().getSocialStatus());
         wealthField.setText(character.getStory().getWealth());
 
+        sexualOrientationField.setText(character.getRelationships().getSexualOrientation());
+        romanticOrientationField.setText(character.getRelationships().getRomanticOrientation());
+        familyStatusField.setText(character.getRelationships().getFamilyStatus());
+        relationshipStatusField.setText(character.getRelationships().getRelationshipStatus());
+
+        nativeLanguagesField.setText(character.getTrivia().getNativeLanguages());
+        learntLanguagesArea.setText(character.getTrivia().getLearntLanguages());
+        speechField.setText(character.getTrivia().getSpeech());
+        voiceclaimField.setText(character.getTrivia().getVoiceclaim());
+        themeSongsArea.setText(character.getTrivia().getThemeSongs());
+        animalField.setText(character.getTrivia().getAnimal());
+        plantField.setText(character.getTrivia().getPlant());
+        gemstoneField.setText(character.getTrivia().getGemstone());
+        seasonField.setText(character.getTrivia().getSeason());
+        placeField.setText(character.getTrivia().getPlace());
+        foodField.setText(character.getTrivia().getFood());
+        drinkField.setText(character.getTrivia().getDrink());
+        likesArea.setText(character.getTrivia().getLikes());
+        dislikesArea.setText(character.getTrivia().getDislikes());
+
         labelSelectedFile.setText(character.getProfilePicPath());
         pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
     }
@@ -224,6 +209,7 @@ public class CharacterEditDialogController {
             character.getBasicInfos().setGender(genderField.getText());
             character.getBasicInfos().setJob(jobField.getText());
             character.getBasicInfos().setJobPosition(jobPositionField.getText());
+            character.getBasicInfos().setPronouns(pronounsField.getText());
             character.getBasicInfos().setNicknames(nicknamesField.getText());
             character.getBasicInfos().setBirthPlace(birthPlaceField.getText());
             character.getBasicInfos().setNationality(nationalityField.getText());
@@ -273,6 +259,26 @@ public class CharacterEditDialogController {
             character.getStory().setExpertise(expertiseField.getText());
             character.getStory().setSocialStatus(socialStatusField.getText());
             character.getStory().setWealth(wealthField.getText());
+
+            character.getRelationships().setSexualOrientation(sexualOrientationField.getText());
+            character.getRelationships().setRomanticOrientation(romanticOrientationField.getText());
+            character.getRelationships().setFamilyStatus(familyStatusField.getText());
+            character.getRelationships().setRelationshipStatus(relationshipStatusField.getText());
+
+            character.getTrivia().setNativeLanguages(nativeLanguagesField.getText());
+            character.getTrivia().setLearntLanguages(learntLanguagesArea.getText());
+            character.getTrivia().setSpeech(speechField.getText());
+            character.getTrivia().setVoiceclaim(voiceclaimField.getText());
+            character.getTrivia().setThemeSongs(themeSongsArea.getText());
+            character.getTrivia().setAnimal(animalField.getText());
+            character.getTrivia().setPlant(plantField.getText());
+            character.getTrivia().setGemstone(gemstoneField.getText());
+            character.getTrivia().setSeason(seasonField.getText());
+            character.getTrivia().setPlace(placeField.getText());
+            character.getTrivia().setFood(foodField.getText());
+            character.getTrivia().setDrink(drinkField.getText());
+            character.getTrivia().setLikes(likesArea.getText());
+            character.getTrivia().setDislikes(dislikesArea.getText());
 
             character.setProfilePicPath(pictureFilePath);
 

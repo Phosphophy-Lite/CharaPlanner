@@ -35,50 +35,50 @@ public class Personality {
 
     public String getTraits() { return traits.get(); }
     public void setTraits(String traits) { this.traits.set(traits); }
-    public StringProperty traitsProperty() { return traits; }
+    public StringProperty getTraitsProperty() { return traits; }
 
     public String getSkills() { return skills.get(); }
     public void setSkills(String skills) { this.skills.set(skills); }
-    public StringProperty skillsProperty() { return skills; }
+    public StringProperty getSkillsProperty() { return skills; }
 
     public String getStrengths() { return strengths.get(); }
     public void setStrengths(String strengths) { this.strengths.set(strengths); }
-    public StringProperty strengthsProperty() { return strengths; }
+    public StringProperty getSrengthsProperty() { return strengths; }
 
     public String getWeaknesses() { return weaknesses.get(); }
     public void setWeaknesses(String weaknesses) { this.weaknesses.set(weaknesses); }
-    public StringProperty weaknessesProperty() { return weaknesses; }
+    public StringProperty getWeaknessesProperty() { return weaknesses; }
 
     public String getAlignment() { return alignment.get(); }
     public void setAlignment(String alignment) { this.alignment.set(alignment); }
-    public StringProperty alignmentProperty() { return alignment; }
+    public StringProperty getAlignmentProperty() { return alignment; }
 
     public String getMbtiEnnea() { return mbtiEnnea.get(); }
     public void setMbtiEnnea(String mbtiEnnea) { this.mbtiEnnea.set(mbtiEnnea); }
-    public StringProperty mbtiEnneaProperty() { return mbtiEnnea; }
+    public StringProperty getMbtiEnneaProperty() { return mbtiEnnea; }
 
     public String getMentalHealth() { return mentalHealth.get(); }
     public void setMentalHealth(String mentalHealth) { this.mentalHealth.set(mentalHealth); }
-    public StringProperty mentalHealthProperty() { return mentalHealth; }
+    public StringProperty getMentalHealthProperty() { return mentalHealth; }
 
     public String getFears() { return fears.get(); }
     public void setFears(String fears) { this.fears.set(fears); }
-    public StringProperty fearsProperty() { return fears; }
+    public StringProperty getFearsProperty() { return fears; }
 
     public String getHobbies() { return hobbies.get(); }
     public void setHobbies(String hobbies) { this.hobbies.set(hobbies); }
-    public StringProperty hobbiesProperty() { return hobbies; }
+    public StringProperty getHobbiesProperty() { return hobbies; }
 
     public String getIq() { return iq.get(); }
     public void setIq(String iq) { this.iq.set(iq); }
-    public StringProperty iqProperty() { return iq; }
+    public StringProperty getIqProperty() { return iq; }
 
     public String getPhilosophy() { return philosophy.get(); }
     public void setPhilosophy(String philosophy) { this.philosophy.set(philosophy); }
-    public StringProperty philosophyProperty() { return philosophy; }
+    public StringProperty getPhilosophyProperty() { return philosophy; }
 
     public String getDesc() { return desc.get(); }
     public void setDesc(String desc) { this.desc.set(desc); }
-    public StringProperty descProperty() { return desc; }
+    public StringProperty getDescProperty() { return desc; }
 
 }

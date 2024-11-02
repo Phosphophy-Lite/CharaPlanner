@@ -10,6 +10,8 @@ public class Character {
     private final ObjectProperty<BasicInfos> basicInfos;
     private final ObjectProperty<Appearance> appearance;
     private final ObjectProperty<Personality> personality;
+    private final ObjectProperty<Relationships> relationships;
+    private final ObjectProperty<Trivia> trivia;
     private final ObjectProperty<Story> story;
     private final StringProperty profilePicPath;
 
@@ -23,6 +25,8 @@ public class Character {
         this.appearance = new SimpleObjectProperty<Appearance>(new Appearance());
         this.personality = new SimpleObjectProperty<Personality>(new Personality());
         this.story = new SimpleObjectProperty<Story>(new Story());
+        this.relationships = new SimpleObjectProperty<Relationships>(new Relationships());
+        this.trivia = new SimpleObjectProperty<Trivia>(new Trivia());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
     }
 
@@ -86,6 +90,30 @@ public class Character {
         return story;
     }
 
+    public Relationships getRelationships() {
+        return relationships.get();
+    }
+
+    public void setRelationships(Relationships relationships) {
+        this.relationships.set(relationships);
+    }
+
+    public ObjectProperty<Relationships> getRelationshipsProperty() {
+        return relationships;
+    }
+
+    public Trivia getTrivia() {
+        return trivia.get();
+    }
+
+    public void setTrivia(Trivia trivia) {
+        this.trivia.set(trivia);
+    }
+
+    public ObjectProperty<Trivia> getTriviaProperty() {
+        return trivia;
+    }
+
     public String getProfilePicPath(){
         return profilePicPath.get();
     }
@@ -97,6 +125,4 @@ public class Character {
     public StringProperty getProfilePicPathProperty(){
         return profilePicPath;
     }
-
-
 }

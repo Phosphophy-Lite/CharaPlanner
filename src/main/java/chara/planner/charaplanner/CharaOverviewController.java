@@ -9,128 +9,92 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 
 public class CharaOverviewController {
-    @FXML
-    private TableView<Character> tableView;
+    @FXML private TableView<Character> tableView;
 
-    @FXML
-    private TableColumn<Character, String> nameColumn;
+    @FXML private TableColumn<Character, String> nameColumn;
 
-    @FXML
-    private Label firstNameLabel;
-    @FXML
-    private Label lastNameLabel;
-    @FXML
-    private Label genderLabel;
-    @FXML
-    private Label ageLabel;
-    @FXML
-    private Label birthDateLabel;
-    @FXML
-    private Label jobLabel;
-    @FXML
-    private Label jobPositionLabel;
-    @FXML
-    private Label nicknamesLabel;
-    @FXML
-    private Label birthPlaceLabel;
-    @FXML
-    private Label nationalityLabel;
-    @FXML
-    private Label specieLabel;
-    @FXML
-    private Label affiliationLabel;
-    @FXML
-    private Label religionLabel;
+    @FXML private Label firstNameLabel;
+    @FXML private Label lastNameLabel;
+    @FXML private Label genderLabel;
+    @FXML private Label ageLabel;
+    @FXML private Label birthDateLabel;
+    @FXML private Label jobLabel;
+    @FXML private Label jobPositionLabel;
+    @FXML private Label pronounsLabel;
+    @FXML private Label nicknamesLabel;
+    @FXML private Label birthPlaceLabel;
+    @FXML private Label nationalityLabel;
+    @FXML private Label specieLabel;
+    @FXML private Label affiliationLabel;
+    @FXML private Label religionLabel;
 
-    @FXML
-    private Label hairLabel;
-    @FXML
-    private Label skinLabel;
-    @FXML
-    private Label eyesLabel;
-    @FXML
-    private Label facialFeaturesLabel;
-    @FXML
-    private Label heightLabel;
-    @FXML
-    private Label weightLabel;
-    @FXML
-    private Label buildLabel;
-    @FXML
-    private Label distFeaturesLabel;
-    @FXML
-    private Label clothingLabel;
-    @FXML
-    private Label aestheticLabel;
-    @FXML
-    private Label accessoriesLabel;
-    @FXML
-    private Label itemsLabel;
-    @FXML
-    private Label weaponsLabel;
-    @FXML
-    private Label medicalLabel;
-    @FXML
-    private Label physDescLabel;
+    @FXML private Label hairLabel;
+    @FXML private Label skinLabel;
+    @FXML private Label eyesLabel;
+    @FXML private Label facialFeaturesLabel;
+    @FXML private Label heightLabel;
+    @FXML private Label weightLabel;
+    @FXML private Label buildLabel;
+    @FXML private Label distFeaturesLabel;
+    @FXML private Label clothingLabel;
+    @FXML private Label aestheticLabel;
+    @FXML private Label accessoriesLabel;
+    @FXML private Label itemsLabel;
+    @FXML private Label weaponsLabel;
+    @FXML private Label medicalLabel;
+    @FXML private Label physDescLabel;
 
-    @FXML
-    private Label traitsLabel;
-    @FXML
-    private Label strengthsLabel;
-    @FXML
-    private Label weaknessesLabel;
-    @FXML
-    private Label skillsLabel;
-    @FXML
-    private Label alignmentLabel;
-    @FXML
-    private Label mbtiEnneaLabel;
-    @FXML
-    private Label mentalHealthLabel;
-    @FXML
-    private Label fearsLabel;
-    @FXML
-    private Label hobbiesLabel;
-    @FXML
-    private Label iqLabel;
-    @FXML
-    private Label philosophyLabel;
-    @FXML
-    private Label personaDescLabel;
+    @FXML private Label traitsLabel;
+    @FXML private Label strengthsLabel;
+    @FXML private Label weaknessesLabel;
+    @FXML private Label skillsLabel;
+    @FXML private Label alignmentLabel;
+    @FXML private Label mbtiEnneaLabel;
+    @FXML private Label mentalHealthLabel;
+    @FXML private Label fearsLabel;
+    @FXML private Label hobbiesLabel;
+    @FXML private Label iqLabel;
+    @FXML private Label philosophyLabel;
+    @FXML private Label personaDescLabel;
 
-    @FXML
-    private Label plotRoleLabel;
-    @FXML
-    private Label backstoryLabel;
-    @FXML
-    private Label goalsLabel;
-    @FXML
-    private Label achievementsLabel;
-    @FXML
-    private Label failuresLabel;
-    @FXML
-    private Label traumasLabel;
-    @FXML
-    private Label crimesLabel;
-    @FXML
-    private Label secretsLabel;
-    @FXML
-    private Label powersLabel;
-    @FXML
-    private Label educationLabel;
-    @FXML
-    private Label expertiseLabel;
-    @FXML
-    private Label socialStatusLabel;
-    @FXML
-    private Label wealthLabel;
+    @FXML private Label plotRoleLabel;
+    @FXML private Label backstoryLabel;
+    @FXML private Label goalsLabel;
+    @FXML private Label achievementsLabel;
+    @FXML private Label failuresLabel;
+    @FXML private Label traumasLabel;
+    @FXML private Label crimesLabel;
+    @FXML private Label secretsLabel;
+    @FXML private Label powersLabel;
+    @FXML private Label educationLabel;
+    @FXML private Label expertiseLabel;
+    @FXML private Label socialStatusLabel;
+    @FXML private Label wealthLabel;
 
-    @FXML
-    private VBox vBox;
-    @FXML
-    private Label nameRightLabel;
-    @FXML
-    private ImageView profilePicImageView;
+    @FXML private Label sexualOrientationLabel;
+    @FXML private Label romanticOrientationLabel;
+    @FXML private Label familyStatusLabel;
+    @FXML private Label relationshipStatusLabel;
+
+    @FXML private Label nativeLanguagesLabel;
+    @FXML private Label learntLanguagesLabel;
+    @FXML private Label speechLabel;
+    @FXML private Label voiceclaimLabel;
+    @FXML private Label themeSongsLabel;
+    @FXML private Label animalLabel;
+    @FXML private Label plantLabel;
+    @FXML private Label gemstoneLabel;
+    @FXML private Label seasonLabel;
+    @FXML private Label placeLabel;
+    @FXML private Label foodLabel;
+    @FXML private Label drinkLabel;
+    @FXML private Label likesLabel;
+    @FXML private Label dislikesLabel;
+
+
+    @FXML private VBox vBox;
+    @FXML private Label nameRightLabel;
+    @FXML private ImageView profilePicImageView;
 
 
     private MainApp mainApp;
@@ -200,6 +164,7 @@ public class CharaOverviewController {
         nameRightLabel.setText("");
         jobLabel.setText("");
         jobPositionLabel.setText("");
+        pronounsLabel.setText("");
         nicknamesLabel.setText("");
         birthPlaceLabel.setText("");
         nationalityLabel.setText("");
@@ -249,6 +214,26 @@ public class CharaOverviewController {
         expertiseLabel.setText("");
         socialStatusLabel.setText("");
         wealthLabel.setText("");
+
+        sexualOrientationLabel.setText("");
+        romanticOrientationLabel.setText("");
+        familyStatusLabel.setText("");
+        relationshipStatusLabel.setText("");
+
+        nativeLanguagesLabel.setText("");
+        learntLanguagesLabel.setText("");
+        speechLabel.setText("");
+        voiceclaimLabel.setText("");
+        themeSongsLabel.setText("");
+        animalLabel.setText("");
+        plantLabel.setText("");
+        gemstoneLabel.setText("");
+        seasonLabel.setText("");
+        placeLabel.setText("");
+        foodLabel.setText("");
+        drinkLabel.setText("");
+        likesLabel.setText("");
+        dislikesLabel.setText("");
     }
 
     private void showCharaDetails(Character chara){
@@ -262,6 +247,7 @@ public class CharaOverviewController {
                 birthDateLabel.setText(chara.getBasicInfos().getBirthDate());
                 jobLabel.setText(chara.getBasicInfos().getJob());
                 jobPositionLabel.setText(chara.getBasicInfos().getJobPosition());
+                pronounsLabel.setText(chara.getBasicInfos().getPronouns());
                 nationalityLabel.setText(chara.getBasicInfos().getNationality());
                 birthPlaceLabel.setText(chara.getBasicInfos().getBirthPlace());
                 nicknamesLabel.setText(chara.getBasicInfos().getNicknames());
@@ -314,6 +300,28 @@ public class CharaOverviewController {
                 expertiseLabel.setText(chara.getStory().getExpertise());
                 socialStatusLabel.setText(chara.getStory().getSocialStatus());
                 wealthLabel.setText(chara.getStory().getWealth());
+            }
+            if(chara.getRelationships() != null){
+                sexualOrientationLabel.setText(chara.getRelationships().getSexualOrientation());
+                romanticOrientationLabel.setText(chara.getRelationships().getRomanticOrientation());
+                familyStatusLabel.setText(chara.getRelationships().getFamilyStatus());
+                relationshipStatusLabel.setText(chara.getRelationships().getRelationshipStatus());
+            }
+            if(chara.getTrivia() != null){
+                nativeLanguagesLabel.setText(chara.getTrivia().getNativeLanguages());
+                learntLanguagesLabel.setText(chara.getTrivia().getLearntLanguages());
+                speechLabel.setText(chara.getTrivia().getSpeech());
+                voiceclaimLabel.setText(chara.getTrivia().getVoiceclaim());
+                themeSongsLabel.setText(chara.getTrivia().getThemeSongs());
+                animalLabel.setText(chara.getTrivia().getAnimal());
+                plantLabel.setText(chara.getTrivia().getPlant());
+                gemstoneLabel.setText(chara.getTrivia().getGemstone());
+                seasonLabel.setText(chara.getTrivia().getSeason());
+                placeLabel.setText(chara.getTrivia().getPlace());
+                foodLabel.setText(chara.getTrivia().getFood());
+                drinkLabel.setText(chara.getTrivia().getDrink());
+                likesLabel.setText(chara.getTrivia().getLikes());
+                dislikesLabel.setText(chara.getTrivia().getDislikes());
             }
 
             nameRightLabel.setText(chara.getDisplayName());

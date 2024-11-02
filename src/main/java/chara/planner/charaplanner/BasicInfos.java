@@ -8,6 +8,7 @@ public class BasicInfos {
     private final StringProperty lastName;
     private final StringProperty birthDate; //String and not LocalDate object because depending on the user's universe, it might not be a usual date format
     private final StringProperty gender;
+    private final StringProperty pronouns;
     private final StringProperty age; //String and not integer depending on the user's desired metric/unknown age
     private final StringProperty job;
     private final StringProperty jobPosition;
@@ -32,6 +33,7 @@ public class BasicInfos {
         this.job = new SimpleStringProperty(job);
         this.jobPosition = new SimpleStringProperty(jobPosition);
 
+        this.pronouns = new SimpleStringProperty("");
         this.nicknames = new SimpleStringProperty("");
         this.birthPlace = new SimpleStringProperty("");
         this.nationality = new SimpleStringProperty("");
@@ -102,6 +104,16 @@ public class BasicInfos {
     }
     public StringProperty getJobPositionProperty(){
         return jobPosition;
+    }
+
+    public String getPronouns() {
+        return pronouns.get();
+    }
+    public void setPronouns(String pronouns){
+        this.pronouns.set(pronouns);
+    }
+    public StringProperty getPronounsProperty(){
+        return pronouns;
     }
 
     public String getNicknames() { return nicknames.get(); }
