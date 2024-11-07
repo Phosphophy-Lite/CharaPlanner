@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
+
 import java.net.URL;
 
 public class CharaOverviewController {
@@ -96,6 +98,8 @@ public class CharaOverviewController {
     @FXML private Label nameRightLabel;
     @FXML private ImageView profilePicImageView;
 
+    @FXML private Slider sliderTest;
+
 
     private MainApp mainApp;
 
@@ -107,6 +111,35 @@ public class CharaOverviewController {
     private void initialize(){
         //Center horizontally elements of VBox
         vBox.setAlignment(Pos.BASELINE_CENTER);
+
+        sliderTest.setLabelFormatter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double n) {
+                switch (n.intValue()) {
+                    case 0: return "Low";
+                    case 5: return "Medium";
+                    case 10: return "High";
+                    default: return "Label";
+                }
+            }
+
+            @Override
+            public Double fromString(String string) {
+                // Convert label back to slider value if needed (not usually needed here)
+                switch (string) {
+                    case "Low": return 0.0;
+                    case "Medium": return 5.0;
+                    case "High": return 10.0;
+                    default: return 0.0;
+                }
+            }
+        });
+
+        // Disable the slider
+        sliderTest.setDisable(true);
+
+        // Override the lowered opacity by setting it back to 1.0
+        sliderTest.setOpacity(1.0);
 
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         showCharaDetails(null);
