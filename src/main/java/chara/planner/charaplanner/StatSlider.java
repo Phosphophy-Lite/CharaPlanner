@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StatSlider extends VBox {
 
@@ -20,29 +22,45 @@ public class StatSlider extends VBox {
         }catch (IOException e){
             throw new RuntimeException(e);
         }
-        initialize(); //Disable by default
+        initialize();
     }
 
     // Initialization common to both constructors
     private void initialize() {
-        slider.setDisable(true);        //Disable by default
-        slider.setOpacity(1.0);        // Maintain full opacity even when disabled
+        slider.setDisable(true);        // disable by default
+        slider.setOpacity(1.0);        // full opacity even when disabled
     }
 
     public void enable(){
         slider.setDisable(false);
     }
 
-    // Method to set custom tick labels from an array of strings
-    public void setCustomLabels(String... labels) { //String... : varargs will automatically wrap each string passed into the function a String Array
+    public void setValue(int value){
+        slider.setValue((double) value);
+    }
+
+    public int getValue(){
+        return (int) slider.getValue();
+    }
+
+    // Set custom tick labels from an array of strings
+    public void setCustomLabels(String... labels) {
+        // String... : varargs will automatically wrap each string passed into the function a String Array
+
+        List<Double> tickValues = new ArrayList<>(); //List to store major tick values
+
+
         slider.setLabelFormatter(new StringConverter<Double>() {
             @Override
             public String toString(Double n) {
-                int index = n.intValue();
-                if (index >= 0 && index < labels.length) {
+                if(!tickValues.contains(n)){
+                    tickValues.add(n);
+                }
+                int index = tickValues.indexOf(n);
+                if (index < labels.length) {
                     return labels[index];
                 } else {
-                    return ""; // Return empty if out of bounds
+                    return ""; //Return empty if out of bounds
                 }
             }
 
@@ -50,7 +68,7 @@ public class StatSlider extends VBox {
             public Double fromString(String string) {
                 for (int i = 0; i < labels.length; i++) {
                     if (labels[i].equals(string)) {
-                        return (double) i;
+                        return tickValues.get(i);
                     }
                 }
                 return 0.0;

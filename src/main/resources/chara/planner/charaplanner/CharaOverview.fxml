@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -427,13 +426,58 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Slider de référence" />
-                                                <Label text="Test StatSlider" GridPane.rowIndex="1" />
-                                                <Slider fx:id="sliderTest" blockIncrement="1.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" GridPane.columnIndex="1" />
-                                                <StatSlider fx:id="stattest" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Physical Strength" wrapText="true" />
+                                                <Label text="Mind Strength" wrapText="true" GridPane.rowIndex="1" />
+                                                <Label text="Perception" wrapText="true" GridPane.rowIndex="2" />
+                                                <Label text="Speed/Reflexes" wrapText="true" GridPane.rowIndex="3" />
+                                                <Label text="Dexterity" wrapText="true" GridPane.rowIndex="4" />
+                                                <Label text="Combat" wrapText="true" GridPane.rowIndex="5" />
+                                                <Label text="Persuasion/Manipulation" wrapText="true" GridPane.rowIndex="6" />
+                                                <Label text="Charisma" wrapText="true" GridPane.rowIndex="7" />
+                                                <Label text="Health" wrapText="true" GridPane.rowIndex="8" />
+                                                <Label text="Social skills" wrapText="true" GridPane.rowIndex="9" />
+                                                <Label text="Bravery" wrapText="true" GridPane.rowIndex="10" />
+                                                <Label text="Intelligence" wrapText="true" GridPane.rowIndex="11" />
+                                                <Label text="Confidence" wrapText="true" GridPane.rowIndex="12" />
+                                                <Label text="Self-esteem" wrapText="true" GridPane.rowIndex="13" />
+                                                <Label text="Views" wrapText="true" GridPane.rowIndex="14" />
+                                                <Label text="Humor" wrapText="true" GridPane.rowIndex="15" />
+                                                <Label text="Wisdom" wrapText="true" GridPane.rowIndex="16" />
+                                                <Label text="Empathy" wrapText="true" GridPane.rowIndex="17" />
+                                                <Label text="Sensitivity" wrapText="true" GridPane.rowIndex="18" />
+                                                <Label text="Creativity" wrapText="true" GridPane.rowIndex="19" />
+                                                <StatSlider fx:id="physicalStrengthSlider" GridPane.columnIndex="1" />
+                                                <StatSlider fx:id="mindStrengthSlider" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <StatSlider fx:id="perceptionSlider" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <StatSlider fx:id="speedSlider" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <StatSlider fx:id="dexteritySlider" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <StatSlider fx:id="combatSlider" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <StatSlider fx:id="persuasionSlider" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <StatSlider fx:id="charismaSlider" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <StatSlider fx:id="healthSlider" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <StatSlider fx:id="socialSkillsSlider" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <StatSlider fx:id="braverySlider" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <StatSlider fx:id="intelligenceSlider" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <StatSlider fx:id="confidenceSlider" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <StatSlider fx:id="selfEsteemSlider" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                <StatSlider fx:id="viewsSlider" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                                                <StatSlider fx:id="humorSlider" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                                                <StatSlider fx:id="wisdomSlider" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                                                <StatSlider fx:id="sensitivitySlider" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                                                <StatSlider fx:id="empathySlider" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                                                <StatSlider fx:id="creativitySlider" GridPane.columnIndex="1" GridPane.rowIndex="19" />
                                              </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
                                           </GridPane>
                                        </children>
                                     </AnchorPane>

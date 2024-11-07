@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
 
 import java.net.URL;
 
@@ -93,13 +92,31 @@ public class CharaOverviewController {
     @FXML private Label likesLabel;
     @FXML private Label dislikesLabel;
 
+    @FXML private StatSlider physicalStrengthSlider;
+    @FXML private StatSlider mindStrengthSlider;
+    @FXML private StatSlider perceptionSlider;
+    @FXML private StatSlider speedSlider;
+    @FXML private StatSlider dexteritySlider;
+    @FXML private StatSlider combatSlider;
+    @FXML private StatSlider persuasionSlider;
+    @FXML private StatSlider charismaSlider;
+    @FXML private StatSlider healthSlider;
+    @FXML private StatSlider socialSkillsSlider;
+    @FXML private StatSlider braverySlider;
+    @FXML private StatSlider intelligenceSlider;
+    @FXML private StatSlider confidenceSlider;
+    @FXML private StatSlider selfEsteemSlider;
+    @FXML private StatSlider viewsSlider;
+    @FXML private StatSlider humorSlider;
+    @FXML private StatSlider wisdomSlider;
+    @FXML private StatSlider empathySlider;
+    @FXML private StatSlider sensitivitySlider;
+    @FXML private StatSlider creativitySlider;
+
 
     @FXML private VBox vBox;
     @FXML private Label nameRightLabel;
     @FXML private ImageView profilePicImageView;
-
-    @FXML private Slider sliderTest;
-    @FXML private StatSlider stattest;
 
 
     private MainApp mainApp;
@@ -113,37 +130,8 @@ public class CharaOverviewController {
         //Center horizontally elements of VBox
         vBox.setAlignment(Pos.BASELINE_CENTER);
 
-        sliderTest.setLabelFormatter(new StringConverter<Double>() {
-            @Override
-            public String toString(Double n) {
-                switch (n.intValue()) {
-                    case 0: return "Low";
-                    case 5: return "Medium";
-                    case 10: return "High";
-                    default: return "Label";
-                }
-            }
-
-            @Override
-            public Double fromString(String string) {
-                // Convert label back to slider value if needed (not usually needed here)
-                switch (string) {
-                    case "Low": return 0.0;
-                    case "Medium": return 5.0;
-                    case "High": return 10.0;
-                    default: return 0.0;
-                }
-            }
-        });
-
-        // Disable the slider
-        sliderTest.setDisable(true);
-
-        // Override the lowered opacity by setting it back to 1.0
-        sliderTest.setOpacity(1.0);
-        stattest.setCustomLabels("Low", "Medium", "High");
-
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
+        setStatSlidersLabels();
         showCharaDetails(null);
 
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));
@@ -190,7 +178,7 @@ public class CharaOverviewController {
         tableView.setItems(mainApp.getCharaList());
     }
 
-    private void setLabelsEmpty(){
+    private void setLabelsEmpty(){ // ugly but using a list with indexes instead of individual labels with names would be confusing and only usable here
         firstNameLabel.setText("");
         lastNameLabel.setText("");
         genderLabel.setText("");
@@ -269,6 +257,29 @@ public class CharaOverviewController {
         drinkLabel.setText("");
         likesLabel.setText("");
         dislikesLabel.setText("");
+    }
+
+    private void setStatSlidersLabels(){
+        physicalStrengthSlider.setCustomLabels("Weak", "Average", "Strong");
+        mindStrengthSlider.setCustomLabels("Vulnerable", "Average", "Resilient");
+        perceptionSlider.setCustomLabels("Oblivious", "Average", "Attentive");
+        speedSlider.setCustomLabels("Slow", "Average", "Fast");
+        dexteritySlider.setCustomLabels("Clumsy", "Average", "Handy");
+        combatSlider.setCustomLabels("Can't fight", "Average", "Warrior");
+        persuasionSlider.setCustomLabels("Unpersuasive", "Moderate", "Influential");
+        charismaSlider.setCustomLabels("Low", "Lambda", "High");
+        healthSlider.setCustomLabels("Very Bad", "Average", "Very Healthy");
+        socialSkillsSlider.setCustomLabels("Very Awkward", "Balanced", "Social Butterfly");
+        braverySlider.setCustomLabels("Coward", "Balanced", "Audacious");
+        intelligenceSlider.setCustomLabels("Low", "Average", "Genius");
+        confidenceSlider.setCustomLabels("Insecure", "Balanced", "Arrogant");
+        selfEsteemSlider.setCustomLabels("Low", "Balanced", "High");
+        viewsSlider.setCustomLabels("Idealistic", "Balanced", "Pragmatic");
+        humorSlider.setCustomLabels("Serious", "Occasional", "Comedian");
+        wisdomSlider.setCustomLabels("Foolish", "Average", "Very Wise");
+        empathySlider.setCustomLabels("None", "Average", "Empath");
+        sensitivitySlider.setCustomLabels("Insensitive", "Average", "Hypersensitive");
+        creativitySlider.setCustomLabels("Low", "Average", "High");
     }
 
     private void showCharaDetails(Character chara){
