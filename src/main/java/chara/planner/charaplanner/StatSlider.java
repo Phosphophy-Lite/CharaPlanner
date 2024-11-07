@@ -20,12 +20,12 @@ public class StatSlider extends VBox {
         }catch (IOException e){
             throw new RuntimeException(e);
         }
-        initialize(true); //Disable by default
+        initialize(); //Disable by default
     }
 
     // Initialization common to both constructors
-    private void initialize(boolean disable) {
-        slider.setDisable(disable);
+    private void initialize() {
+        slider.setDisable(true);        //Disable by default
         slider.setOpacity(1.0);        // Maintain full opacity even when disabled
     }
 
@@ -34,7 +34,7 @@ public class StatSlider extends VBox {
     }
 
     // Method to set custom tick labels from an array of strings
-    public void setCustomLabels(String[] labels) {
+    public void setCustomLabels(String... labels) { //String... : varargs will automatically wrap each string passed into the function a String Array
         slider.setLabelFormatter(new StringConverter<Double>() {
             @Override
             public String toString(Double n) {

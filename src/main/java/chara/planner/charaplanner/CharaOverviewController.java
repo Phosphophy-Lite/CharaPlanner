@@ -99,6 +99,7 @@ public class CharaOverviewController {
     @FXML private ImageView profilePicImageView;
 
     @FXML private Slider sliderTest;
+    @FXML private StatSlider stattest;
 
 
     private MainApp mainApp;
@@ -140,6 +141,7 @@ public class CharaOverviewController {
 
         // Override the lowered opacity by setting it back to 1.0
         sliderTest.setOpacity(1.0);
+        stattest.setCustomLabels("Low", "Medium", "High");
 
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         showCharaDetails(null);
