@@ -369,6 +369,28 @@ public class CharaOverviewController {
                 likesLabel.setText(chara.getTrivia().getLikes());
                 dislikesLabel.setText(chara.getTrivia().getDislikes());
             }
+            if(chara.getStats() != null){
+                physicalStrengthSlider.setValue(chara.getStats().getPhysicalStrength());
+                mindStrengthSlider.setValue(chara.getStats().getMindStrength());
+                perceptionSlider.setValue(chara.getStats().getPerception());
+                speedSlider.setValue(chara.getStats().getSpeed());
+                dexteritySlider.setValue(chara.getStats().getDexterity());
+                combatSlider.setValue(chara.getStats().getCombat());
+                persuasionSlider.setValue(chara.getStats().getPersuasion());
+                charismaSlider.setValue(chara.getStats().getCharisma());
+                healthSlider.setValue(chara.getStats().getHealth());
+                socialSkillsSlider.setValue(chara.getStats().getSocialSkills());
+                braverySlider.setValue(chara.getStats().getBravery());
+                intelligenceSlider.setValue(chara.getStats().getIntelligence());
+                confidenceSlider.setValue(chara.getStats().getConfidence());
+                selfEsteemSlider.setValue(chara.getStats().getSelfEsteem());
+                viewsSlider.setValue(chara.getStats().getViews());
+                humorSlider.setValue(chara.getStats().getHumor());
+                wisdomSlider.setValue(chara.getStats().getWisdom());
+                empathySlider.setValue(chara.getStats().getEmpathy());
+                sensitivitySlider.setValue(chara.getStats().getSensitivity());
+                creativitySlider.setValue(chara.getStats().getCreativity());
+            }
 
             nameRightLabel.setText(chara.getDisplayName());
             if(chara.getProfilePicPath().isEmpty()){

@@ -10,9 +10,10 @@ public class Character {
     private final ObjectProperty<BasicInfos> basicInfos;
     private final ObjectProperty<Appearance> appearance;
     private final ObjectProperty<Personality> personality;
+    private final ObjectProperty<Story> story;
     private final ObjectProperty<Relationships> relationships;
     private final ObjectProperty<Trivia> trivia;
-    private final ObjectProperty<Story> story;
+    private final ObjectProperty<Stats> stats;
     private final StringProperty profilePicPath;
 
     public Character() {
@@ -27,6 +28,7 @@ public class Character {
         this.story = new SimpleObjectProperty<Story>(new Story());
         this.relationships = new SimpleObjectProperty<Relationships>(new Relationships());
         this.trivia = new SimpleObjectProperty<Trivia>(new Trivia());
+        this.stats = new SimpleObjectProperty<Stats>(new Stats());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
     }
 
@@ -112,6 +114,18 @@ public class Character {
 
     public ObjectProperty<Trivia> getTriviaProperty() {
         return trivia;
+    }
+
+    public Stats getStats() {
+        return stats.get();
+    }
+
+    public void setStats(Stats stats) {
+        this.stats.set(stats);
+    }
+
+    public ObjectProperty<Stats> getStatsProperty() {
+        return stats;
     }
 
     public String getProfilePicPath(){

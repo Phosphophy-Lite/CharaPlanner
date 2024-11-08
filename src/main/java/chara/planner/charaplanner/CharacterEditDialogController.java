@@ -92,6 +92,27 @@ public class CharacterEditDialogController {
     @FXML private TextArea likesArea;
     @FXML private TextArea dislikesArea;
 
+    @FXML private StatSlider physicalStrengthSlider;
+    @FXML private StatSlider mindStrengthSlider;
+    @FXML private StatSlider perceptionSlider;
+    @FXML private StatSlider speedSlider;
+    @FXML private StatSlider dexteritySlider;
+    @FXML private StatSlider combatSlider;
+    @FXML private StatSlider persuasionSlider;
+    @FXML private StatSlider charismaSlider;
+    @FXML private StatSlider healthSlider;
+    @FXML private StatSlider socialSkillsSlider;
+    @FXML private StatSlider braverySlider;
+    @FXML private StatSlider intelligenceSlider;
+    @FXML private StatSlider confidenceSlider;
+    @FXML private StatSlider selfEsteemSlider;
+    @FXML private StatSlider viewsSlider;
+    @FXML private StatSlider humorSlider;
+    @FXML private StatSlider wisdomSlider;
+    @FXML private StatSlider empathySlider;
+    @FXML private StatSlider sensitivitySlider;
+    @FXML private StatSlider creativitySlider;
+
     @FXML private Label labelSelectedFile;
 
     private Stage dialogStage;
@@ -101,10 +122,58 @@ public class CharacterEditDialogController {
 
     @FXML
     private void initialize() {
+        setStatSlidersLabels();
+        enableAllStatSliders();
     }
 
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
+    }
+
+    private void setStatSlidersLabels(){
+        physicalStrengthSlider.setCustomLabels("Weak", "Average", "Strong");
+        mindStrengthSlider.setCustomLabels("Vulnerable", "Average", "Resilient");
+        perceptionSlider.setCustomLabels("Oblivious", "Average", "Attentive");
+        speedSlider.setCustomLabels("Slow", "Average", "Fast");
+        dexteritySlider.setCustomLabels("Clumsy", "Average", "Handy");
+        combatSlider.setCustomLabels("Can't fight", "Average", "Warrior");
+        persuasionSlider.setCustomLabels("Unpersuasive", "Moderate", "Influential");
+        charismaSlider.setCustomLabels("Low", "Lambda", "High");
+        healthSlider.setCustomLabels("Very Bad", "Average", "Very Healthy");
+        socialSkillsSlider.setCustomLabels("Very Awkward", "Balanced", "Social Butterfly");
+        braverySlider.setCustomLabels("Coward", "Balanced", "Audacious");
+        intelligenceSlider.setCustomLabels("Low", "Average", "Genius");
+        confidenceSlider.setCustomLabels("Insecure", "Balanced", "Arrogant");
+        selfEsteemSlider.setCustomLabels("Low", "Balanced", "High");
+        viewsSlider.setCustomLabels("Idealistic", "Balanced", "Pragmatic");
+        humorSlider.setCustomLabels("Serious", "Occasional", "Comedian");
+        wisdomSlider.setCustomLabels("Foolish", "Average", "Very Wise");
+        empathySlider.setCustomLabels("None", "Average", "Empath");
+        sensitivitySlider.setCustomLabels("Insensitive", "Average", "Hypersensitive");
+        creativitySlider.setCustomLabels("Low", "Average", "High");
+    }
+
+    private void enableAllStatSliders(){
+        physicalStrengthSlider.enable();
+        mindStrengthSlider.enable();
+        perceptionSlider.enable();
+        speedSlider.enable();
+        dexteritySlider.enable();
+        combatSlider.enable();
+        persuasionSlider.enable();
+        charismaSlider.enable();
+        healthSlider.enable();
+        socialSkillsSlider.enable();
+        braverySlider.enable();
+        intelligenceSlider.enable();
+        confidenceSlider.enable();
+        selfEsteemSlider.enable();
+        viewsSlider.enable();
+        humorSlider.enable();
+        wisdomSlider.enable();
+        empathySlider.enable();
+        sensitivitySlider.enable();
+        creativitySlider.enable();
     }
 
     public void setCharacter(Character character) {
@@ -186,6 +255,27 @@ public class CharacterEditDialogController {
         drinkField.setText(character.getTrivia().getDrink());
         likesArea.setText(character.getTrivia().getLikes());
         dislikesArea.setText(character.getTrivia().getDislikes());
+
+        physicalStrengthSlider.setValue(character.getStats().getPhysicalStrength());
+        mindStrengthSlider.setValue(character.getStats().getMindStrength());
+        perceptionSlider.setValue(character.getStats().getPerception());
+        speedSlider.setValue(character.getStats().getSpeed());
+        dexteritySlider.setValue(character.getStats().getDexterity());
+        combatSlider.setValue(character.getStats().getCombat());
+        persuasionSlider.setValue(character.getStats().getPersuasion());
+        charismaSlider.setValue(character.getStats().getCharisma());
+        healthSlider.setValue(character.getStats().getHealth());
+        socialSkillsSlider.setValue(character.getStats().getSocialSkills());
+        braverySlider.setValue(character.getStats().getBravery());
+        intelligenceSlider.setValue(character.getStats().getIntelligence());
+        confidenceSlider.setValue(character.getStats().getConfidence());
+        selfEsteemSlider.setValue(character.getStats().getSelfEsteem());
+        viewsSlider.setValue(character.getStats().getViews());
+        humorSlider.setValue(character.getStats().getHumor());
+        wisdomSlider.setValue(character.getStats().getWisdom());
+        empathySlider.setValue(character.getStats().getEmpathy());
+        sensitivitySlider.setValue(character.getStats().getSensitivity());
+        creativitySlider.setValue(character.getStats().getCreativity());
 
         labelSelectedFile.setText(character.getProfilePicPath());
         pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
@@ -279,6 +369,27 @@ public class CharacterEditDialogController {
             character.getTrivia().setDrink(drinkField.getText());
             character.getTrivia().setLikes(likesArea.getText());
             character.getTrivia().setDislikes(dislikesArea.getText());
+
+            character.getStats().setPhysicalStrength(physicalStrengthSlider.getValue());
+            character.getStats().setMindStrength(mindStrengthSlider.getValue());
+            character.getStats().setPerception(perceptionSlider.getValue());
+            character.getStats().setSpeed(speedSlider.getValue());
+            character.getStats().setDexterity(dexteritySlider.getValue());
+            character.getStats().setCombat(combatSlider.getValue());
+            character.getStats().setPersuasion(persuasionSlider.getValue());
+            character.getStats().setCharisma(charismaSlider.getValue());
+            character.getStats().setHealth(healthSlider.getValue());
+            character.getStats().setSocialSkills(socialSkillsSlider.getValue());
+            character.getStats().setBravery(braverySlider.getValue());
+            character.getStats().setIntelligence(intelligenceSlider.getValue());
+            character.getStats().setConfidence(confidenceSlider.getValue());
+            character.getStats().setSelfEsteem(selfEsteemSlider.getValue());
+            character.getStats().setViews(viewsSlider.getValue());
+            character.getStats().setHumor(humorSlider.getValue());
+            character.getStats().setWisdom(wisdomSlider.getValue());
+            character.getStats().setEmpathy(empathySlider.getValue());
+            character.getStats().setSensitivity(sensitivitySlider.getValue());
+            character.getStats().setCreativity(creativitySlider.getValue());
 
             character.setProfilePicPath(pictureFilePath);
 
