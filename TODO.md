@@ -4,7 +4,7 @@
 
 - Display name (only mandatory field when creating a new character)
 
-## Basics :
+## <strike>Basics :
 - Fullname
 - Nicknames/Titles
 - Gender
@@ -16,9 +16,9 @@
 - Nationality
 - Affiliation
 - Job/Class & Position
-- Religion
+- Religion</strike>
 
-## Appearance :
+## <strike> Appearance :
 - Hair
 - Skin
 - Eyes
@@ -33,9 +33,9 @@
 - Relevant Items
 - Weapons
 - Medical Condition(s)
-- Desc
+- Desc</strike>
 
-## Personality
+## <strike> Personality
 - Traits
 - Strengths
 - Skills
@@ -47,9 +47,9 @@
 - Fears/Phobias
 - Hobbies
 - IQ
-- Philosophy/Morality/Values
+- Philosophy/Morality/Values</strike>
 
-## Story
+## <strike> Story
 - Plot role
 - Backstory
 - Goals/Ambitions/Dreams
@@ -59,12 +59,12 @@
 - Secret(s)
 - Education
 - Area of Expertise
-- Social Status
+- Social Status</strike>
 
-## Relationships
+## <strike> Relationships
 - Orientation
 - Family Composition
-- Status
+- Status</strike>
 
 For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option
 Can make registered character names to be clickable to go to their profile page
@@ -80,7 +80,7 @@ Can make registered character names to be clickable to go to their profile page
 - Mentor(s)
 - Apprentice(s)
 
-## Trivia
+## <strike> Trivia
 - Native language(s)
 - Learnt languages(s)
 - Way of speaking/style
@@ -88,9 +88,9 @@ Can make registered character names to be clickable to go to their profile page
 - Theme songs
 - Symbolisms (animals/plants/gemstone)
 - Favorites (season, food, drinks, ...)
-- Likes & Disklikes
+- Likes & Disklikes</strike>
 
-## Stats
+## <strike> Stats
 => numbers from 0 to 10
 => Display as cursor and scale 
 - Physical strength
@@ -112,11 +112,11 @@ Can make registered character names to be clickable to go to their profile page
 - Wisdom
 - Empathy
 - Sensitivity
-- Creativity
+- Creativity</strike>
 
 ## Other
 - Reference pictures
-- Profile pic
+- <strike>Profile pic</strike>
 - Custom template theme
 - Associated color (color picker option)
 
