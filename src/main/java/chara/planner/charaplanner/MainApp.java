@@ -183,8 +183,11 @@ public class MainApp extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the person into the controller.
+
             CharacterEditDialogController controller = loader.getController();
+            controller.setMainApp(this); //access to main app needed to populate the comboBoxes of the character list
+
+            // Set the character into the controller.
             controller.setDialogStage(dialogStage);
             controller.setCharacter(character);
 
@@ -213,7 +216,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the person into the controller.
+            // Set the character into the controller.
             CharacterNewDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setCharacter(character);

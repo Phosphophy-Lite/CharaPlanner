@@ -1,11 +1,9 @@
 package chara.planner.charaplanner;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import chara.planner.charaplanner.Character;
@@ -114,16 +112,47 @@ public class CharacterEditDialogController {
     @FXML private StatSlider creativitySlider;
 
     @FXML private Label labelSelectedFile;
+    @FXML private ComboBox<Character> comboTest;
 
     private Stage dialogStage;
+    private MainApp mainApp;
     private Character character;
     private boolean okClicked = false;
+
     private String pictureFilePath = "";
 
     @FXML
     private void initialize() {
         setStatSlidersLabels();
         enableAllStatSliders();
+
+        comboTest.setItems(mainApp.getCharaList());
+
+        // cell factory to display the displayName of each Character in the comboBox
+        comboTest.setCellFactory(comboBox -> new ListCell<Character>() {
+            @Override
+            protected void updateItem(Character character, boolean empty) {
+                super.updateItem(character, empty);
+                if (empty || character == null) {
+                    setText(null);
+                } else {
+                    setText(character.getDisplayName()); // Display displayName
+                }
+            }
+        });
+
+        // set the button cell to display displayName when an item is selected
+        comboTest.setButtonCell(new ListCell<Character>() {
+            @Override
+            protected void updateItem(Character character, boolean empty) {
+                super.updateItem(character, empty);
+                if (empty || character == null) {
+                    setText(null);
+                } else {
+                    setText(character.getDisplayName());
+                }
+            }
+        });
     }
 
     public void setDialogStage(Stage dialogStage){
@@ -438,5 +467,9 @@ public class CharacterEditDialogController {
             pictureFilePath = f.getAbsolutePath();
             labelSelectedFile.setText("Selected File: " + f.getAbsolutePath());
         }
+    }
+
+    public void setMainApp(MainApp mainApp) {  //access to main app needed to populate the comboBoxes of the character list
+        this.mainApp = mainApp;
     }
 }

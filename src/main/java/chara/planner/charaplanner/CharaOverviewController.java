@@ -6,14 +6,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-
 import java.net.URL;
 
 public class CharaOverviewController {
-    @FXML private TableView<Character> tableView;
-
-    @FXML private TableColumn<Character, String> nameColumn;
-
+    /* Basic Infos */
     @FXML private Label firstNameLabel;
     @FXML private Label lastNameLabel;
     @FXML private Label genderLabel;
@@ -29,6 +25,7 @@ public class CharaOverviewController {
     @FXML private Label affiliationLabel;
     @FXML private Label religionLabel;
 
+    /* Appearance */
     @FXML private Label hairLabel;
     @FXML private Label skinLabel;
     @FXML private Label eyesLabel;
@@ -45,6 +42,7 @@ public class CharaOverviewController {
     @FXML private Label medicalLabel;
     @FXML private Label physDescLabel;
 
+    /* Personality */
     @FXML private Label traitsLabel;
     @FXML private Label strengthsLabel;
     @FXML private Label weaknessesLabel;
@@ -58,6 +56,7 @@ public class CharaOverviewController {
     @FXML private Label philosophyLabel;
     @FXML private Label personaDescLabel;
 
+    /* Story */
     @FXML private Label plotRoleLabel;
     @FXML private Label backstoryLabel;
     @FXML private Label goalsLabel;
@@ -72,11 +71,13 @@ public class CharaOverviewController {
     @FXML private Label socialStatusLabel;
     @FXML private Label wealthLabel;
 
+    /* Relationships */
     @FXML private Label sexualOrientationLabel;
     @FXML private Label romanticOrientationLabel;
     @FXML private Label familyStatusLabel;
     @FXML private Label relationshipStatusLabel;
 
+    /* Trivia */
     @FXML private Label nativeLanguagesLabel;
     @FXML private Label learntLanguagesLabel;
     @FXML private Label speechLabel;
@@ -92,6 +93,7 @@ public class CharaOverviewController {
     @FXML private Label likesLabel;
     @FXML private Label dislikesLabel;
 
+    /* Stats */
     @FXML private StatSlider physicalStrengthSlider;
     @FXML private StatSlider mindStrengthSlider;
     @FXML private StatSlider perceptionSlider;
@@ -113,7 +115,11 @@ public class CharaOverviewController {
     @FXML private StatSlider sensitivitySlider;
     @FXML private StatSlider creativitySlider;
 
+    /* Character table */
+    @FXML private TableView<Character> tableView;
+    @FXML private TableColumn<Character, String> nameColumn;
 
+    /* Right pane for more infos */
     @FXML private VBox vBox;
     @FXML private Label nameRightLabel;
     @FXML private ImageView profilePicImageView;
