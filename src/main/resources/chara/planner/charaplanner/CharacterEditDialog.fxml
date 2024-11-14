@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="896.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
    <tabs>
       <Tab closable="false" text="Basic Informations">
          <content>
@@ -412,7 +412,7 @@
                                     <Label text="Label" GridPane.rowIndex="3" />
                                     <TextField fx:id="relationshipStatusField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                                     <Label text="Test Character select" GridPane.rowIndex="4" />
-                                    <ComboBox fx:id="comboTest" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <ComboBox fx:id="comboTest" editable="true" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children>

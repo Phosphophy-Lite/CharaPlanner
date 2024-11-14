@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharaOverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="940.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="chara.planner.charaplanner.CharaOverviewController">
    <children>
       <SplitPane dividerPositions="0.24307036247334754, 0.7515991471215352" layoutX="100.0" layoutY="95.0" prefHeight="704.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -318,6 +318,7 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Sexual Orientation" wrapText="true" />
@@ -328,6 +329,8 @@
                                                 <Label fx:id="familyStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label fx:id="relationshipStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <Label fx:id="romanticOrientationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="test" GridPane.rowIndex="4" />
+                                                <Label fx:id="testLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                              </children>
                                           </GridPane>
                                        </children>

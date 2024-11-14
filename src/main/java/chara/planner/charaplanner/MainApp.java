@@ -185,11 +185,13 @@ public class MainApp extends Application {
 
 
             CharacterEditDialogController controller = loader.getController();
-            controller.setMainApp(this); //access to main app needed to populate the comboBoxes of the character list
 
             // Set the character into the controller.
             controller.setDialogStage(dialogStage);
             controller.setCharacter(character);
+
+            // Populate the ComboBoxes after having set the character into the controller to exclude it from the ComboBoxes' list
+            controller.populateComboBoxes(this);
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();

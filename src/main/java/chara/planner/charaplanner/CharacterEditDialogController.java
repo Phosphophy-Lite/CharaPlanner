@@ -6,7 +6,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
-import chara.planner.charaplanner.Character;
+import javafx.util.StringConverter;
+import java.util.Optional;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.util.stream.Collectors;
 
 import java.io.File;
 
@@ -114,29 +118,28 @@ public class CharacterEditDialogController {
     @FXML private Label labelSelectedFile;
     @FXML private ComboBox<Character> comboTest;
 
-    private Stage dialogStage;
-    private MainApp mainApp;
-    private Character character;
-    private boolean okClicked = false;
-
     private String pictureFilePath = "";
+
+    private Character character;
+    private ObservableList<Character> charaData;
+
+    private boolean okClicked = false;
+    private Stage dialogStage;
 
     @FXML
     private void initialize() {
         setStatSlidersLabels();
         enableAllStatSliders();
 
-        comboTest.setItems(mainApp.getCharaList());
-
         // cell factory to display the displayName of each Character in the comboBox
         comboTest.setCellFactory(comboBox -> new ListCell<Character>() {
             @Override
-            protected void updateItem(Character character, boolean empty) {
-                super.updateItem(character, empty);
-                if (empty || character == null) {
+            protected void updateItem(Character c, boolean empty) {
+                super.updateItem(c, empty);
+                if (empty || c == null) {
                     setText(null);
                 } else {
-                    setText(character.getDisplayName()); // Display displayName
+                    setText(c.getDisplayName()); // Display displayName
                 }
             }
         });
@@ -144,15 +147,35 @@ public class CharacterEditDialogController {
         // set the button cell to display displayName when an item is selected
         comboTest.setButtonCell(new ListCell<Character>() {
             @Override
-            protected void updateItem(Character character, boolean empty) {
-                super.updateItem(character, empty);
-                if (empty || character == null) {
+            protected void updateItem(Character c, boolean empty) {
+                super.updateItem(c, empty);
+                if (empty || c == null) {
                     setText(null);
                 } else {
-                    setText(character.getDisplayName());
+                    setText(c.getDisplayName());
                 }
             }
         });
+
+        comboTest.setConverter(new StringConverter<Character>() {
+            @Override
+            public String toString(Character c) {
+                // defines how a character should be displayed in the editable text field (by displayName)
+                return (c != null) ? c.getDisplayName() : "";
+            }
+
+            @Override
+            public Character fromString(String string) {
+                // when user types a new string into the editable text box
+                // search for an existing character by displayName,
+                // or handle the custom input
+                return comboTest.getItems().stream()
+                        .filter(character -> character.getDisplayName().equals(string))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
+
     }
 
     public void setDialogStage(Stage dialogStage){
@@ -308,10 +331,28 @@ public class CharacterEditDialogController {
 
         labelSelectedFile.setText(character.getProfilePicPath());
         pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
+
+        setOrSelectName(comboTest, character.getRelationships().getTestCharacter());
     }
 
     public boolean isOkClicked() {
         return okClicked;
+    }
+
+    private void setOrSelectName(ComboBox<Character> comboBox, String name) {
+        // search for a character with the specified name in the comboBox
+        Optional<Character> matchingCharacter = comboBox.getItems()
+                .stream()
+                .filter(character -> character.getDisplayName().equals(name))
+                .findFirst();
+
+        if (matchingCharacter.isPresent()) {
+            // character exists is in the list, set the selected item to this character's name
+            comboBox.setValue(matchingCharacter.get());
+        } else {
+            // character doesn't exist, set the text of the combobox as a custom text
+            comboBox.getEditor().setText(name);
+        }
     }
 
     /**
@@ -422,6 +463,7 @@ public class CharacterEditDialogController {
 
             character.setProfilePicPath(pictureFilePath);
 
+            character.getRelationships().setTestCharacter(comboTest.getEditor().getText());
             okClicked = true;
             dialogStage.close();
         }
@@ -469,7 +511,11 @@ public class CharacterEditDialogController {
         }
     }
 
-    public void setMainApp(MainApp mainApp) {  //access to main app needed to populate the comboBoxes of the character list
-        this.mainApp = mainApp;
+    public void populateComboBoxes(MainApp mainApp) {  //populate comboBoxes with the charaData list without the edited character
+        this.charaData = mainApp.getCharaList()
+                .stream()
+                .filter(item -> !item.getDisplayName().equals(this.character.getDisplayName()))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList)); //make a new observable list without modifying the original one
+        this.comboTest.setItems(this.charaData);
     }
 }

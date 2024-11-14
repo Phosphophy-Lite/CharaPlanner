@@ -8,12 +8,14 @@ public class Relationships {
     private final StringProperty romanticOrientation;
     private final StringProperty familyStatus;
     private final StringProperty relationshipStatus;
-
+    private final StringProperty testCharacter;
+    
     public Relationships(){
         this.sexualOrientation = new SimpleStringProperty("");
         this.romanticOrientation = new SimpleStringProperty("");
         this.familyStatus = new SimpleStringProperty("");
         this.relationshipStatus = new SimpleStringProperty("");
+        this.testCharacter = new SimpleStringProperty("");
     }
 
     public String getSexualOrientation() { return sexualOrientation.get(); }
@@ -31,5 +33,9 @@ public class Relationships {
     public String getRelationshipStatus() { return relationshipStatus.get(); }
     public void setRelationshipStatus(String relationshipStatus) { this.relationshipStatus.set(relationshipStatus); }
     public StringProperty getRelationshipStatusProperty() { return relationshipStatus; }
+
+    public String getTestCharacter() { return testCharacter.get(); }
+    public void setTestCharacter(String testCharacter) { this.testCharacter.set(testCharacter); }
+    public StringProperty getTestCharacterProperty() { return testCharacter; }
 
 }

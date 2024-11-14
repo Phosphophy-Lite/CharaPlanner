@@ -115,6 +115,8 @@ public class CharaOverviewController {
     @FXML private StatSlider sensitivitySlider;
     @FXML private StatSlider creativitySlider;
 
+    @FXML private Label testLabel;
+
     /* Character table */
     @FXML private TableView<Character> tableView;
     @FXML private TableColumn<Character, String> nameColumn;
@@ -263,6 +265,8 @@ public class CharaOverviewController {
         drinkLabel.setText("");
         likesLabel.setText("");
         dislikesLabel.setText("");
+
+        testLabel.setText("");
     }
 
     private void setStatSlidersLabels(){
@@ -358,6 +362,7 @@ public class CharaOverviewController {
                 romanticOrientationLabel.setText(chara.getRelationships().getRomanticOrientation());
                 familyStatusLabel.setText(chara.getRelationships().getFamilyStatus());
                 relationshipStatusLabel.setText(chara.getRelationships().getRelationshipStatus());
+                testLabel.setText(chara.getRelationships().getTestCharacter());
             }
             if(chara.getTrivia() != null){
                 nativeLanguagesLabel.setText(chara.getTrivia().getNativeLanguages());
