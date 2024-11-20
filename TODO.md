@@ -64,7 +64,7 @@
 ## <strike> Relationships
 - Orientation
 - Family Composition
-- Status</strike>
+- Status
 
 For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option
 Can make registered character names to be clickable to go to their profile page
@@ -78,7 +78,7 @@ Can make registered character names to be clickable to go to their profile page
 - Ennemies
 - Rival(s)
 - Mentor(s)
-- Apprentice(s)
+- Apprentice(s)</strike>
 
 ## <strike> Trivia
 - Native language(s)
