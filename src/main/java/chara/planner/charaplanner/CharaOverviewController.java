@@ -76,6 +76,15 @@ public class CharaOverviewController {
     @FXML private Label romanticOrientationLabel;
     @FXML private Label familyStatusLabel;
     @FXML private Label relationshipStatusLabel;
+    @FXML private Label parentALabel;
+    @FXML private Label parentBLabel;
+    @FXML private Label siblingsLabel;
+    @FXML private Label bestFriendLabel;
+    @FXML private Label significantOtherLabel;
+    @FXML private Label rivalLabel;
+    @FXML private Label mentorLabel;
+    @FXML private Label apprenticeLabel;
+    @FXML private Label nemesisLabel;
 
     /* Trivia */
     @FXML private Label nativeLanguagesLabel;
@@ -114,8 +123,6 @@ public class CharaOverviewController {
     @FXML private StatSlider empathySlider;
     @FXML private StatSlider sensitivitySlider;
     @FXML private StatSlider creativitySlider;
-
-    @FXML private Label testLabel;
 
     /* Character table */
     @FXML private TableView<Character> tableView;
@@ -250,6 +257,15 @@ public class CharaOverviewController {
         romanticOrientationLabel.setText("");
         familyStatusLabel.setText("");
         relationshipStatusLabel.setText("");
+        parentALabel.setText("");
+        parentBLabel.setText("");
+        siblingsLabel.setText("");
+        bestFriendLabel.setText("");
+        significantOtherLabel.setText("");
+        rivalLabel.setText("");
+        mentorLabel.setText("");
+        apprenticeLabel.setText("");
+        nemesisLabel.setText("");
 
         nativeLanguagesLabel.setText("");
         learntLanguagesLabel.setText("");
@@ -265,8 +281,6 @@ public class CharaOverviewController {
         drinkLabel.setText("");
         likesLabel.setText("");
         dislikesLabel.setText("");
-
-        testLabel.setText("");
     }
 
     private void setStatSlidersLabels(){
@@ -362,7 +376,15 @@ public class CharaOverviewController {
                 romanticOrientationLabel.setText(chara.getRelationships().getRomanticOrientation());
                 familyStatusLabel.setText(chara.getRelationships().getFamilyStatus());
                 relationshipStatusLabel.setText(chara.getRelationships().getRelationshipStatus());
-                testLabel.setText(chara.getRelationships().getTestCharacter());
+                parentALabel.setText(chara.getRelationships().getParentA());
+                parentBLabel.setText(chara.getRelationships().getParentB());
+                siblingsLabel.setText(chara.getRelationships().getSiblings());
+                bestFriendLabel.setText(chara.getRelationships().getBestFriend());
+                significantOtherLabel.setText(chara.getRelationships().getSignificantOther());
+                rivalLabel.setText(chara.getRelationships().getRival());
+                mentorLabel.setText(chara.getRelationships().getMentor());
+                apprenticeLabel.setText(chara.getRelationships().getApprentice());
+                nemesisLabel.setText(chara.getRelationships().getNemesis());
             }
             if(chara.getTrivia() != null){
                 nativeLanguagesLabel.setText(chara.getTrivia().getNativeLanguages());

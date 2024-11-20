@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="896.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
    <tabs>
       <Tab closable="false" text="Basic Informations">
          <content>
@@ -401,18 +401,42 @@
                                     <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label text="Label" GridPane.rowIndex="1" />
-                                    <Label text="Label" GridPane.rowIndex="2" />
+                                    <Label text="Romantic Orientation" GridPane.rowIndex="1" />
+                                    <Label text="Family Status" GridPane.rowIndex="2" />
                                     <TextField fx:id="romanticOrientationField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="familyStatusField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                                    <Label text="Label" />
+                                    <Label text="Sexual Orientation" />
                                     <TextField fx:id="sexualOrientationField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-                                    <Label text="Label" GridPane.rowIndex="3" />
+                                    <Label text="Relationship Status" GridPane.rowIndex="3" />
                                     <TextField fx:id="relationshipStatusField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                                    <Label text="Test Character select" GridPane.rowIndex="4" />
-                                    <ComboBox fx:id="comboTest" editable="true" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="Parent A" GridPane.rowIndex="4" />
+                                    <ComboBox fx:id="parentA" editable="true" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="Parent B" GridPane.rowIndex="5" />
+                                    <Label text="Sibling(s)" GridPane.rowIndex="6" />
+                                    <Label text="Best Friend(s)" GridPane.rowIndex="7" />
+                                    <Label text="Significant Other(s)" GridPane.rowIndex="8" />
+                                    <Label text="Rival(s)" GridPane.rowIndex="9" />
+                                    <Label text="Mentor(s)" GridPane.rowIndex="10" />
+                                    <Label text="Apprentice(s)/Student(s)" GridPane.rowIndex="11" />
+                                    <Label text="Nemesis" GridPane.rowIndex="12" />
+                                    <ComboBox fx:id="parentB" editable="true" layoutX="202.0" layoutY="155.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <ComboBox fx:id="siblings" editable="true" layoutX="202.0" layoutY="190.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <ComboBox fx:id="bestFriend" editable="true" layoutX="202.0" layoutY="225.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <ComboBox fx:id="significantOther" editable="true" layoutX="202.0" layoutY="260.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                    <ComboBox fx:id="rival" editable="true" layoutX="202.0" layoutY="295.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <ComboBox fx:id="mentor" editable="true" layoutX="202.0" layoutY="330.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                    <ComboBox fx:id="apprentice" editable="true" layoutX="202.0" layoutY="365.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                    <ComboBox fx:id="nemesis" editable="true" layoutX="202.0" layoutY="400.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                                  </children>
                               </GridPane>
                            </children>

@@ -7,9 +7,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
+
+import java.util.List;
 import java.util.Optional;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import java.util.stream.Collectors;
 
 import java.io.File;
@@ -79,6 +80,17 @@ public class CharacterEditDialogController {
     @FXML private TextField familyStatusField;
     @FXML private TextField relationshipStatusField;
 
+    @FXML private ComboBox<Character> parentA;
+    @FXML private ComboBox<Character> parentB;
+    @FXML private ComboBox<Character> siblings;
+    @FXML private ComboBox<Character> bestFriend;
+    @FXML private ComboBox<Character> significantOther;
+    @FXML private ComboBox<Character> rival;
+    @FXML private ComboBox<Character> mentor;
+    @FXML private ComboBox<Character> apprentice;
+    @FXML private ComboBox<Character> nemesis;
+    private List<ComboBox<Character>> comboBoxesList;
+
     @FXML private TextField nativeLanguagesField;
     @FXML private TextArea learntLanguagesArea;
     @FXML private TextField speechField;
@@ -114,25 +126,71 @@ public class CharacterEditDialogController {
     @FXML private StatSlider empathySlider;
     @FXML private StatSlider sensitivitySlider;
     @FXML private StatSlider creativitySlider;
+    private List<StatSlider> statSlidersList;
 
     @FXML private Label labelSelectedFile;
-    @FXML private ComboBox<Character> comboTest;
-
     private String pictureFilePath = "";
 
     private Character character;
-    private ObservableList<Character> charaData;
 
     private boolean okClicked = false;
     private Stage dialogStage;
 
     @FXML
     private void initialize() {
-        setStatSlidersLabels();
-        enableAllStatSliders();
+        comboBoxesList = List.of(
+                parentA,
+                parentB,
+                siblings,
+                bestFriend,
+                significantOther,
+                rival,
+                mentor,
+                apprentice,
+                nemesis
+        );
 
+        statSlidersList = List.of(
+                physicalStrengthSlider,
+                mindStrengthSlider,
+                perceptionSlider,
+                speedSlider,
+                dexteritySlider,
+                combatSlider,
+                persuasionSlider,
+                charismaSlider,
+                healthSlider,
+                socialSkillsSlider,
+                braverySlider,
+                intelligenceSlider,
+                confidenceSlider,
+                selfEsteemSlider,
+                viewsSlider,
+                humorSlider,
+                wisdomSlider,
+                empathySlider,
+                sensitivitySlider,
+                creativitySlider
+        );
+
+        setStatSlidersLabels();
+        enableAllStatSliders(statSlidersList);
+        setupAllComboBoxes(comboBoxesList);
+
+    }
+
+    public void setDialogStage(Stage dialogStage){
+        this.dialogStage = dialogStage;
+    }
+
+    private void setupAllComboBoxes(List<ComboBox<Character>> comboBoxesList){
+        for (ComboBox<Character> comboBox : comboBoxesList) {
+            setupComboBox(comboBox);
+        }
+    }
+    private void setupComboBox(ComboBox<Character> comboBox){
         // cell factory to display the displayName of each Character in the comboBox
-        comboTest.setCellFactory(comboBox -> new ListCell<Character>() {
+        comboBox.setCellFactory(box -> new ListCell<Character>() {
             @Override
             protected void updateItem(Character c, boolean empty) {
                 super.updateItem(c, empty);
@@ -145,7 +203,7 @@ public class CharacterEditDialogController {
         });
 
         // set the button cell to display displayName when an item is selected
-        comboTest.setButtonCell(new ListCell<Character>() {
+        comboBox.setButtonCell(new ListCell<Character>() {
             @Override
             protected void updateItem(Character c, boolean empty) {
                 super.updateItem(c, empty);
@@ -157,7 +215,7 @@ public class CharacterEditDialogController {
             }
         });
 
-        comboTest.setConverter(new StringConverter<Character>() {
+        comboBox.setConverter(new StringConverter<Character>() {
             @Override
             public String toString(Character c) {
                 // defines how a character should be displayed in the editable text field (by displayName)
@@ -169,17 +227,12 @@ public class CharacterEditDialogController {
                 // when user types a new string into the editable text box
                 // search for an existing character by displayName,
                 // or handle the custom input
-                return comboTest.getItems().stream()
+                return comboBox.getItems().stream()
                         .filter(character -> character.getDisplayName().equals(string))
                         .findFirst()
                         .orElse(null);
             }
         });
-
-    }
-
-    public void setDialogStage(Stage dialogStage){
-        this.dialogStage = dialogStage;
     }
 
     private void setStatSlidersLabels(){
@@ -205,27 +258,10 @@ public class CharacterEditDialogController {
         creativitySlider.setCustomLabels("Low", "Average", "High");
     }
 
-    private void enableAllStatSliders(){
-        physicalStrengthSlider.enable();
-        mindStrengthSlider.enable();
-        perceptionSlider.enable();
-        speedSlider.enable();
-        dexteritySlider.enable();
-        combatSlider.enable();
-        persuasionSlider.enable();
-        charismaSlider.enable();
-        healthSlider.enable();
-        socialSkillsSlider.enable();
-        braverySlider.enable();
-        intelligenceSlider.enable();
-        confidenceSlider.enable();
-        selfEsteemSlider.enable();
-        viewsSlider.enable();
-        humorSlider.enable();
-        wisdomSlider.enable();
-        empathySlider.enable();
-        sensitivitySlider.enable();
-        creativitySlider.enable();
+    private void enableAllStatSliders(List<StatSlider> statSlidersList){
+        for(StatSlider slider : statSlidersList){
+            slider.enable();
+        }
     }
 
     public void setCharacter(Character character) {
@@ -332,7 +368,15 @@ public class CharacterEditDialogController {
         labelSelectedFile.setText(character.getProfilePicPath());
         pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
 
-        setOrSelectName(comboTest, character.getRelationships().getTestCharacter());
+        setOrSelectName(parentA, character.getRelationships().getParentA());
+        setOrSelectName(parentB, character.getRelationships().getParentB());
+        setOrSelectName(siblings, character.getRelationships().getSiblings());
+        setOrSelectName(bestFriend, character.getRelationships().getBestFriend());
+        setOrSelectName(significantOther, character.getRelationships().getSignificantOther());
+        setOrSelectName(rival, character.getRelationships().getRival());
+        setOrSelectName(mentor, character.getRelationships().getMentor());
+        setOrSelectName(apprentice, character.getRelationships().getApprentice());
+        setOrSelectName(nemesis, character.getRelationships().getNemesis());
     }
 
     public boolean isOkClicked() {
@@ -463,7 +507,16 @@ public class CharacterEditDialogController {
 
             character.setProfilePicPath(pictureFilePath);
 
-            character.getRelationships().setTestCharacter(comboTest.getEditor().getText());
+            character.getRelationships().setParentA(parentA.getEditor().getText());
+            character.getRelationships().setParentB(parentB.getEditor().getText());
+            character.getRelationships().setSiblings(siblings.getEditor().getText());
+            character.getRelationships().setBestFriend(bestFriend.getEditor().getText());
+            character.getRelationships().setSignificantOther(significantOther.getEditor().getText());
+            character.getRelationships().setRival(rival.getEditor().getText());
+            character.getRelationships().setMentor(mentor.getEditor().getText());
+            character.getRelationships().setApprentice(apprentice.getEditor().getText());
+            character.getRelationships().setNemesis(nemesis.getEditor().getText());
+
             okClicked = true;
             dialogStage.close();
         }
@@ -512,10 +565,13 @@ public class CharacterEditDialogController {
     }
 
     public void populateComboBoxes(MainApp mainApp) {  //populate comboBoxes with the charaData list without the edited character
-        this.charaData = mainApp.getCharaList()
+        ObservableList<Character> charaData = mainApp.getCharaList()
                 .stream()
                 .filter(item -> !item.getDisplayName().equals(this.character.getDisplayName()))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList)); //make a new observable list without modifying the original one
-        this.comboTest.setItems(this.charaData);
+
+        for(ComboBox<Character> comboBox : this.comboBoxesList){
+            comboBox.setItems(charaData);
+        }
     }
 }
