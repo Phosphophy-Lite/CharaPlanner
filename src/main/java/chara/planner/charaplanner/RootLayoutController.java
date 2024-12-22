@@ -9,12 +9,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 public class RootLayoutController {
     private MainApp mainApp;
     private CharaOverviewController charaOverviewController;
     private RecentFilesMenu recentFilesMenu;
+
+    @FXML private Menu recentMenu;
 
     @FXML
     private MenuBar menuBar;
@@ -28,13 +31,10 @@ public class RootLayoutController {
         this.mainApp = mainApp;
         this.recentFilesMenu = new RecentFilesMenu("recentFiles", mainApp);
 
-        Menu recentMenu = new Menu("Recent");
-
         ObservableList<String> menuItemsList = recentFilesMenu.getRecentEntriesList();
 
         bindMenutoObservableList(recentMenu, recentFilesMenu, menuItemsList);
         recentMenu.getItems().clear();
-        menuBar.getMenus().add(recentMenu);
 
         menuItemsList.addListener((ListChangeListener<String>) change -> {
             System.out.println("Menu updated! Current items: " + menuItemsList);
