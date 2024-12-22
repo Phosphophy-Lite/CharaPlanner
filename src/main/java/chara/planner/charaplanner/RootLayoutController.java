@@ -2,9 +2,13 @@ package chara.planner.charaplanner;
 
 import java.io.File;
 
+import javafx.beans.Observable;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 
 public class RootLayoutController {
@@ -16,23 +20,70 @@ public class RootLayoutController {
     private MenuBar menuBar;
 
     /**
-     * Is called by the main application to give a reference back to itself.
+     * Is called by the main application to give a reference back to itself. Also takes care of the recently opened files menu.
      * @param mainApp
      */
+    @FXML // do not remove otherwise menu items wont update during exec
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         this.recentFilesMenu = new RecentFilesMenu("recentFiles", mainApp);
-        System.out.println(recentFilesMenu);
+
         Menu recentMenu = new Menu("Recent");
-        recentMenu.getItems().addAll(recentFilesMenu.getItems());
+
+        ObservableList<String> menuItemsList = recentFilesMenu.getRecentEntriesList();
+
+        bindMenutoObservableList(recentMenu, recentFilesMenu, menuItemsList);
+        recentMenu.getItems().clear();
         menuBar.getMenus().add(recentMenu);
+
+        menuItemsList.addListener((ListChangeListener<String>) change -> {
+            System.out.println("Menu updated! Current items: " + menuItemsList);
+        });
+
+        recentMenu.getItems().addAll(recentFilesMenu.getItems());
+
+        /*
+        recentMenu.setOnShowing(event -> {
+            System.out.println("Recent menu is being shown.");
+            recentFilesMenu.updateMenuItems();
+        });*/
+
+
+    }
+    //necessary, do not remove (i know i wrote spaghetti code everywhere but im lost at this point, i just know it works with this)
+    private void bindMenutoObservableList(Menu menu, RecentFilesMenu recentFilesMenu, ObservableList<String> menuList){
+        // Listen for changes in the observable list
+        menuList.addListener((ListChangeListener<String>) change -> {
+            while (change.next()) {
+                if (change.wasAdded()) {
+                    for (String item : change.getAddedSubList()) {
+                        MenuItem menuItem = new MenuItem(item);
+                        menuItem.setOnAction(event -> recentFilesMenu.openRecentFile(menuItem.getText()));
+                        menu.getItems().add(0,menuItem);
+                    }
+                }
+                if (change.wasRemoved()) {
+                    for (String item : change.getRemoved()) {
+                        menu.getItems().removeIf(menuItem -> menuItem.getText().equals(item));
+                    }
+                }
+            }
+        });
+
+        // Initialize the menu with current list items
+        menu.getItems().clear();
+        for (String item : menuList) {
+            MenuItem menuItem = new MenuItem(item);
+            menuItem.setOnAction(event -> recentFilesMenu.openRecentFile(menuItem.getText()));
+            menu.getItems().add(menuItem); // Add items in the correct order
+        }
     }
 
     public void setCharaOverviewController(CharaOverviewController charaOverviewController) {
         this.charaOverviewController = charaOverviewController;
     }
     /**
-     * Creates an empty address book.
+     * Creates an empty database.
      */
     @FXML
     private void handleNew() {
@@ -96,6 +147,7 @@ public class RootLayoutController {
                 file = new File(file.getPath() + ".xml");
             }
             mainApp.saveCharaDataToFile(file);
+            recentFilesMenu.addEntry(file.getPath()); // add in the recently opened files
         }
     }
 
