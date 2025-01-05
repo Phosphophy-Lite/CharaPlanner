@@ -115,12 +115,12 @@ Can make registered character names to be clickable to go to their profile page
 - Creativity</strike>
 
 ## Other
-- Reference pictures
+- <strike>Reference pictures</strike>
 - <strike>Profile pic</strike>
 - Custom template theme
 - <strike>Associated color (color picker option)</strike>
-- Quote in right panel
-- Right panel : potential hyperlinks related to character (playlist...) ?
+- <strike>Quote in right panel</strike>
+- <strike>Right panel : potential hyperlinks related to character (playlist...) ?</strike>
 
 # Implementations
 
