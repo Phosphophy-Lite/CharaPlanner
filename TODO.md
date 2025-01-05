@@ -118,14 +118,16 @@ Can make registered character names to be clickable to go to their profile page
 - Reference pictures
 - <strike>Profile pic</strike>
 - Custom template theme
-- Associated color (color picker option)
+- <strike>Associated color (color picker option)</strike>
+- Quote in right panel
+- Right panel : potential hyperlinks related to character (playlist...) ?
 
 # Implementations
 
 ## Menu items
-- Recently opened files in File
+- <strike>Recently opened files in File
 - About
-- Shortcuts
+- Shortcuts</strike>
 
 - Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
 - Link items when referenced in a character sheet
