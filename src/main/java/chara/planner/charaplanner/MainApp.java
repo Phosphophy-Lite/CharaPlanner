@@ -236,6 +236,14 @@ public class MainApp extends Application {
         }
     }
 
+    public void handleHyperLink(Hyperlink hyperlink, String url){
+        try {
+            hyperlink.setOnAction(a->getHostServices().showDocument(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void showAboutDialog(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
@@ -248,11 +256,7 @@ public class MainApp extends Application {
         );
 
         Hyperlink githubLink = new Hyperlink("Phosphophy-Lite @ Github.com");
-        try {
-            githubLink.setOnAction(a->getHostServices().showDocument("https://github.com/Phosphophy-Lite"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        handleHyperLink(githubLink, "https://github.com/Phosphophy-Lite");
 
 
         // Combine text and hyperlink in a VBox

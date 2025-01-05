@@ -32,7 +32,6 @@ public class CharacterEditDialogController {
     @FXML private TextField specieField;
     @FXML private TextField affiliationField;
     @FXML private TextField religionField;
-    @FXML private ColorPicker associatedColorPicker;
 
     @FXML private TextField hairField;
     @FXML private TextField skinField;
@@ -132,6 +131,15 @@ public class CharacterEditDialogController {
 
     @FXML private Label labelSelectedFile;
     private String pictureFilePath = "";
+
+    @FXML private TextArea quoteArea;
+    @FXML private ColorPicker associatedColorPicker;
+    @FXML private TextField link1LabelField;
+    @FXML private TextField link1UrlField;
+    @FXML private TextField link2LabelField;
+    @FXML private TextField link2UrlField;
+    @FXML private TextField link3LabelField;
+    @FXML private TextField link3UrlField;
 
     private Character character;
 
@@ -283,9 +291,17 @@ public class CharacterEditDialogController {
         specieField.setText(character.getBasicInfos().getSpecie());
         affiliationField.setText(character.getBasicInfos().getAffiliation());
         religionField.setText(character.getBasicInfos().getReligion());
+        quoteArea.setText(character.getQuote());
 
         Color associatedColor = Color.web(character.getAssociatedColor());
         associatedColorPicker.setValue(associatedColor);
+
+        link1LabelField.setText(character.getLink1().getLinkLabel());
+        link1UrlField.setText(character.getLink1().getLinkUrl());
+        link2LabelField.setText(character.getLink2().getLinkLabel());
+        link2UrlField.setText(character.getLink2().getLinkUrl());
+        link3LabelField.setText(character.getLink3().getLinkLabel());
+        link3UrlField.setText(character.getLink3().getLinkUrl());
 
         hairField.setText(character.getAppearance().getHair());
         skinField.setText(character.getAppearance().getSkin());
@@ -425,9 +441,17 @@ public class CharacterEditDialogController {
             character.getBasicInfos().setSpecie(specieField.getText());
             character.getBasicInfos().setAffiliation(affiliationField.getText());
             character.getBasicInfos().setReligion(religionField.getText());
+            character.setQuote(quoteArea.getText());
 
             String hexAssociatedColor = "#" + associatedColorPicker.getValue().toString().substring(2);
             character.setAssociatedColor(hexAssociatedColor);
+
+            character.getLink1().setLinkLabel(link1LabelField.getText());
+            character.getLink1().setLinkUrl(link1UrlField.getText());
+            character.getLink2().setLinkLabel(link2LabelField.getText());
+            character.getLink2().setLinkUrl(link2UrlField.getText());
+            character.getLink3().setLinkLabel(link3LabelField.getText());
+            character.getLink3().setLinkUrl(link3UrlField.getText());
 
             character.getAppearance().setHair(hairField.getText());
             character.getAppearance().setSkin(skinField.getText());

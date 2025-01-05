@@ -1,11 +1,9 @@
 package chara.planner.charaplanner;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -131,10 +129,13 @@ public class CharaOverviewController {
     @FXML private TableColumn<Character, String> nameColumn;
 
     /* Right pane for more infos */
-    @FXML private VBox vBox;
     @FXML private Label nameRightLabel;
     @FXML private ImageView profilePicImageView;
     @FXML private ColorPicker colorPicker;
+    @FXML private Label quoteLabel;
+    @FXML private Hyperlink link1;
+    @FXML private Hyperlink link2;
+    @FXML private Hyperlink link3;
 
 
     private MainApp mainApp;
@@ -145,9 +146,6 @@ public class CharaOverviewController {
 
     @FXML
     private void initialize(){
-        //Center horizontally elements of VBox
-        vBox.setAlignment(Pos.BASELINE_CENTER);
-
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         setStatSlidersLabels();
         showCharaDetails(null);
@@ -213,6 +211,7 @@ public class CharaOverviewController {
         specieLabel.setText("");
         affiliationLabel.setText("");
         religionLabel.setText("");
+        quoteLabel.setText("");
 
         traitsLabel.setText("");
         strengthsLabel.setText("");
@@ -285,6 +284,10 @@ public class CharaOverviewController {
         drinkLabel.setText("");
         likesLabel.setText("");
         dislikesLabel.setText("");
+
+        link1.setText("");
+        link2.setText("");
+        link3.setText("");
     }
 
     private void setStatSlidersLabels(){
@@ -308,6 +311,22 @@ public class CharaOverviewController {
         empathySlider.setCustomLabels("None", "Average", "Empath");
         sensitivitySlider.setCustomLabels("Insensitive", "Average", "Hypersensitive");
         creativitySlider.setCustomLabels("Low", "Average", "High");
+    }
+
+    private void setLink(Hyperlink link, Link charaLink){
+        if(charaLink != null){
+            String charaLinkLabel = charaLink.getLinkLabel();
+            String charaLinkUrl = charaLink.getLinkUrl();
+            if(!charaLinkLabel.isEmpty() && !charaLinkUrl.isEmpty()){
+                link.setText(charaLinkLabel);
+                link.setDisable(false);
+                mainApp.handleHyperLink(link, charaLinkUrl);
+            }
+            else{
+                link.setOnAction(null);
+                link.setDisable(true);
+            }
+        }
     }
 
     private void showCharaDetails(Character chara){
@@ -430,20 +449,26 @@ public class CharaOverviewController {
             }
 
             nameRightLabel.setText(chara.getDisplayName());
-
+            quoteLabel.setText(chara.getQuote());
             Color associatedColor = Color.web(chara.getAssociatedColor());
             colorPicker.setValue(associatedColor);
+            setLink(link1, chara.getLink1());
+            setLink(link2, chara.getLink2());
+            setLink(link3, chara.getLink3());
 
-            if(chara.getProfilePicPath().isEmpty()){
-                URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
-                if(defaultPicUrl != null){
-                    Image profilePic = new Image(defaultPicUrl.toExternalForm());
+
+            if(chara.getProfilePicPath() != null){
+                if(chara.getProfilePicPath().isEmpty()){
+                    URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
+                    if(defaultPicUrl != null){
+                        Image profilePic = new Image(defaultPicUrl.toExternalForm());
+                        profilePicImageView.setImage(profilePic);
+                    }
+                }
+                else{
+                    Image profilePic = new Image("file:" + chara.getProfilePicPath());
                     profilePicImageView.setImage(profilePic);
                 }
-            }
-            else{
-                Image profilePic = new Image("file:" + chara.getProfilePicPath());
-                profilePicImageView.setImage(profilePic);
             }
         }
         else{

@@ -16,6 +16,10 @@ public class Character {
     private final ObjectProperty<Stats> stats;
     private final StringProperty profilePicPath;
     private final StringProperty associatedColor;
+    private final StringProperty quote;
+    private final ObjectProperty<Link> link1;
+    private final ObjectProperty<Link> link2;
+    private final ObjectProperty<Link> link3;
 
     public Character() {
         this(null, null, null, null, null, null, null, null, null);
@@ -32,6 +36,10 @@ public class Character {
         this.stats = new SimpleObjectProperty<Stats>(new Stats());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
         this.associatedColor = new SimpleStringProperty("#FFFFFF");
+        this.quote = new SimpleStringProperty("");
+        this.link1 = new SimpleObjectProperty<Link>(new Link());
+        this.link2 = new SimpleObjectProperty<Link>(new Link());
+        this.link3 = new SimpleObjectProperty<Link>(new Link());
     }
 
     public String getDisplayName() {
@@ -153,4 +161,53 @@ public class Character {
     public void setAssociatedColor(String associatedColor){
         this.associatedColor.set(associatedColor);
     }
+
+    public String getQuote(){
+        return quote.get();
+    }
+
+    public StringProperty getQuoteProperty(){
+        return quote;
+    }
+
+    public void setQuote(String quote){
+        this.quote.set(quote);
+    }
+
+    public Link getLink1() {
+        return link1.get();
+    }
+
+    public ObjectProperty<Link> getLink1Property() {
+        return link1;
+    }
+
+    public void setLink1(Link link) {
+        this.link1.set(link);
+    }
+
+    public Link getLink2() {
+        return link2.get();
+    }
+
+    public ObjectProperty<Link> getLink2Property() {
+        return link2;
+    }
+
+    public void setLink2(Link link) {
+        this.link2.set(link);
+    }
+
+    public Link getLink3() {
+        return link3.get();
+    }
+
+    public ObjectProperty<Link> getLink3Property() {
+        return link3;
+    }
+
+    public void setLink3(Link link) {
+        this.link3.set(link);
+    }
+
 }

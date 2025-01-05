@@ -1,0 +1,4 @@
+.hyperlink:visited {
+    -fx-text-decoration:none;
+    -fx-text-fill: #008ec0;
+}

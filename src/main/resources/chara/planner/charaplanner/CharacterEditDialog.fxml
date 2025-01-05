@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="719.0" prefWidth="896.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
    <tabs>
       <Tab closable="false" text="Basic Informations">
          <content>
@@ -52,6 +52,10 @@
                                     <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
                                     <Label text="First name" GridPane.rowIndex="1" />
@@ -70,9 +74,9 @@
                                     <Label text="Job Position/Rank" GridPane.rowIndex="13" />
                                     <TextField fx:id="jobField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
                                     <TextField fx:id="jobPositionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
-                                    <Label text="Profile picture" GridPane.rowIndex="15" />
-                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportPicture" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="15" />
-                                    <Label fx:id="labelSelectedFile" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+                                    <Label text="Profile picture" GridPane.rowIndex="16" />
+                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportPicture" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                                    <Label fx:id="labelSelectedFile" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="16" />
                                     <Label text="Nicknames/Titles" GridPane.rowIndex="3" />
                                     <Label text="Place of Birth" GridPane.rowIndex="8" />
                                     <Label text="Nationality" GridPane.rowIndex="9" />
@@ -87,8 +91,23 @@
                                     <TextField fx:id="religionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="14" />
                                     <Label text="Pronouns" GridPane.rowIndex="5" />
                                     <TextField fx:id="pronounsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                                    <Label text="Associated Color" GridPane.rowIndex="16" />
-                                    <ColorPicker fx:id="associatedColorPicker" promptText="Associated Color" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                                    <Label text="Associated Color" GridPane.rowIndex="17" />
+                                    <ColorPicker fx:id="associatedColorPicker" promptText="Associated Color" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                                    <Label text="Quote" GridPane.rowIndex="15" />
+                                    <TextArea fx:id="quoteArea" prefHeight="50.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="15">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Link 1" GridPane.rowIndex="18" />
+                                    <TextField fx:id="link1LabelField" promptText="Label (ex: Toyhouse, Spotify playlist, ...)" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                                    <TextField fx:id="link1UrlField" promptText="url (ex : https://toyhou.se/link....)" GridPane.columnIndex="2" GridPane.rowIndex="18" />
+                                    <Label text="Link 2" GridPane.rowIndex="19" />
+                                    <Label text="Link 3" GridPane.rowIndex="20" />
+                                    <TextField fx:id="link2LabelField" promptText="Label (ex: Toyhouse, Spotify playlist, ...)" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+                                    <TextField fx:id="link3LabelField" promptText="Label (ex: Toyhouse, Spotify playlist, ...)" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+                                    <TextField fx:id="link2UrlField" promptText="url (ex : https://toyhou.se/link....)" GridPane.columnIndex="2" GridPane.rowIndex="19" />
+                                    <TextField fx:id="link3UrlField" promptText="url (ex : https://toyhou.se/link....)" GridPane.columnIndex="2" GridPane.rowIndex="20" />
                                  </children>
                               </GridPane>
                            </children>
@@ -97,7 +116,7 @@
                   </ScrollPane>
                </center>
                <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
+                  <ButtonBar prefHeight="60.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <buttons>
                         <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
                         <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
