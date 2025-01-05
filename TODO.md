@@ -125,11 +125,9 @@ Can make registered character names to be clickable to go to their profile page
 # Implementations
 
 ## Menu items
-<strike>
-- Recently opened files in File
-- About
-- Shortcuts
-</strike>
+- <strike>Recently opened files in File</strike>
+- <strike>About</strike>
+- <strike>Shortcuts</strike>
 
 - Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
 - Link items when referenced in a character sheet
