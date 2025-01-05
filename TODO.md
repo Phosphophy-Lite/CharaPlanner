@@ -125,9 +125,11 @@ Can make registered character names to be clickable to go to their profile page
 # Implementations
 
 ## Menu items
-- <strike>Recently opened files in File
+<strike>
+- Recently opened files in File
 - About
-- Shortcuts</strike>
+- Shortcuts
+</strike>
 
 - Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
 - Link items when referenced in a character sheet
@@ -135,6 +137,5 @@ Can make registered character names to be clickable to go to their profile page
 - CSS UI styling
 
 # Ideas of potential additional features
-- Contact/send error ticket/request menu item
 - User creating custom templates for the sheets or add a new custom row and field option
 
