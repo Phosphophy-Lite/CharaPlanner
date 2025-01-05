@@ -2,7 +2,7 @@
 
 # Character Data
 
-- Display name (only mandatory field when creating a new character)
+- <strike>Display name (only mandatory field when creating a new character)</strike>
 
 ## <strike>Basics :
 - Fullname
