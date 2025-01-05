@@ -130,7 +130,7 @@
                                           <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="140.0" prefWidth="152.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
@@ -148,6 +148,7 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Hair" wrapText="true" />
@@ -180,9 +181,18 @@
                                                 <Label text="Description" wrapText="true" GridPane.rowIndex="14" />
                                                 <Label fx:id="distFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                 <Label fx:id="physDescLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                                                <Label text="Reference Sheet" GridPane.rowIndex="15" />
+                                                <ImageView fx:id="refsheetImageView" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="10.0" top="10.0" />
+                                                   </GridPane.margin>
+                                                </ImageView>
                                              </children>
                                           </GridPane>
                                        </children>
+                                       <padding>
+                                          <Insets bottom="50.0" />
+                                       </padding>
                                     </AnchorPane>
                                  </content>
                               </ScrollPane>
@@ -235,7 +245,7 @@
                                                 <Label fx:id="hobbiesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                                 <Label fx:id="iqLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                                                 <Label fx:id="philosophyLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label fx:id="personaDescLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="personaDescLabel" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a tellus at nulla mattis iaculis ac vel mi. Cras non ante diam. Nulla condimentum consequat nisi, nec euismod lorem faucibus a. In hendrerit justo et nisl sollicitudin, ac aliquam erat sodales. Sed eu sem a turpis tincidunt commodo. Sed a egestas ex. Curabitur dignissim quis massa ac consectetur. " wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                                                 <Label text="Fears/Phobias" wrapText="true" GridPane.rowIndex="7" />
                                                 <Label fx:id="fearsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                              </children>

@@ -19,6 +19,7 @@ public class Appearance {
     private final StringProperty weapons;
     private final StringProperty medical;
     private final StringProperty desc;
+    private final StringProperty refsheetPath;
 
     public Appearance() {
         this.hair = new SimpleStringProperty("");
@@ -28,7 +29,6 @@ public class Appearance {
         this.height = new SimpleStringProperty("");
         this.weight = new SimpleStringProperty("");
         this.build = new SimpleStringProperty("");
-
         this.distFeatures = new SimpleStringProperty("");
         this.clothing = new SimpleStringProperty("");
         this.aesthetic = new SimpleStringProperty("");
@@ -37,6 +37,8 @@ public class Appearance {
         this.weapons = new SimpleStringProperty("");
         this.medical = new SimpleStringProperty("");
         this.desc = new SimpleStringProperty("");
+        this.refsheetPath = new SimpleStringProperty("");
+
     }
 
     public String getHair() { return hair.get(); }
@@ -98,4 +100,18 @@ public class Appearance {
     public String getDesc() { return desc.get(); }
     public void setDesc(String desc) { this.desc.set(desc); }
     public StringProperty getDescProperty() { return desc; }
+
+
+    public String getRefsheetPath(){
+        return refsheetPath.get();
+    }
+
+    public void setRefsheetPath(String profilePicPath){
+        this.refsheetPath.set(profilePicPath);
+    }
+
+    public StringProperty getRefsheetPathProperty(){
+        return refsheetPath;
+    }
+
 }

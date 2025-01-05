@@ -41,6 +41,7 @@ public class CharaOverviewController {
     @FXML private Label weaponsLabel;
     @FXML private Label medicalLabel;
     @FXML private Label physDescLabel;
+    @FXML private ImageView refsheetImageView;
 
     /* Personality */
     @FXML private Label traitsLabel;
@@ -329,8 +330,29 @@ public class CharaOverviewController {
         }
     }
 
+    private void setImageView(ImageView imgView, String path, boolean isDefault){
+        if(!path.isEmpty()){
+            if(isDefault){
+                URL defaultPicUrl = getClass().getResource(path);
+                if(defaultPicUrl != null){
+                    Image img = new Image(defaultPicUrl.toExternalForm());
+                    imgView.setImage(img);
+                }
+            }
+            else{
+                Image img = new Image("file:" + path);
+                imgView.setImage(img);
+            }
+        }
+    }
+
     private void showCharaDetails(Character chara){
+        //initialize with everything empty
         setLabelsEmpty();
+        setImageView(profilePicImageView, "/chara/planner/img/Portrait_Placeholder.png",true);
+        setImageView(refsheetImageView, "/chara/planner/img/RefSheet_Placeholder.png",true);
+
+        //fill non blank fields of character
         if(chara != null){
             if(chara.getBasicInfos() != null){
                 firstNameLabel.setText(chara.getBasicInfos().getFirstName());
@@ -364,6 +386,7 @@ public class CharaOverviewController {
                 weaponsLabel.setText(chara.getAppearance().getWeapons());
                 medicalLabel.setText(chara.getAppearance().getMedical());
                 physDescLabel.setText(chara.getAppearance().getDesc());
+                setImageView(refsheetImageView, chara.getAppearance().getRefsheetPath(),false);
             }
             if(chara.getPersonality() != null){
                 traitsLabel.setText(chara.getPersonality().getTraits());
@@ -456,28 +479,7 @@ public class CharaOverviewController {
             setLink(link2, chara.getLink2());
             setLink(link3, chara.getLink3());
 
-
-            if(chara.getProfilePicPath() != null){
-                if(chara.getProfilePicPath().isEmpty()){
-                    URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
-                    if(defaultPicUrl != null){
-                        Image profilePic = new Image(defaultPicUrl.toExternalForm());
-                        profilePicImageView.setImage(profilePic);
-                    }
-                }
-                else{
-                    Image profilePic = new Image("file:" + chara.getProfilePicPath());
-                    profilePicImageView.setImage(profilePic);
-                }
-            }
-        }
-        else{
-            URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
-            if(defaultPicUrl != null){
-                Image profilePic = new Image(defaultPicUrl.toExternalForm());
-                profilePicImageView.setImage(profilePic);
-            }
-
+            setImageView(profilePicImageView, chara.getProfilePicPath(),false);
         }
     }
 

@@ -129,8 +129,10 @@ public class CharacterEditDialogController {
     @FXML private StatSlider creativitySlider;
     private List<StatSlider> statSlidersList;
 
-    @FXML private Label labelSelectedFile;
-    private String pictureFilePath = "";
+    @FXML private Label labelSelectedProfilePic;
+    private String profilePicPath = "";
+    @FXML private Label labelSelectedRefsheet;
+    private String refsheetPath = "";
 
     @FXML private TextArea quoteArea;
     @FXML private ColorPicker associatedColorPicker;
@@ -386,8 +388,10 @@ public class CharacterEditDialogController {
         sensitivitySlider.setValue(character.getStats().getSensitivity());
         creativitySlider.setValue(character.getStats().getCreativity());
 
-        labelSelectedFile.setText(character.getProfilePicPath());
-        pictureFilePath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
+        labelSelectedProfilePic.setText(character.getProfilePicPath());
+        profilePicPath = (character.getProfilePicPath() != null) ? character.getProfilePicPath() : "";
+        labelSelectedRefsheet.setText(character.getAppearance().getRefsheetPath());
+        refsheetPath = (character.getAppearance().getRefsheetPath() != null) ? character.getAppearance().getRefsheetPath() : "";
 
         setOrSelectName(parentA, character.getRelationships().getParentA());
         setOrSelectName(parentB, character.getRelationships().getParentB());
@@ -537,7 +541,8 @@ public class CharacterEditDialogController {
             character.getStats().setSensitivity(sensitivitySlider.getValue());
             character.getStats().setCreativity(creativitySlider.getValue());
 
-            character.setProfilePicPath(pictureFilePath);
+            character.setProfilePicPath(profilePicPath);
+            character.getAppearance().setRefsheetPath(refsheetPath);
 
             character.getRelationships().setParentA(parentA.getEditor().getText());
             character.getRelationships().setParentB(parentB.getEditor().getText());
@@ -585,14 +590,26 @@ public class CharacterEditDialogController {
     }
 
     @FXML
-    private void handleImportPicture() {
+    private void handleImportProfilePic() {
         FileChooser fc = new FileChooser();
         fc.setTitle("Open picture file");
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
         File f = fc.showOpenDialog(null);
         if(f!=null){
-            pictureFilePath = f.getAbsolutePath();
-            labelSelectedFile.setText("Selected File: " + f.getAbsolutePath());
+            profilePicPath = f.getAbsolutePath();
+            labelSelectedProfilePic.setText("Selected File: " + f.getAbsolutePath());
+        }
+    }
+
+    @FXML
+    private void handleImportRefsheet() {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Open picture file");
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
+        File f = fc.showOpenDialog(null);
+        if(f!=null){
+            refsheetPath = f.getAbsolutePath();
+            labelSelectedRefsheet.setText("Selected File: " + f.getAbsolutePath());
         }
     }
 
