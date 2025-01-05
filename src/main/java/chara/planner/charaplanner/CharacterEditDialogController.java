@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
@@ -31,6 +32,7 @@ public class CharacterEditDialogController {
     @FXML private TextField specieField;
     @FXML private TextField affiliationField;
     @FXML private TextField religionField;
+    @FXML private ColorPicker associatedColorPicker;
 
     @FXML private TextField hairField;
     @FXML private TextField skinField;
@@ -282,6 +284,9 @@ public class CharacterEditDialogController {
         affiliationField.setText(character.getBasicInfos().getAffiliation());
         religionField.setText(character.getBasicInfos().getReligion());
 
+        Color associatedColor = Color.web(character.getAssociatedColor());
+        associatedColorPicker.setValue(associatedColor);
+
         hairField.setText(character.getAppearance().getHair());
         skinField.setText(character.getAppearance().getSkin());
         eyesField.setText(character.getAppearance().getEyes());
@@ -420,6 +425,9 @@ public class CharacterEditDialogController {
             character.getBasicInfos().setSpecie(specieField.getText());
             character.getBasicInfos().setAffiliation(affiliationField.getText());
             character.getBasicInfos().setReligion(religionField.getText());
+
+            String hexAssociatedColor = "#" + associatedColorPicker.getValue().toString().substring(2);
+            character.setAssociatedColor(hexAssociatedColor);
 
             character.getAppearance().setHair(hairField.getText());
             character.getAppearance().setSkin(skinField.getText());

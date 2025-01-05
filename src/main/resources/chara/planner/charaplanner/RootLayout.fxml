@@ -42,6 +42,10 @@
               <MenuItem mnemonicParsing="false" onAction="#handleDeleteChara" text="Delete Character" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+               </items></Menu>
         </menus>
       </MenuBar>
    </top>

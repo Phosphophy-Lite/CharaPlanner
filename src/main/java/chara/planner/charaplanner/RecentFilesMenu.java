@@ -1,6 +1,5 @@
 package chara.planner.charaplanner;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -9,9 +8,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class RecentFilesMenu extends Menu {
     private String pathToFile;
@@ -28,9 +24,7 @@ public class RecentFilesMenu extends Menu {
         super();
         this.mainApp = mainApp;
 
-        //this.recentEntries = new String[MAX_RECENT_FILES];
         this.recentEntries = FXCollections.observableArrayList();
-        //Arrays.fill(this.recentEntries, "none");
 
         // Listen to recentEntries changes to update the GUI menu dynamically during execution
         recentEntries.addListener((ListChangeListener<String>) change -> {
@@ -64,14 +58,11 @@ public class RecentFilesMenu extends Menu {
         File recentFile = new File(pathToFile);
         if (recentFile.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(recentFile))) {
-                //List<String> entries = new ArrayList<>();
                 recentEntries.clear();
                 String line;
                 while ((line = reader.readLine()) != null && recentEntries.size() < MAX_RECENT_FILES) {
-                    //entries.add(line);
                     recentEntries.add(line);
                 }
-                //entries.toArray(recentEntries);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -109,10 +100,6 @@ public class RecentFilesMenu extends Menu {
         if(recentEntries.size() > MAX_RECENT_FILES){
             recentEntries.remove(MAX_RECENT_FILES);
         }
-
-        //Shift older entries down so the new one is at the top of the list
-        //System.arraycopy(recentEntries,0,recentEntries,1,MAX_RECENT_FILES-1);
-        //recentEntries[0] = filePath;
 
         updateMenuItems();
         saveRecentEntries();

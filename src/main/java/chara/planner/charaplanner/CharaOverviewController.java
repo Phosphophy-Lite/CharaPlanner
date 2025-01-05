@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+
 import java.net.URL;
 
 public class CharaOverviewController {
@@ -132,6 +134,7 @@ public class CharaOverviewController {
     @FXML private VBox vBox;
     @FXML private Label nameRightLabel;
     @FXML private ImageView profilePicImageView;
+    @FXML private ColorPicker colorPicker;
 
 
     private MainApp mainApp;
@@ -148,6 +151,7 @@ public class CharaOverviewController {
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         setStatSlidersLabels();
         showCharaDetails(null);
+        colorPicker.getStyleClass().add("button");
 
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));
 
@@ -426,6 +430,10 @@ public class CharaOverviewController {
             }
 
             nameRightLabel.setText(chara.getDisplayName());
+
+            Color associatedColor = Color.web(chara.getAssociatedColor());
+            colorPicker.setValue(associatedColor);
+
             if(chara.getProfilePicPath().isEmpty()){
                 URL defaultPicUrl = getClass().getResource("/chara/planner/img/Portrait_Placeholder.png");
                 if(defaultPicUrl != null){

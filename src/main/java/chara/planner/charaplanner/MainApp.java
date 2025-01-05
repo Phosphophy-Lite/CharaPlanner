@@ -4,13 +4,17 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.scene.control.TabPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +23,6 @@ import java.util.prefs.Preferences;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-
 
 public class MainApp extends Application {
 
@@ -231,6 +234,32 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void showAboutDialog(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("About this application...");
+
+        // Create the content
+        Text contentText = new Text("This application is developped by Phosphophy-Lite.\n" +
+                "For any issues encountered, raise an issue on the corresponding github page down below.\n" +
+                "This project is my first JavaFX experience, meant mainly for personal use, so sorry for any malfunction or lack of optimization.\n"
+        );
+
+        Hyperlink githubLink = new Hyperlink("Phosphophy-Lite @ Github.com");
+        try {
+            githubLink.setOnAction(a->getHostServices().showDocument("https://github.com/Phosphophy-Lite"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // Combine text and hyperlink in a VBox
+        VBox content = new VBox();
+        content.getChildren().addAll(contentText, githubLink);
+        alert.getDialogPane().setContent(content);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {

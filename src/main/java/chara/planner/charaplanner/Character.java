@@ -15,6 +15,7 @@ public class Character {
     private final ObjectProperty<Trivia> trivia;
     private final ObjectProperty<Stats> stats;
     private final StringProperty profilePicPath;
+    private final StringProperty associatedColor;
 
     public Character() {
         this(null, null, null, null, null, null, null, null, null);
@@ -30,6 +31,7 @@ public class Character {
         this.trivia = new SimpleObjectProperty<Trivia>(new Trivia());
         this.stats = new SimpleObjectProperty<Stats>(new Stats());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
+        this.associatedColor = new SimpleStringProperty("#FFFFFF");
     }
 
     public String getDisplayName() {
@@ -138,5 +140,17 @@ public class Character {
 
     public StringProperty getProfilePicPathProperty(){
         return profilePicPath;
+    }
+
+    public String getAssociatedColor(){
+        return associatedColor.get();
+    }
+
+    public StringProperty getAssociatedColorProperty(){
+        return associatedColor;
+    }
+
+    public void setAssociatedColor(String associatedColor){
+        this.associatedColor.set(associatedColor);
     }
 }

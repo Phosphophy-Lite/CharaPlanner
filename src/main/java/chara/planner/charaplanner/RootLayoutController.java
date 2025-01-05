@@ -32,22 +32,9 @@ public class RootLayoutController {
         this.recentFilesMenu = new RecentFilesMenu("recentFiles", mainApp);
 
         ObservableList<String> menuItemsList = recentFilesMenu.getRecentEntriesList();
-
         bindMenutoObservableList(recentMenu, recentFilesMenu, menuItemsList);
-        recentMenu.getItems().clear();
-
-        menuItemsList.addListener((ListChangeListener<String>) change -> {
-            System.out.println("Menu updated! Current items: " + menuItemsList);
-        });
-
-        recentMenu.getItems().addAll(recentFilesMenu.getItems());
-
-        /*
-        recentMenu.setOnShowing(event -> {
-            System.out.println("Recent menu is being shown.");
-            recentFilesMenu.updateMenuItems();
-        });*/
-
+        //recentMenu.getItems().clear();
+        //recentMenu.getItems().addAll(recentFilesMenu.getItems());
 
     }
     //necessary, do not remove (i know i wrote spaghetti code everywhere but im lost at this point, i just know it works with this)
@@ -169,5 +156,10 @@ public class RootLayoutController {
     @FXML
     private void handleEditChara(){
         charaOverviewController.handleEditChara();
+    }
+
+    @FXML
+    private void handleAbout(){
+        mainApp.showAboutDialog();
     }
 }

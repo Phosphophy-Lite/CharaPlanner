@@ -7,6 +7,7 @@ module chara.planner.charaplanner {
     requires java.prefs;
     requires jakarta.xml.bind;
     requires jakarta.activation;
+    requires java.desktop;
 
     opens chara.planner.charaplanner to javafx.fxml, jakarta.xml.bind;
     exports chara.planner.charaplanner;
