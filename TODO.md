@@ -2,7 +2,7 @@
 
 # Character Data
 
-- Display name (only mandatory field when creating a new character)
+- <strike>Display name (only mandatory field when creating a new character)</strike>
 
 ## <strike>Basics :
 - Fullname
@@ -118,14 +118,16 @@ Can make registered character names to be clickable to go to their profile page
 - Reference pictures
 - <strike>Profile pic</strike>
 - Custom template theme
-- Associated color (color picker option)
+- <strike>Associated color (color picker option)</strike>
+- Quote in right panel
+- Right panel : potential hyperlinks related to character (playlist...) ?
 
 # Implementations
 
 ## Menu items
-- Recently opened files in File
-- About
-- Shortcuts
+- <strike>Recently opened files in File</strike>
+- <strike>About</strike>
+- <strike>Shortcuts</strike>
 
 - Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
 - Link items when referenced in a character sheet
@@ -133,6 +135,5 @@ Can make registered character names to be clickable to go to their profile page
 - CSS UI styling
 
 # Ideas of potential additional features
-- Contact/send error ticket/request menu item
 - User creating custom templates for the sheets or add a new custom row and field option
 
