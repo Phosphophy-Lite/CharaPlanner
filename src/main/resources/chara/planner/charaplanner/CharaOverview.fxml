@@ -3,7 +3,6 @@
 <?import chara.planner.charaplanner.StatSlider?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -17,33 +16,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharaOverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="902.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharaOverviewController">
    <children>
       <SplitPane dividerPositions="0.24307036247334754, 0.7515991471215352" layoutX="100.0" layoutY="95.0" prefHeight="704.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="448.0">
                <children>
-                  <TableView fx:id="tableView" layoutY="27.0" prefHeight="675.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="224.0" spacing="10.0" styleClass="hbox" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button ellipsisString="" minWidth="75.0" mnemonicParsing="false" onAction="#handleNewChara" styleClass="basic" text="New" />
+                      <Button ellipsisString="" minWidth="75.0" mnemonicParsing="false" onAction="#handleEditChara" styleClass="basic" text="Edit" />
+                        <Button ellipsisString="" minWidth="90.0" mnemonicParsing="false" onAction="#handleDeleteChara" styleClass="delete" text="Delete" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tableView" layoutY="94.0" prefHeight="609.0" prefWidth="154.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
                     <columns>
-                      <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Character" />
+                      <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="75.0" text="Characters" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <ButtonBar buttonMinWidth="65.0" layoutY="1.0" prefHeight="26.0" prefWidth="225.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
-                    <buttons>
-                        <Button minWidth="54.0" mnemonicParsing="false" onAction="#handleNewChara" prefHeight="26.0" prefWidth="175.0" text="New" />
-                      <Button mnemonicParsing="false" onAction="#handleEditChara" prefHeight="26.0" text="Edit" />
-                        <Button minWidth="48.0" mnemonicParsing="false" onAction="#handleDeleteChara" prefHeight="26.0" text="Delete" />
-                    </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="11.0">
@@ -56,10 +54,10 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="150.0" prefWidth="158.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="284.0" prefWidth="288.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="175.0" prefWidth="167.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="245.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
@@ -78,34 +76,147 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="First Name" wrapText="true" />
-                                                <Label text="Last Name" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Nicknames/Titles" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Gender" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label text="Age" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label fx:id="firstNameLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label fx:id="nicknamesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="genderLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label fx:id="ageLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Date of Birth" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label text="Place of Birth" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label fx:id="birthDateLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label fx:id="birthPlaceLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Nationality" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label text="Specie/Race" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label text="Affiliation/Organization" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Job/Class" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label text="Job Position/Rank" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label text="Religion" wrapText="true" GridPane.rowIndex="13" />
-                                                <Label fx:id="nationalityLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label fx:id="specieLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label fx:id="affiliationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label fx:id="jobLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label fx:id="jobPositionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                <Label fx:id="religionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                                                <Label text="Pronouns" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label fx:id="pronounsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="First Name" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin>
+                                                </Label>
+                                                <Pane layoutX="14.0" layoutY="14.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Last Name" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="49.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Nicknames/Titles" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="84.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Gender" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="154.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="Age" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="119.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Pronouns" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="189.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Date of Birth" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="224.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Place of Birth" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="259.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Nationality" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="294.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="Specie/Race" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="329.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Affiliation/Organization" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="364.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Job/Class" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="406.0" styleClass="firstcol" GridPane.rowIndex="12" />
+                                                <Label text="Job Position/Rank" wrapText="true" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="14.0" layoutY="441.0" styleClass="firstcol" GridPane.rowIndex="13" />
+                                                <Label text="Religion" wrapText="true" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="520.0" styleClass="seccol" GridPane.columnIndex="1" />
+                                                <Label fx:id="firstNameLabel" text="Label" wrapText="true" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="52.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="nicknamesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="91.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="genderLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="130.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="pronounsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="169.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="ageLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="208.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="birthDateLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="247.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="birthPlaceLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="286.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="nationalityLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="325.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="specieLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="364.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="affiliationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="403.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="jobLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="442.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="jobPositionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="183.0" layoutY="481.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                <Label fx:id="religionLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -127,9 +238,9 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="140.0" prefWidth="152.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="145.0" prefWidth="152.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" />
                                              </columnConstraints>
                                              <rowConstraints>
@@ -151,37 +262,162 @@
                                                 <RowConstraints vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Hair" wrapText="true" />
-                                                <Label text="Skin" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Eyes" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Facial features" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label text="Height" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label fx:id="hairLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label fx:id="eyesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="facialFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label fx:id="heightLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="Weight" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label text="Body Type/Build" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label fx:id="weightLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label fx:id="buildLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label fx:id="skinLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Clothing" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label text="Aesthetic/Style" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label text="Accessories" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Relevant Item(s)" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label text="Weapon(s)" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label text="Medical Condition(s)" wrapText="true" GridPane.rowIndex="13" />
-                                                <Label fx:id="clothingLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label fx:id="aestheticLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label fx:id="accessoriesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label fx:id="itemsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label fx:id="weaponsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                <Label fx:id="medicalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                                                <Label text="Distinctive features" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label text="Description" wrapText="true" GridPane.rowIndex="14" />
-                                                <Label fx:id="distFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label fx:id="physDescLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                                                <Label text="Reference Sheet" GridPane.rowIndex="15" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="Hair" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Skin" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="48.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Eyes" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="83.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Facial features" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="118.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Height" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="153.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="Weight" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="188.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Body Type/Build" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="223.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Distinctive features" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="258.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Clothing" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="293.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="Aesthetic/Style" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="328.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Accessories" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="363.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Relevant Item(s)" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="398.0" styleClass="firstcol" GridPane.rowIndex="12" />
+                                                <Label text="Weapon(s)" wrapText="true" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="433.0" styleClass="firstcol" GridPane.rowIndex="13" />
+                                                <Label text="Medical Condition(s)" wrapText="true" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="468.0" styleClass="firstcol" GridPane.rowIndex="14" />
+                                                <Label text="Description" wrapText="true" GridPane.rowIndex="14">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="510.0" styleClass="firstcol" GridPane.rowIndex="15" />
+                                                <Label text="Reference Sheet" GridPane.rowIndex="15">
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" />
+                                                <Label fx:id="hairLabel" text="Label" wrapText="true" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="skinLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="52.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="eyesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="91.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="facialFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="130.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="heightLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="169.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="weightLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="208.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="buildLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="247.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="distFeaturesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="286.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="clothingLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="325.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="aestheticLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="364.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="accessoriesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="403.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="itemsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="442.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="weaponsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="481.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                <Label fx:id="medicalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="520.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                                                <Label fx:id="physDescLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="153.0" layoutY="566.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                                                 <ImageView fx:id="refsheetImageView" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="15">
                                                    <GridPane.margin>
                                                       <Insets bottom="10.0" top="10.0" />
@@ -204,10 +440,10 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="173.0" prefWidth="176.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="261.0" prefWidth="270.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="200.0" prefWidth="200.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="270.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
@@ -224,30 +460,126 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Traits" wrapText="true" />
-                                                <Label text="Strengths" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Weaknesses" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Skills" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label text="Alignment" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label fx:id="traitsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label fx:id="weaknessesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="skillsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label fx:id="alignmentLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="MBTI/Enneagram" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label text="Mental health/conditions" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label fx:id="mbtiEnneaLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label fx:id="mentalHealthLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label fx:id="strengthsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Hobbies" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label text="IQ" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label text="Philosophy/Morality/Values" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Description" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label fx:id="hobbiesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label fx:id="iqLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label fx:id="philosophyLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label fx:id="personaDescLabel" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a tellus at nulla mattis iaculis ac vel mi. Cras non ante diam. Nulla condimentum consequat nisi, nec euismod lorem faucibus a. In hendrerit justo et nisl sollicitudin, ac aliquam erat sodales. Sed eu sem a turpis tincidunt commodo. Sed a egestas ex. Curabitur dignissim quis massa ac consectetur. " wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label text="Fears/Phobias" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label fx:id="fearsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="Traits" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Strengths" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="52.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Weaknesses" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="91.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Skills" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="130.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Alignment" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="169.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="MBTI/Enneagram" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="208.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Mental health/conditions" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="247.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Fears/Phobias" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="286.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Hobbies" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="325.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="IQ" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="364.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Philosophy/Morality/Values" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="403.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Description" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" />
+                                                <Label fx:id="traitsLabel" text="Label" wrapText="true" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="strengthsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="52.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="weaknessesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="skillsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="91.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="alignmentLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="130.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="mbtiEnneaLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="52.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="mentalHealthLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="fearsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="169.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="hobbiesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="208.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="iqLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="247.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="philosophyLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="208.0" layoutY="286.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="personaDescLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -262,10 +594,10 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="170.0" prefWidth="183.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="251.0" prefWidth="263.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="180.0" prefWidth="183.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="240.0" prefWidth="263.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
@@ -283,32 +615,136 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Plot Role" wrapText="true" />
-                                                <Label text="Backstory" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Goals/Ambitions/Dreams" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Achievements" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label text="Failures/Struggles" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label fx:id="plotRoleLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label fx:id="goalsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="achievementsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label fx:id="failuresLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="Crimes" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label text="Secrets" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label fx:id="crimesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label fx:id="secretsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label fx:id="backstoryLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Area of Expertise" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Social Status" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label fx:id="expertiseLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label fx:id="socialStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label text="Education" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label fx:id="educationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label text="Wealth" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label fx:id="wealthLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                <Label text="Traumas" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label fx:id="traumasLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Powers" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label fx:id="powersLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="Plot Role" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Backstory" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Goals/Ambitions/Dreams" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Achievements" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Failures/Struggles" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="Traumas" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Crimes" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Secrets" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Powers" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="Education" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Area of Expertise" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Social Status" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="12" />
+                                                <Label text="Wealth" wrapText="true" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" />
+                                                <Label fx:id="plotRoleLabel" text="Label" wrapText="true" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="backstoryLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="goalsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="achievementsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="failuresLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="traumasLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="crimesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="secretsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="powersLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="193.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="educationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="193.0" layoutY="52.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="expertiseLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="193.0" layoutY="91.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="socialStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="193.0" layoutY="130.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="wealthLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -323,10 +759,10 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="154.0" prefWidth="162.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="251.0" prefWidth="284.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="175.0" prefWidth="175.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="245.0" prefWidth="284.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
@@ -344,32 +780,136 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Sexual Orientation" wrapText="true" />
-                                                <Label text="Romantic Orientation" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Family Status" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Relationship Status" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label fx:id="sexualOrientationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label fx:id="familyStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="relationshipStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label fx:id="romanticOrientationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Parent A" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label fx:id="parentALabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="Parent B" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label text="Sibling(s)" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label text="Best Friend(s)" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label text="Significant Other(s)" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label text="Rival(s)" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label text="Mentor(s)" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Apprentice(s)/Student(s)" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label text="Nemesis" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label fx:id="parentBLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label fx:id="siblingsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label fx:id="bestFriendLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label fx:id="significantOtherLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label fx:id="rivalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label fx:id="mentorLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label fx:id="apprenticeLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label fx:id="nemesisLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="Sexual Orientation" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Romantic Orientation" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Family Status" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Relationship Status" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Parent A" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="Parent B" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Sibling(s)" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Best Friend(s)" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Significant Other(s)" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="Rival(s)" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Mentor(s)" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Apprentice(s)/Student(s)" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="12" />
+                                                <Label text="Nemesis" wrapText="true" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" />
+                                                <Label fx:id="sexualOrientationLabel" text="Label" wrapText="true" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="188.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="romanticOrientationLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="familyStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="relationshipStatusLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="parentALabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="parentBLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="siblingsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="bestFriendLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="significantOtherLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="rivalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="mentorLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="apprenticeLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="nemesisLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -384,10 +924,10 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="180.0" prefWidth="196.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="250.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="185.0" prefWidth="196.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="235.0" prefWidth="250.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
@@ -406,34 +946,146 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Native Language(s)" wrapText="true" />
-                                                <Label text="Learnt Languages" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Speech Style/Accent" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Voiceclaim" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label fx:id="nativeLanguagesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" />
-                                                <Label fx:id="speechLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="voiceclaimLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Label fx:id="learntLanguagesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label text="Theme Songs" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label fx:id="themeSongsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label text="Favorite/Symbolic Animal" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label fx:id="animalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label text="Favorite/Symbolic plant" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label fx:id="plantLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label text="Faovrite/Symbolic gemstone" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label fx:id="gemstoneLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Label text="Favorite/Symbolic season" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label fx:id="seasonLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Label text="Favorite/Symbolic food" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label fx:id="foodLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                                <Label text="Favorite/Symbolic drink" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label fx:id="drinkLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                <Label text="Likes" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label text="Dislikes" wrapText="true" GridPane.rowIndex="13" />
-                                                <Label text="Favorite/Symbolic Place" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label fx:id="placeLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <Label fx:id="likesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                <Label fx:id="dislikesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="Native Language(s)" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Learnt Languages" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Speech Style/Accent" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Voiceclaim" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Theme Songs" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="Favorite/Symbolic Animal" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Favorite/Symbolic plant" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Faovrite/Symbolic gemstone" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Favorite/Symbolic season" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="Favorite/Symbolic Place" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Favorite/Symbolic food" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Favorite/Symbolic drink" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="12" />
+                                                <Label text="Likes" wrapText="true" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="13" />
+                                                <Label text="Dislikes" wrapText="true" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" />
+                                                <Label fx:id="nativeLanguagesLabel" text="Label" wrapText="true" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="193.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="learntLanguagesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="speechLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="voiceclaimLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="themeSongsLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="animalLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="plantLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Label fx:id="gemstoneLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label fx:id="seasonLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <Label fx:id="placeLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                                <Label fx:id="foodLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Label fx:id="drinkLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                <Label fx:id="likesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                <Label fx:id="dislikesLabel" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -448,9 +1100,9 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+                                          <GridPane layoutX="14.0" layoutY="45.0" maxWidth="1.7976931348623157E308" prefWidth="453.0" styleClass="grid-pane" vgap="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="155.0" prefWidth="155.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="150.0" prefWidth="155.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="250.0" />
                                              </columnConstraints>
                                              <rowConstraints>
@@ -476,102 +1128,202 @@
                                                 <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Label text="Physical Strength" wrapText="true" />
-                                                <Label text="Mind Strength" wrapText="true" GridPane.rowIndex="1" />
-                                                <Label text="Perception" wrapText="true" GridPane.rowIndex="2" />
-                                                <Label text="Speed/Reflexes" wrapText="true" GridPane.rowIndex="3" />
-                                                <Label text="Dexterity" wrapText="true" GridPane.rowIndex="4" />
-                                                <Label text="Combat" wrapText="true" GridPane.rowIndex="5" />
-                                                <Label text="Persuasion/Manipulation" wrapText="true" GridPane.rowIndex="6" />
-                                                <Label text="Charisma" wrapText="true" GridPane.rowIndex="7" />
-                                                <Label text="Health" wrapText="true" GridPane.rowIndex="8" />
-                                                <Label text="Social skills" wrapText="true" GridPane.rowIndex="9" />
-                                                <Label text="Bravery" wrapText="true" GridPane.rowIndex="10" />
-                                                <Label text="Intelligence" wrapText="true" GridPane.rowIndex="11" />
-                                                <Label text="Confidence" wrapText="true" GridPane.rowIndex="12" />
-                                                <Label text="Self-esteem" wrapText="true" GridPane.rowIndex="13" />
-                                                <Label text="Views" wrapText="true" GridPane.rowIndex="14" />
-                                                <Label text="Humor" wrapText="true" GridPane.rowIndex="15" />
-                                                <Label text="Wisdom" wrapText="true" GridPane.rowIndex="16" />
-                                                <Label text="Empathy" wrapText="true" GridPane.rowIndex="17" />
-                                                <Label text="Sensitivity" wrapText="true" GridPane.rowIndex="18" />
-                                                <Label text="Creativity" wrapText="true" GridPane.rowIndex="19" />
+                                                <Pane styleClass="firstcol" />
+                                                <Label text="Physical Strength" wrapText="true">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="1" />
+                                                <Label text="Mind Strength" wrapText="true" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="2" />
+                                                <Label text="Perception" wrapText="true" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="3" />
+                                                <Label text="Speed/Reflexes" wrapText="true" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="4" />
+                                                <Label text="Dexterity" wrapText="true" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="5" />
+                                                <Label text="Combat" wrapText="true" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="6" />
+                                                <Label text="Persuasion/Manipulation" wrapText="true" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="7" />
+                                                <Label text="Charisma" wrapText="true" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="8" />
+                                                <Label text="Health" wrapText="true" GridPane.rowIndex="8">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="9" />
+                                                <Label text="Social skills" wrapText="true" GridPane.rowIndex="9">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="10" />
+                                                <Label text="Bravery" wrapText="true" GridPane.rowIndex="10">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="11" />
+                                                <Label text="Intelligence" wrapText="true" GridPane.rowIndex="11">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="12" />
+                                                <Label text="Confidence" wrapText="true" GridPane.rowIndex="12">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="13" />
+                                                <Label text="Self-esteem" wrapText="true" GridPane.rowIndex="13">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="14" />
+                                                <Label text="Views" wrapText="true" GridPane.rowIndex="14">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="15" />
+                                                <Label text="Humor" wrapText="true" GridPane.rowIndex="15">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="16" />
+                                                <Label text="Wisdom" wrapText="true" GridPane.rowIndex="16">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="17" />
+                                                <Label text="Empathy" wrapText="true" GridPane.rowIndex="17">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="18" />
+                                                <Label text="Sensitivity" wrapText="true" GridPane.rowIndex="18">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="firstcol" GridPane.rowIndex="19" />
+                                                <Label text="Creativity" wrapText="true" GridPane.rowIndex="19">
+                                                   <GridPane.margin>
+                                                      <Insets left="5.0" />
+                                                   </GridPane.margin></Label>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" />
                                                 <StatSlider fx:id="physicalStrengthSlider" GridPane.columnIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <StatSlider fx:id="mindStrengthSlider" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="168.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <StatSlider fx:id="perceptionSlider" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <StatSlider fx:id="speedSlider" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                 <StatSlider fx:id="dexteritySlider" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                                 <StatSlider fx:id="combatSlider" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                 <StatSlider fx:id="persuasionSlider" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                 <StatSlider fx:id="charismaSlider" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                                 <StatSlider fx:id="healthSlider" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                                                 <StatSlider fx:id="socialSkillsSlider" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                                                 <StatSlider fx:id="braverySlider" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                                                 <StatSlider fx:id="intelligenceSlider" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                                                 <StatSlider fx:id="confidenceSlider" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                                                 <StatSlider fx:id="selfEsteemSlider" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                                                 <StatSlider fx:id="viewsSlider" GridPane.columnIndex="1" GridPane.rowIndex="14">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                                                 <StatSlider fx:id="humorSlider" GridPane.columnIndex="1" GridPane.rowIndex="15">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="16" />
                                                 <StatSlider fx:id="wisdomSlider" GridPane.columnIndex="1" GridPane.rowIndex="16">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
-                                                <StatSlider fx:id="sensitivitySlider" GridPane.columnIndex="1" GridPane.rowIndex="18">
-                                                   <GridPane.margin>
-                                                      <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
-                                                   </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="17" />
                                                 <StatSlider fx:id="empathySlider" GridPane.columnIndex="1" GridPane.rowIndex="17">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
                                                    </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                                                <StatSlider fx:id="sensitivitySlider" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
+                                                   </GridPane.margin></StatSlider>
+                                                <Pane layoutX="13.0" layoutY="13.0" styleClass="seccol" GridPane.columnIndex="1" GridPane.rowIndex="19" />
                                                 <StatSlider fx:id="creativitySlider" GridPane.columnIndex="1" GridPane.rowIndex="19">
                                                    <GridPane.margin>
                                                       <Insets bottom="8.0" left="30.0" right="30.0" top="8.0" />
@@ -593,7 +1345,7 @@
             </AnchorPane>
             <AnchorPane fx:id="rightAnchorPane" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="145.0">
                <children>
-                  <VBox fx:id="vBox" alignment="TOP_CENTER" prefHeight="702.0" prefWidth="230.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="vBox" alignment="TOP_CENTER" prefHeight="702.0" prefWidth="230.0" styleClass="vbox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fx:id="profilePicImageView" fitHeight="193.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
                         <Label fx:id="nameRightLabel" alignment="CENTER" contentDisplay="RIGHT" text="Label">
