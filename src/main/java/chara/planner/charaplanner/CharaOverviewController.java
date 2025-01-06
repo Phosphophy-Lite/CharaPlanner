@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 
@@ -147,11 +148,20 @@ public class CharaOverviewController {
 
     @FXML
     private void initialize(){
-        nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
+        //initialize everything empty/default settings
         setStatSlidersLabels();
         showCharaDetails(null);
+
+        //styling color Picker
         colorPicker.getStyleClass().add("button");
 
+        //Styling profilePic image view by clipping to a rounded rectangle
+        Rectangle pfpClip = new Rectangle(profilePicImageView.getFitWidth(), profilePicImageView.getFitHeight());
+        pfpClip.setArcHeight(30);
+        pfpClip.setArcWidth(30);
+        profilePicImageView.setClip(pfpClip);
+
+        nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));
 
         //Creates a custom TableRow object for each row in the TableView to specify each row's behavior
