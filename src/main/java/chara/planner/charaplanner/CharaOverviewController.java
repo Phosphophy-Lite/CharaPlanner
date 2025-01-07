@@ -152,14 +152,17 @@ public class CharaOverviewController {
         setStatSlidersLabels();
         showCharaDetails(null);
 
-        //styling color Picker
-        colorPicker.getStyleClass().add("button");
-
         //Styling profilePic image view by clipping to a rounded rectangle
         Rectangle pfpClip = new Rectangle(profilePicImageView.getFitWidth(), profilePicImageView.getFitHeight());
         pfpClip.setArcHeight(30);
         pfpClip.setArcWidth(30);
         profilePicImageView.setClip(pfpClip);
+
+        //Styling refsheet image view the same way
+        Rectangle refsheetClip = new Rectangle(refsheetImageView.getFitWidth(), refsheetImageView.getFitHeight());
+        refsheetClip.setArcHeight(30);
+        refsheetClip.setArcWidth(30);
+        refsheetImageView.setClip(refsheetClip);
 
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));

@@ -1,0 +1,26 @@
+.slider .track{
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: #dcdfe4;
+    -fx-pref-height: 4px;
+}
+
+.slider .thumb{
+    -fx-background-color: #8590a2;
+    -fx-border-color: transparent;
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+.slider .thumb:hover{
+    -fx-background-color: #0c66e4;
+}
+
+.slider .axis{
+    -fx-tick-label-fill: #626f86;
+}
+
+.slider .axis .axis-tick-mark, .slider .axis .axis-minor-tick-mark {
+    -fx-fill: null;
+    -fx-stroke: #8590a2;
+}

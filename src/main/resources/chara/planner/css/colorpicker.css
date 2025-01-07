@@ -1,7 +1,0 @@
-.color-picker{
-    -fx-opacity : 1.0;
-}
-
-.color-picker > .label:disabled {
-    -fx-opacity : 1.0;
-}

@@ -18,20 +18,20 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
-   <tabs>
-      <Tab closable="false" text="Basic Informations">
-         <content>
-            <BorderPane>
-               <center>
+<BorderPane prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
+   <center>
+      <TabPane prefHeight="840.0" prefWidth="746.0">
+         <tabs>
+            <Tab closable="false" text="Basic Informations">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
                            <children>
                               <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="160.0" prefWidth="192.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="135.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="170.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="120.0" prefWidth="135.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="374.0" />
                                  </columnConstraints>
                                  <rowConstraints>
@@ -75,7 +75,7 @@
                                     <TextField fx:id="jobField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
                                     <TextField fx:id="jobPositionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
                                     <Label text="Profile picture" GridPane.rowIndex="16" />
-                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportProfilePic" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportProfilePic" styleClass="basic" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="16" />
                                     <Label fx:id="labelSelectedProfilePic" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="16" />
                                     <Label text="Nicknames/Titles" GridPane.rowIndex="3" />
                                     <Label text="Place of Birth" GridPane.rowIndex="8" />
@@ -114,25 +114,10 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="912.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Appearance">
-         <content>
-            <BorderPane>
-               <center>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Appearance">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
@@ -197,7 +182,7 @@
                                           <Insets bottom="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextArea>
-                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportRefsheet" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportRefsheet" styleClass="basic" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="15" />
                                     <Label text="Reference Sheet" GridPane.rowIndex="15" />
                                     <Label fx:id="labelSelectedRefsheet" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="15" />
                                  </children>
@@ -206,32 +191,17 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Personality">
-         <content>
-            <BorderPane>
-               <center>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Personality">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
                            <children>
                               <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="175.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="192.0" prefWidth="205.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
                                     <ColumnConstraints />
                                  </columnConstraints>
@@ -285,32 +255,17 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Story">
-         <content>
-            <BorderPane>
-               <center>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Story">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
                            <children>
                               <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="170.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="186.0" prefWidth="195.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
                                     <ColumnConstraints />
                                  </columnConstraints>
@@ -394,32 +349,17 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Relationships">
-         <content>
-            <BorderPane>
-               <center>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Relationships">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
                            <children>
                               <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="150.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="175.0" prefWidth="192.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
                                     <ColumnConstraints />
                                  </columnConstraints>
@@ -471,32 +411,17 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Trivia">
-         <content>
-            <BorderPane>
-               <center>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Trivia">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
                            <children>
                               <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="180.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="180.0" prefWidth="190.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
                                     <ColumnConstraints />
                                  </columnConstraints>
@@ -530,7 +455,7 @@
                                     <Label text="Dislikes" GridPane.rowIndex="13" />
                                     <Label fx:id="labelSelectedFile111" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="13" />
                                     <Label text="Voiceclaim" GridPane.rowIndex="3" />
-                                    <Label text="Favorite/Symbolic gemstone" GridPane.rowIndex="7" />
+                                    <Label prefHeight="42.0" prefWidth="299.0" text="Favorite/Symbolic gemstone" wrapText="true" GridPane.rowIndex="7" />
                                     <Label text="Favorite/Symbolic season" GridPane.rowIndex="8" />
                                     <Label text="Favorite/Symbolic place" GridPane.rowIndex="9" />
                                     <Label text="Favorite/Symbolic food" GridPane.rowIndex="10" />
@@ -568,25 +493,10 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-      <Tab closable="false" text="Stats">
-         <content>
-            <BorderPane>
-               <center>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Stats">
+               <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
                         <AnchorPane>
@@ -745,20 +655,20 @@
                         </AnchorPane>
                      </content>
                   </ScrollPane>
-               </center>
-               <bottom>
-                  <ButtonBar prefHeight="60.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-                     <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleOk" text="OK" />
-                        <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets right="20.0" />
-                     </padding>
-                  </ButtonBar>
-               </bottom>
-            </BorderPane>
-         </content>
-      </Tab>
-   </tabs>
-</TabPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <ButtonBar prefHeight="60.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+         <buttons>
+            <Button mnemonicParsing="false" onAction="#handleOk" styleClass="basic" text="OK" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="delete" text="Cancel" />
+         </buttons>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </ButtonBar>
+   </bottom>
+</BorderPane>

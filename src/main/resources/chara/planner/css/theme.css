@@ -1,6 +1,12 @@
 .hyperlink:visited {
     -fx-text-decoration:none;
     -fx-text-fill: #008ec0;
+    -fx-underline: false;
+}
+
+.hyperlink:armed {
+    -fx-underline: true;
+    -fx-text-fill: black;
 }
 
 .background {
@@ -47,8 +53,15 @@
     -fx-opacity: 1;
 }
 
-.table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
+.table-row-cell .table-cell{
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #44546f;
+}
+
+.table-row-cell:selected:focused .table-cell {
+    -fx-background-color: #e9f2ff;
+    -fx-text-fill: #0c66e4; /* A different color when both selected and focused */
 }
 
 .split-pane:horizontal > .split-pane-divider {
@@ -66,8 +79,11 @@
     -fx-base: #ffffff;
 }
 
-.scroll-pane{
+.scroll-pane, .scroll-pane:focused{
     -fx-base: #ffffff;
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 0;
+    -fx-padding: 0;
 }
 
 .scroll-pane .scroll-bar .thumb{
@@ -101,22 +117,43 @@
 }
 
 .menu-bar {
-    -fx-background-color: derive(red,20%);
+    -fx-background-color: #ffffff;
 }
 
 .context-menu {
     -fx-background-color: #ffffff;
 }
 
-.menu-bar .label {
-    -fx-font-size: 14pt;
+.menu-bar .menu .label{
+    -fx-font-size: 16px;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: purple;
-    -fx-opacity: 0.9;
+    -fx-text-fill: #44546f;
 }
 
-.menu .left-container {
-    -fx-background-color: black;
+.menu-bar .menu .menu-item .label{
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #44546f;
+}
+
+.menu-bar .menu:hover .label, .menu-bar .menu .menu-item:hover .label, .menu-bar .menu:showing .label, .menu-bar .menu .menu-item:focused .label{
+    -fx-text-fill: #0c66e4;
+}
+
+.menu-bar .menu:hover, .menu-bar .menu .menu-item:hover, .menu-bar .menu:focused, .menu-bar .menu:showing, .menu-bar .menu .menu-item:focused{
+    -fx-background-color: #e9f2ff;
+    -fx-cursor: hand;
+    -fx-focus-color: #e9f2ff;
+}
+
+.menu-bar .menu .menu-item .accelerator-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #44546f;
+    -fx-opacity: 0.7;
+}
+
+.menu-bar .menu .arrow {
+    -fx-background-color: #44546f;
 }
 
 .text-field {
@@ -140,6 +177,11 @@
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 4;
 }
+
+.button:hover{
+    -fx-cursor: hand;
+}
+
 .button.basic{
     -fx-background-color: #0c66e4;
 }
@@ -164,12 +206,6 @@
 .button.delete:pressed, .button.delete:default:hover:pressed {
     -fx-background-color: #c9372c;
     -fx-text-fill: #ffffff;
-}
-
-.button:disabled, .button:default:disabled {
-    -fx-opacity: 0.4;
-    -fx-background-color: #b3b9c4;
-    -fx-text-fill: #626f86;
 }
 
 .button:default {
@@ -207,6 +243,7 @@
 
 .tab-pane > .tab-header-area > .control-buttons-tab > .container > .tab-down-button .context-menu .radio-menu-item:hover {
     -fx-background-color: #f1f2f4;
+    -fx-cursor: hand;
 }
 
 .tab-pane > .tab-header-area > .control-buttons-tab > .container > .tab-down-button .context-menu .radio-menu-item:focused {
@@ -262,4 +299,58 @@
 
 .tab-pane > .tab-header-area > .tab-header-background{
     -fx-background-color: #d5d8dd;
+}
+
+#char-name {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #44546f;
+    -fx-font-weight: bold;
+    -fx-background-color: #f1f2f4;
+    -fx-background-radius: 8;
+}
+
+#quote{
+    -fx-font-style: italic;
+}
+
+.text-area{
+    -fx-background-color: -fx-control-inner-background;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-padding: 0em 0.1em 0em 0.1em; /* Match TextField padding */
+    -fx-border-color: #c8c8c8;
+    -fx-border-radius: 4;
+    -fx-border-insets: 0;
+    -fx-border-width: 1;
+    -fx-text-fill: #626f86;
+}
+
+.text-field{
+    -fx-text-fill: #626f86;
+}
+
+.color-picker{
+    -fx-opacity : 1.0;
+    -fx-color-rect-width: 40px;
+    -fx-color-rect-height: 20px;
+    -fx-background-color: #dcdfe4;
+    -fx-background-radius: 5;
+}
+
+.color-picker:hover{
+    -fx-background-color: #c4c7cc;
+    -fx-cursor: hand;
+}
+
+.color-picker > .label:disabled {
+    -fx-opacity : 1.0;
+}
+
+.color-picker > .label{
+    -fx-alignment: center;
+}
+
+.color-picker:disabled .arrow, .color-picker:disabled .arrow-button{
+    -fx-background-color: transparent;
 }

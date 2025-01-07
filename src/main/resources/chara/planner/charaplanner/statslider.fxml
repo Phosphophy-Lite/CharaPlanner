@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.VBox?>
 
-<fx:root type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <Slider fx:id="slider" blockIncrement="1.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" showTickLabels="true"
-            showTickMarks="true" snapToTicks="true" value="5.0"/>
+<fx:root stylesheets="@../css/statslider.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <Slider fx:id="slider" blockIncrement="1.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
 </fx:root>
