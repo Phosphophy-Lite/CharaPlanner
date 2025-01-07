@@ -66,8 +66,7 @@
 - Family Composition
 - Status
 
-For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option
-Can make registered character names to be clickable to go to their profile page
+For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option if multiple characters needed
 
 - Parental figures + label
 - Love interests + label
@@ -117,7 +116,6 @@ Can make registered character names to be clickable to go to their profile page
 ## Other
 - <strike>Reference pictures</strike>
 - <strike>Profile pic</strike>
-- Custom template theme
 - <strike>Associated color (color picker option)</strike>
 - <strike>Quote in right panel</strike>
 - <strike>Right panel : potential hyperlinks related to character (playlist...) ?</strike>
@@ -128,12 +126,11 @@ Can make registered character names to be clickable to go to their profile page
 - <strike>Recently opened files in File</strike>
 - <strike>About</strike>
 - <strike>Shortcuts</strike>
-
-- Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
-- Link items when referenced in a character sheet
-- Multiple tabs to access Character sheets / World items / Story items
 - CSS UI styling
+- App icon
 
 # Ideas of potential additional features
 - User creating custom templates for the sheets or add a new custom row and field option
-
+- Multiple tabs to access Character sheets / World items / Story items
+  * Classes for Weapons/Items/Deities/Species/Regions/Magic/Relationships/Groups/Timeline events etc
+- Dark theme
