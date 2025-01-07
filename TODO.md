@@ -66,8 +66,7 @@
 - Family Composition
 - Status
 
-For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option
-Can make registered character names to be clickable to go to their profile page
+For the following, consider using a scrollable tab with an add item option => scrollable list of registered character in the DB + "custom text" option if multiple characters needed
 
 - Parental figures + label
 - Love interests + label
