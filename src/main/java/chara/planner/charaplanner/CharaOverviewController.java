@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import java.util.Optional;
 
 import java.net.URL;
 
@@ -430,6 +431,7 @@ public class CharaOverviewController {
     private void showCharaDetails(Character chara){
         //initialize with everything empty
         setLabelsEmpty();
+        colorPicker.setValue(Color.WHITE); //reset Color Picker so it doesn't display the color of the character previously selected
         setImageView(profilePicImageView, "/chara/planner/img/Portrait_Placeholder.png",true, true);
         setImageView(refsheetImageView, "/chara/planner/img/RefSheet_Placeholder.png",true, false);
 
@@ -568,7 +570,19 @@ public class CharaOverviewController {
     public void handleDeleteChara(){
         int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
         if(selectedIndex >=0) {
-            tableView.getItems().remove(selectedIndex);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Character");
+            alert.setHeaderText("Are you sure?");
+            alert.setContentText("Selected character will be deleted.");
+
+            // Show the alert and wait for the user's response
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                tableView.getItems().remove(selectedIndex);
+                mainApp.fileIsModified = true;
+                mainApp.getStage().setTitle(mainApp.getStage().getTitle() + "*");
+            }
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -610,5 +624,4 @@ public class CharaOverviewController {
             alert.showAndWait();
         }
     }
-
 }

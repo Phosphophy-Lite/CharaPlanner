@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
+<BorderPane prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="chara.planner.charaplanner.CharacterEditDialogController">
    <center>
       <TabPane prefHeight="840.0" prefWidth="746.0">
          <tabs>

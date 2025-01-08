@@ -2,15 +2,12 @@ package chara.planner.charaplanner;
 
 import java.io.File;
 
-import javafx.beans.Observable;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import java.util.Optional;
 
 public class RootLayoutController {
     private MainApp mainApp;
@@ -26,14 +23,14 @@ public class RootLayoutController {
     @FXML // do not remove otherwise menu items won't update during exec
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        this.recentFilesMenu = new RecentFilesMenu("recentFiles", mainApp);
+        this.recentFilesMenu = new RecentFilesMenu("recentFiles", mainApp, this);
 
         ObservableList<String> menuItemsList = recentFilesMenu.getRecentEntriesList();
         bindMenutoObservableList(recentMenu, recentFilesMenu, menuItemsList);
         //recentMenu.getItems().clear();
         //recentMenu.getItems().addAll(recentFilesMenu.getItems());
-
     }
+
     //necessary to work
     private void bindMenutoObservableList(Menu menu, RecentFilesMenu recentFilesMenu, ObservableList<String> menuList){
         // Listen for changes in the observable list
@@ -71,8 +68,10 @@ public class RootLayoutController {
      */
     @FXML
     private void handleNew() {
-        mainApp.getCharaList().clear();
-        mainApp.setDataFilePath(null);
+        if(canCloseFile(mainApp.fileIsModified)){
+            mainApp.getCharaList().clear();
+            mainApp.setDataFilePath(null);
+        }
     }
 
     /**
@@ -80,19 +79,21 @@ public class RootLayoutController {
      */
     @FXML
     private void handleOpen() {
-        FileChooser fileChooser = new FileChooser();
+        if(canCloseFile(mainApp.fileIsModified)) {
+            FileChooser fileChooser = new FileChooser();
 
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
+            // Set extension filter
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                    "XML files (*.xml)", "*.xml");
+            fileChooser.getExtensionFilters().add(extFilter);
 
-        // Show open file dialog on top of stage
-        File file = fileChooser.showOpenDialog(mainApp.getStage());
+            // Show open file dialog on top of stage
+            File file = fileChooser.showOpenDialog(mainApp.getStage());
 
-        if (file != null) {
-            mainApp.loadDataFile(file);
-            recentFilesMenu.addEntry(file.getPath()); // adds the opened file to the recent files menu
+            if (file != null) {
+                mainApp.loadDataFile(file);
+                recentFilesMenu.addEntry(file.getPath()); // adds the opened file to the recent files menu
+            }
         }
     }
 
@@ -135,9 +136,40 @@ public class RootLayoutController {
         }
     }
 
+    public boolean canCloseFile(boolean fileIsModified) {
+        if(fileIsModified){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Exit");
+            alert.setHeaderText("File contains unsaved changes");
+            alert.setContentText("File has been modified. Do you want to save?");
+
+            ButtonType buttonTypeSave = new ButtonType("Save...");
+            ButtonType buttonTypeDontSave = new ButtonType("Do not save");
+            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            alert.getButtonTypes().setAll(buttonTypeSave, buttonTypeDontSave, buttonTypeCancel);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.isPresent()){
+                if(result.get() == buttonTypeSave){
+                    handleSave();
+                }
+                else if (result.get() == buttonTypeCancel) {
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+
     @FXML
     private void handleExit() {
-        System.exit(0);
+        if(canCloseFile(mainApp.fileIsModified)){
+            System.exit(0);
+        }
     }
 
     @FXML

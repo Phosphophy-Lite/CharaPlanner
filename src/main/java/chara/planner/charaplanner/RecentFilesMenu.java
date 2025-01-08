@@ -15,15 +15,17 @@ public class RecentFilesMenu extends Menu {
     private static final int MAX_RECENT_FILES = 8;
     private ObservableList<String> recentEntries;
     private MainApp mainApp;
+    private RootLayoutController rootController;
 
     /**
      * Create a new instance of RecentFileMenu.
      * @param name The name of this menu, not displayed but used to store the
     list of recently used file names.
      */
-    public RecentFilesMenu(String name, MainApp mainApp){
+    public RecentFilesMenu(String name, MainApp mainApp, RootLayoutController rootController){
         super();
         this.mainApp = mainApp;
+        this.rootController = rootController; // needed to use the canCloseFile() method in openRecentFile()
 
         this.recentEntries = FXCollections.observableArrayList();
 
@@ -131,21 +133,25 @@ public class RecentFilesMenu extends Menu {
      * @param filePath The path of the recently opened file that gets clicked on
      */
     public void openRecentFile(String filePath) {
-        File file = new File(filePath);
-        if (file.exists()) {
-            mainApp.loadDataFile(file); // Call loadDataFile from MainApp
-            addEntry(filePath); // add opened File to list of recently opened files
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("File not found");
-            alert.setContentText("File: " + file.getPath() + " was probably moved to another path or deleted and could not be found.\n");
-            alert.showAndWait();
-            removeEntry(filePath);
+        if(rootController.canCloseFile(mainApp.fileIsModified)){ //check first with user if current file is okay to close (if modifications)
+            File file = new File(filePath);
+            if (file.exists()) {
+                mainApp.loadDataFile(file); // Call loadDataFile from MainApp
+                addEntry(filePath); // add opened File to list of recently opened files
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("File not found");
+                alert.setContentText("File: " + file.getPath() + " was probably moved to another path or deleted and could not be found.\n");
+                alert.showAndWait();
+                removeEntry(filePath);
+            }
         }
+
     }
 
     public ObservableList<String> getRecentEntriesList(){
         return recentEntries;
     }
+
 }

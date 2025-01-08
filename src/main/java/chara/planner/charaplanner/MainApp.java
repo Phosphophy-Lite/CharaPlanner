@@ -27,6 +27,8 @@ public class MainApp extends Application {
 
     private Stage stage;
     private BorderPane rootLayout;
+    public boolean fileIsModified = false;
+    private RootLayoutController rootController;
 
     //ObservableList : array that is an ArrayList but that is necessary for javaFx to add a listener to the changes made to it so the UI can be updated
     private ObservableList<Character> charaData = FXCollections.observableArrayList();
@@ -44,11 +46,18 @@ public class MainApp extends Application {
         stage.setMinHeight(675);
         stage.setMinWidth(800);
 
-        RootLayoutController rootController = initRootLayout();
+        rootController = initRootLayout();
         CharaOverviewController charaOverviewController = initCharaOverview();
 
         rootController.setCharaOverviewController(charaOverviewController);
 
+        // If user clicks on cross to close the app, show warning dialog box if fileIsModified = true and cancel event depending on user choice
+        stage.setOnCloseRequest(event -> {
+            if (!rootController.canCloseFile(fileIsModified)) {
+                // If the function returns false, consume the event to prevent closing
+                event.consume();
+            }
+        });
     }
 
     public RootLayoutController initRootLayout() throws IOException {
@@ -107,6 +116,10 @@ public class MainApp extends Application {
         }
     }
 
+    /**
+     * Set the current database file path and remembers it in the preferences
+     * @param file : set to null for a newly created empty unsaved file
+     */
     public void setDataFilePath(File file){
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         if(file != null){
@@ -115,6 +128,9 @@ public class MainApp extends Application {
         }else{
             prefs.remove("filePath");
             stage.setTitle("Character Planner");
+
+            //Reset modified status for the new created file
+            fileIsModified = false;
         }
     }
 
@@ -132,6 +148,9 @@ public class MainApp extends Application {
 
             // Save the file path to the registry.
             setDataFilePath(file);
+
+            //Reset modified status for the new opened file
+            fileIsModified = false;
         }catch (Exception exception){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -159,6 +178,9 @@ public class MainApp extends Application {
 
             // Save the file path to the registry.
             setDataFilePath(file);
+
+            //Update status of current file
+            fileIsModified = false;
         } catch (Exception exception) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -201,6 +223,12 @@ public class MainApp extends Application {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
+            //if OK button is clicked, consider there are unsaved modifications to the character database
+            if(controller.isOkClicked()){
+                stage.setTitle(stage.getTitle() + "*");
+                fileIsModified = true;
+            }
+
             return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
@@ -234,6 +262,12 @@ public class MainApp extends Application {
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
+
+            //if OK button is clicked, consider there are unsaved modifications to the character database
+            if(controller.isOkClicked()){
+                stage.setTitle(stage.getTitle() + "*");
+                fileIsModified = true;
+            }
 
             return controller.isOkClicked();
         } catch (IOException e) {
