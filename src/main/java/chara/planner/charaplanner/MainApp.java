@@ -182,9 +182,12 @@ public class MainApp extends Application {
             dialogStage.setTitle("Edit Character");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(stage);
+
+            dialogStage.setMinHeight(400);
+            dialogStage.setMinWidth(300);
+
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-
 
             CharacterEditDialogController controller = loader.getController();
 
@@ -217,6 +220,10 @@ public class MainApp extends Application {
             dialogStage.setTitle("Create Character");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(stage);
+
+            dialogStage.setMinHeight(220);
+            dialogStage.setMinWidth(400);
+
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 

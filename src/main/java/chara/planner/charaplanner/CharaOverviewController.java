@@ -1,6 +1,7 @@
 package chara.planner.charaplanner;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -153,16 +154,8 @@ public class CharaOverviewController {
         showCharaDetails(null);
 
         //Styling profilePic image view by clipping to a rounded rectangle
-        Rectangle pfpClip = new Rectangle(profilePicImageView.getFitWidth(), profilePicImageView.getFitHeight());
-        pfpClip.setArcHeight(30);
-        pfpClip.setArcWidth(30);
-        profilePicImageView.setClip(pfpClip);
-
-        //Styling refsheet image view the same way
-        Rectangle refsheetClip = new Rectangle(refsheetImageView.getFitWidth(), refsheetImageView.getFitHeight());
-        refsheetClip.setArcHeight(30);
-        refsheetClip.setArcWidth(30);
-        refsheetImageView.setClip(refsheetClip);
+        clipImgToRectangle(profilePicImageView, profilePicImageView.getFitWidth(), profilePicImageView.getFitHeight());
+        clipImgToRectangle(refsheetImageView, refsheetImageView.getFitWidth(), refsheetImageView.getFitHeight());
 
         nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));
@@ -207,6 +200,49 @@ public class CharaOverviewController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         tableView.setItems(mainApp.getCharaList());
+    }
+
+    private void clipImgToRectangle(ImageView imgView, double width, double height){ // clips image views to rectangle with rounded corners
+        Rectangle clip = new Rectangle(width, height);
+        clip.setArcHeight(30);
+        clip.setArcWidth(30);
+        imgView.setClip(clip);
+    }
+
+    private void centerCropImage(ImageView imgView){
+        Image img = imgView.getImage();
+        if(img != null) {
+            double imageWidth = img.getWidth();
+            double imageHeight = img.getHeight();
+
+            double fitWidth = imgView.getFitWidth();
+            double fitHeight = imgView.getFitHeight();
+
+            // Calculate aspect ratios
+            double imageRatio = imageWidth / imageHeight;
+            double imgVewRatio = fitWidth / fitHeight;
+
+            double viewportWidth, viewportHeight;
+            double x, y;
+
+            if (imageRatio > imgVewRatio) {
+                // Image is wider than the view: adjust width and crop horizontally
+                viewportHeight = imageHeight;
+                viewportWidth = viewportHeight * imgVewRatio;
+                x = (imageWidth - viewportWidth) / 2; // Center horizontally
+                y = 0;
+            } else {
+                // Image is taller than the view: adjust height and crop vertically
+                viewportWidth = imageWidth;
+                viewportHeight = viewportWidth / imgVewRatio;
+                x = 0;
+                y = (imageHeight - viewportHeight) / 2; // Center vertically
+            }
+
+            // Set the viewport for proper center cropping
+            Rectangle2D viewport = new Rectangle2D(x, y, viewportWidth, viewportHeight);
+            imgView.setViewport(viewport);
+        }
     }
 
     private void setLabelsEmpty(){ // ugly but using a list with indexes instead of individual labels with names would be confusing and only usable here
@@ -327,6 +363,30 @@ public class CharaOverviewController {
         creativitySlider.setCustomLabels("Low", "Average", "High");
     }
 
+    private double[] getScaledDimensions(ImageView imgView) {
+        Image image = imgView.getImage();
+        if (image == null) return new double[]{0, 0};
+
+        double imageWidth = image.getWidth();
+        double imageHeight = image.getHeight();
+        double fitWidth = imgView.getFitWidth();
+        double fitHeight = imgView.getFitHeight();
+
+        // scaling factors
+        double scaleX = fitWidth / imageWidth;
+        double scaleY = fitHeight / imageHeight;
+
+        // use the smaller scale to preserve the aspect ratio
+        double scale = Math.min(scaleX, scaleY);
+
+        // new displayed dimensions
+        double displayedWidth = imageWidth * scale;
+        double displayedHeight = imageHeight * scale;
+
+        return new double[]{displayedWidth, displayedHeight};
+    }
+
+
     private void setLink(Hyperlink link, Link charaLink){
         if(charaLink != null){
             String charaLinkLabel = charaLink.getLinkLabel();
@@ -343,7 +403,7 @@ public class CharaOverviewController {
         }
     }
 
-    private void setImageView(ImageView imgView, String path, boolean isDefault){
+    private void setImageView(ImageView imgView, String path, boolean isDefault, boolean centerCrop){
         if(!path.isEmpty()){
             if(isDefault){
                 URL defaultPicUrl = getClass().getResource(path);
@@ -356,14 +416,22 @@ public class CharaOverviewController {
                 Image img = new Image("file:" + path);
                 imgView.setImage(img);
             }
+            if(centerCrop){
+                centerCropImage(imgView);
+            }
+            if(imgView.isPreserveRatio()){
+                // if preserve ratio modifies the size of this imageView, reset the rectangle properly with the new image
+                double[] dimensions = getScaledDimensions(imgView);
+                clipImgToRectangle(imgView, dimensions[0], dimensions[1]);
+            }
         }
     }
 
     private void showCharaDetails(Character chara){
         //initialize with everything empty
         setLabelsEmpty();
-        setImageView(profilePicImageView, "/chara/planner/img/Portrait_Placeholder.png",true);
-        setImageView(refsheetImageView, "/chara/planner/img/RefSheet_Placeholder.png",true);
+        setImageView(profilePicImageView, "/chara/planner/img/Portrait_Placeholder.png",true, true);
+        setImageView(refsheetImageView, "/chara/planner/img/RefSheet_Placeholder.png",true, false);
 
         //fill non blank fields of character
         if(chara != null){
@@ -399,7 +467,7 @@ public class CharaOverviewController {
                 weaponsLabel.setText(chara.getAppearance().getWeapons());
                 medicalLabel.setText(chara.getAppearance().getMedical());
                 physDescLabel.setText(chara.getAppearance().getDesc());
-                setImageView(refsheetImageView, chara.getAppearance().getRefsheetPath(),false);
+                setImageView(refsheetImageView, chara.getAppearance().getRefsheetPath(),false, false);
             }
             if(chara.getPersonality() != null){
                 traitsLabel.setText(chara.getPersonality().getTraits());
@@ -492,7 +560,7 @@ public class CharaOverviewController {
             setLink(link2, chara.getLink2());
             setLink(link3, chara.getLink3());
 
-            setImageView(profilePicImageView, chara.getProfilePicPath(),false);
+            setImageView(profilePicImageView, chara.getProfilePicPath(),false, true);
         }
     }
 

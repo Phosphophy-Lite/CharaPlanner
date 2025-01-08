@@ -19,14 +19,11 @@ public class RootLayoutController {
 
     @FXML private Menu recentMenu;
 
-    @FXML
-    private MenuBar menuBar;
-
     /**
      * Is called by the main application to give a reference back to itself. Also takes care of the recently opened files menu.
      * @param mainApp
      */
-    @FXML // do not remove otherwise menu items wont update during exec
+    @FXML // do not remove otherwise menu items won't update during exec
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         this.recentFilesMenu = new RecentFilesMenu("recentFiles", mainApp);
@@ -37,7 +34,7 @@ public class RootLayoutController {
         //recentMenu.getItems().addAll(recentFilesMenu.getItems());
 
     }
-    //necessary, do not remove (i know i wrote spaghetti code everywhere but im lost at this point, i just know it works with this)
+    //necessary to work
     private void bindMenutoObservableList(Menu menu, RecentFilesMenu recentFilesMenu, ObservableList<String> menuList){
         // Listen for changes in the observable list
         menuList.addListener((ListChangeListener<String>) change -> {

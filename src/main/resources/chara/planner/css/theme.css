@@ -354,3 +354,20 @@
 .color-picker:disabled .arrow, .color-picker:disabled .arrow-button{
     -fx-background-color: transparent;
 }
+
+.combo-box .list-cell{
+    -fx-background-color: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #44546f;
+}
+
+.combo-box .list-cell:hover{
+    -fx-background-color: #f1f2f4;
+    -fx-cursor: hand;
+}
+
+.combo-box .list-cell:selected{
+    -fx-background-color: #e9f2ff;
+    -fx-text-fill: #0c66e4;
+}

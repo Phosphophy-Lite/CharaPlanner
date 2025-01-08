@@ -288,7 +288,7 @@
                                     <Label text="Plot Role" />
                                     <TextField fx:id="plotRoleField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                                     <Label text="Backstory" GridPane.rowIndex="1" />
-                                    <TextArea fx:id="backstoryArea" prefHeight="100.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                    <TextArea fx:id="backstoryArea" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -388,7 +388,7 @@
                                     <Label text="Relationship Status" GridPane.rowIndex="3" />
                                     <TextField fx:id="relationshipStatusField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                                     <Label text="Parent A" GridPane.rowIndex="4" />
-                                    <ComboBox fx:id="parentA" editable="true" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <ComboBox fx:id="parentA" editable="true" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <Label text="Parent B" GridPane.rowIndex="5" />
                                     <Label text="Sibling(s)" GridPane.rowIndex="6" />
                                     <Label text="Best Friend(s)" GridPane.rowIndex="7" />
@@ -397,14 +397,14 @@
                                     <Label text="Mentor(s)" GridPane.rowIndex="10" />
                                     <Label text="Apprentice(s)/Student(s)" GridPane.rowIndex="11" />
                                     <Label text="Nemesis" GridPane.rowIndex="12" />
-                                    <ComboBox fx:id="parentB" editable="true" layoutX="202.0" layoutY="155.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <ComboBox fx:id="siblings" editable="true" layoutX="202.0" layoutY="190.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <ComboBox fx:id="bestFriend" editable="true" layoutX="202.0" layoutY="225.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <ComboBox fx:id="significantOther" editable="true" layoutX="202.0" layoutY="260.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                    <ComboBox fx:id="rival" editable="true" layoutX="202.0" layoutY="295.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                    <ComboBox fx:id="mentor" editable="true" layoutX="202.0" layoutY="330.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                    <ComboBox fx:id="apprentice" editable="true" layoutX="202.0" layoutY="365.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                    <ComboBox fx:id="nemesis" editable="true" layoutX="202.0" layoutY="400.0" prefHeight="26.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                    <ComboBox fx:id="parentB" editable="true" layoutX="202.0" layoutY="155.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <ComboBox fx:id="siblings" editable="true" layoutX="202.0" layoutY="190.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <ComboBox fx:id="bestFriend" editable="true" layoutX="202.0" layoutY="225.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <ComboBox fx:id="significantOther" editable="true" layoutX="202.0" layoutY="260.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                    <ComboBox fx:id="rival" editable="true" layoutX="202.0" layoutY="295.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <ComboBox fx:id="mentor" editable="true" layoutX="202.0" layoutY="330.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                    <ComboBox fx:id="apprentice" editable="true" layoutX="202.0" layoutY="365.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                    <ComboBox fx:id="nemesis" editable="true" layoutX="202.0" layoutY="400.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                                  </children>
                               </GridPane>
                            </children>

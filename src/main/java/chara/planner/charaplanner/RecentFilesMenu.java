@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 
@@ -105,6 +106,12 @@ public class RecentFilesMenu extends Menu {
         saveRecentEntries();
     }
 
+    private void removeEntry(String filePath){
+        recentEntries.remove(filePath);
+        updateMenuItems();
+        saveRecentEntries();
+    }
+
     /**
      * Updates the Recently opened files menu with menu items for each recent entry
      */
@@ -129,7 +136,12 @@ public class RecentFilesMenu extends Menu {
             mainApp.loadDataFile(file); // Call loadDataFile from MainApp
             addEntry(filePath); // add opened File to list of recently opened files
         } else {
-            System.out.println("File not found: " + filePath);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("File not found");
+            alert.setContentText("File: " + file.getPath() + " was probably moved to another path or deleted and could not be found.\n");
+            alert.showAndWait();
+            removeEntry(filePath);
         }
     }
 
