@@ -8,13 +8,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import java.util.Optional;
+import java.util.prefs.Preferences;
 
 public class RootLayoutController {
     private MainApp mainApp;
     private CharaOverviewController charaOverviewController;
     private RecentFilesMenu recentFilesMenu;
+    private static String lastVisitedDirectory;
 
     @FXML private Menu recentMenu;
+
+    @FXML
+    private void initialize() {
+        lastVisitedDirectory = getLastVisitedDirectoryPath();
+    }
 
     /**
      * Is called by the main application to give a reference back to itself. Also takes care of the recently opened files menu.
@@ -81,6 +88,7 @@ public class RootLayoutController {
     private void handleOpen() {
         if(canCloseFile(mainApp.fileIsModified)) {
             FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
 
             // Set extension filter
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
@@ -91,6 +99,7 @@ public class RootLayoutController {
             File file = fileChooser.showOpenDialog(mainApp.getStage());
 
             if (file != null) {
+                lastVisitedDirectory = setLastVisitedDirectoryPath(file);
                 mainApp.loadDataFile(file);
                 recentFilesMenu.addEntry(file.getPath()); // adds the opened file to the recent files menu
             }
@@ -117,6 +126,7 @@ public class RootLayoutController {
     @FXML
     private void handleSaveAs() {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
 
         // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
@@ -131,6 +141,7 @@ public class RootLayoutController {
             if (!file.getPath().endsWith(".xml")) {
                 file = new File(file.getPath() + ".xml");
             }
+            lastVisitedDirectory = setLastVisitedDirectoryPath(file);
             mainApp.saveCharaDataToFile(file);
             recentFilesMenu.addEntry(file.getPath()); // add in the recently opened files
         }
@@ -190,5 +201,25 @@ public class RootLayoutController {
     @FXML
     private void handleAbout(){
         mainApp.showAboutDialog();
+    }
+
+    private String setLastVisitedDirectoryPath(File file){
+        if(file!= null && file.getParent() != null){
+            Preferences prefs = Preferences.userNodeForPackage(RootLayoutController.class);
+            prefs.put("xmlLastVisitedDirectory", file.getParent());
+            return file.getParent();
+        }
+        return System.getProperty("user.home");
+    }
+
+    private String getLastVisitedDirectoryPath(){
+        Preferences prefs = Preferences.userNodeForPackage(RootLayoutController.class);
+        String dirPath = prefs.get("xmlLastVisitedDirectory", null);
+        if(dirPath != null){
+            return dirPath;
+        }
+        else{
+            return System.getProperty("user.home");
+        }
     }
 }

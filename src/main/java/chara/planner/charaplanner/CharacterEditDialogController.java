@@ -12,6 +12,8 @@ import javafx.util.StringConverter;
 import java.util.List;
 import java.util.Optional;
 import javafx.collections.FXCollections;
+
+import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
 
 import java.io.File;
@@ -144,6 +146,8 @@ public class CharacterEditDialogController {
     @FXML private TextField link3UrlField;
 
     private Character character;
+    private static String lastVisitedDirectory;
+
 
     private boolean okClicked = false;
     private Stage dialogStage;
@@ -189,6 +193,7 @@ public class CharacterEditDialogController {
         enableAllStatSliders(statSlidersList);
         setupAllComboBoxes(comboBoxesList);
 
+        lastVisitedDirectory = getLastVisitedDirectoryPath();
     }
 
     public void setDialogStage(Stage dialogStage){
@@ -590,27 +595,34 @@ public class CharacterEditDialogController {
     }
 
     @FXML
-    private void handleImportProfilePic() {
+    private void handleImportImage(int num){
         FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File(lastVisitedDirectory));
         fc.setTitle("Open picture file");
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
         File f = fc.showOpenDialog(null);
+
         if(f!=null){
-            profilePicPath = f.getAbsolutePath();
-            labelSelectedProfilePic.setText("Selected File: " + f.getAbsolutePath());
+            lastVisitedDirectory = setLastVisitedDirectoryPath(f);
+            if(num == 0){
+                profilePicPath = f.getAbsolutePath();
+                labelSelectedProfilePic.setText("Selected File: " + f.getAbsolutePath());
+            }
+            else{
+                refsheetPath = f.getAbsolutePath();
+                labelSelectedRefsheet.setText("Selected File: " + f.getAbsolutePath());
+            }
         }
     }
 
     @FXML
+    private void handleImportProfilePic() {
+        handleImportImage(0);
+    }
+
+    @FXML
     private void handleImportRefsheet() {
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Open picture file");
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
-        File f = fc.showOpenDialog(null);
-        if(f!=null){
-            refsheetPath = f.getAbsolutePath();
-            labelSelectedRefsheet.setText("Selected File: " + f.getAbsolutePath());
-        }
+        handleImportImage(1);
     }
 
     public void populateComboBoxes(MainApp mainApp) {  //populate comboBoxes with the charaData list without the edited character
@@ -621,6 +633,26 @@ public class CharacterEditDialogController {
 
         for(ComboBox<Character> comboBox : this.comboBoxesList){
             comboBox.setItems(charaData);
+        }
+    }
+
+    private String setLastVisitedDirectoryPath(File file){
+        if(file!= null && file.getParent() != null){
+            Preferences prefs = Preferences.userNodeForPackage(CharacterEditDialogController.class);
+            prefs.put("imgLastVisitedDirectory", file.getParent());
+            return file.getParent();
+        }
+        return System.getProperty("user.home");
+    }
+
+    private String getLastVisitedDirectoryPath(){
+        Preferences prefs = Preferences.userNodeForPackage(CharacterEditDialogController.class);
+        String dirPath = prefs.get("imgLastVisitedDirectory", null);
+        if(dirPath != null){
+            return dirPath;
+        }
+        else{
+            return System.getProperty("user.home");
         }
     }
 }
