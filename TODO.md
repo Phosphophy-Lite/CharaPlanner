@@ -126,7 +126,10 @@ For the following, consider using a scrollable tab with an add item option => sc
 - <strike>Recently opened files in File</strike>
 - <strike>About</strike>
 - <strike>Shortcuts</strike>
-- CSS UI styling
+
+## Other
+- <strike>CSS UI styling</strike>
+- <strike>Dialog boxes warnings for unsaved changes / keep track of changes in file</strike>
 - App icon
 
 # Ideas of potential additional features
