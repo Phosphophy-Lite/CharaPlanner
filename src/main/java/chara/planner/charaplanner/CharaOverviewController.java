@@ -168,17 +168,27 @@ public class CharaOverviewController {
             //Attach a ContextMenu to the row
             ContextMenu rowMenu = new ContextMenu();
             MenuItem deleteItem = new MenuItem("Delete");
+            MenuItem editItem = new MenuItem("Edit");
 
             //Specify action of Delete item (remove character from the Table)
             deleteItem.setOnAction(event -> {
                 Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
                 if(selectedCharacter != null) {
-                    tableView.getItems().remove(selectedCharacter);
-
+                    handleDeleteChara();
                 }
             });
-            //Attach delete item to the context menu
+
+            //Specify action of Delete item (remove character from the Table)
+            editItem.setOnAction(event -> {
+                Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
+                if(selectedCharacter != null) {
+                    handleEditChara();
+                }
+            });
+
+            //Attach items to the context menu
             rowMenu.getItems().add(deleteItem);
+            rowMenu.getItems().add(editItem);
 
             //Only show the context menu if the row is not empty
             row.setOnContextMenuRequested(event -> {
