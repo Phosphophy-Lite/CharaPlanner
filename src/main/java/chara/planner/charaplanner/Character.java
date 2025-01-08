@@ -25,6 +25,7 @@ public class Character {
         this(null, null, null, null, null, null, null, null, null);
     }
 
+    //With arguments for testing purposes
     public Character(String displayName, String firstName, String lastName, String birthDate, String gender, String age, String job, String jobPosition, String profilePicPath) {
         this.displayName = new SimpleStringProperty(displayName);
         this.basicInfos = new SimpleObjectProperty<BasicInfos>(new BasicInfos(firstName, lastName, birthDate, gender, age, job, jobPosition));

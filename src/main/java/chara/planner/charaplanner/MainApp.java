@@ -34,8 +34,7 @@ public class MainApp extends Application {
     private ObservableList<Character> charaData = FXCollections.observableArrayList();
 
     public MainApp(){
-        charaData.add(new Character("Wolfie", "Wolfgang", "Richthofer", "23/10/????", "Male", "22", "Student", "Literature", ""));
-        charaData.add(new Character("Velleius(Mage)", "Velleius", "Vitalis", "500 av JC", "Male", "1200+", "Sage of the Council", "Archivist/Mage", ""));
+
     }
 
     @Override
