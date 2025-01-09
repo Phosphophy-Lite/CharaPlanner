@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="charaplanner.CharacterEditDialogController">
+<BorderPane prefHeight="800.0" prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="charaplanner.CharacterEditDialogController">
    <center>
       <TabPane prefHeight="840.0" prefWidth="746.0">
          <tabs>
@@ -28,7 +28,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="170.0" prefWidth="192.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="120.0" prefWidth="135.0" />
@@ -111,6 +111,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
@@ -122,7 +125,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="150.0" prefWidth="192.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="135.0" />
@@ -188,6 +191,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
@@ -199,7 +205,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="192.0" prefWidth="205.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
@@ -252,6 +258,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
@@ -263,7 +272,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="186.0" prefWidth="195.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
@@ -346,6 +355,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
@@ -357,7 +369,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="175.0" prefWidth="192.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
@@ -408,6 +420,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
@@ -419,7 +434,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="180.0" prefWidth="190.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
@@ -490,6 +505,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>
@@ -501,7 +519,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" vgap="5.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="120.0" prefWidth="164.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="683.0" />
@@ -652,6 +670,9 @@
                                  </children>
                               </GridPane>
                            </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
                         </AnchorPane>
                      </content>
                   </ScrollPane>

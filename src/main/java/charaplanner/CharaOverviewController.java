@@ -591,7 +591,12 @@ public class CharaOverviewController {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 tableView.getItems().remove(selectedIndex);
                 mainApp.fileIsModified = true;
-                mainApp.getStage().setTitle(mainApp.getStage().getTitle() + "*");
+                String title = mainApp.getStage().getTitle();
+                if(!title.endsWith("*")){
+                    mainApp.getStage().setTitle(title + "*");
+                }
+
+
             }
         }
         else{

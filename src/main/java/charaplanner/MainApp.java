@@ -217,11 +217,11 @@ public class MainApp extends Application {
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(stage);
 
-            dialogStage.setMinHeight(400);
-            dialogStage.setMinWidth(300);
-
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
+
+            dialogStage.setMinHeight(400);
+            dialogStage.setMinWidth(300);
 
             CharacterEditDialogController controller = loader.getController();
 
@@ -237,7 +237,9 @@ public class MainApp extends Application {
 
             //if OK button is clicked, consider there are unsaved modifications to the character database
             if(controller.isOkClicked()){
-                stage.setTitle(stage.getTitle() + "*");
+                if(!stage.getTitle().endsWith("*")){
+                    stage.setTitle(stage.getTitle() + "*");
+                }
                 fileIsModified = true;
             }
 
@@ -277,7 +279,9 @@ public class MainApp extends Application {
 
             //if OK button is clicked, consider there are unsaved modifications to the character database
             if(controller.isOkClicked()){
-                stage.setTitle(stage.getTitle() + "*");
+                if(!stage.getTitle().endsWith("*")){
+                    stage.setTitle(stage.getTitle() + "*");
+                }
                 fileIsModified = true;
             }
 

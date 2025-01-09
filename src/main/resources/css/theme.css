@@ -48,9 +48,10 @@
 
 .table-view .column-header .label {
     -fx-font-size: 20pt;
-    -fx-font-family: "Segoe UI Light";
+    -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #44546f;
     -fx-opacity: 1;
+    -fx-font-weight: bold;
 }
 
 .table-row-cell .table-cell{
