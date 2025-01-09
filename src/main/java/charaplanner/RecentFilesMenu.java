@@ -35,16 +35,29 @@ public class RecentFilesMenu extends Menu {
         });
 
         // Figure out path to save the recent file list
-        this.pathToFile = System.getProperty("user.dir"); //Try to get the current working directory
+        this.pathToFile = System.getProperty("user.home"); //Try to get the home directory
 
-        if((this.pathToFile==null) || (this.pathToFile.length() <= 0)){
-            this.pathToFile=new String(name+".recent"); //probably unreachable
-        }
-        else if(this.pathToFile.endsWith(File.separator)){
-            this.pathToFile=this.pathToFile+name+".recent";
-        }
-        else{
-            this.pathToFile=this.pathToFile+File.separator+name+".recent";
+        try {
+            // Locate user home directory
+            this.pathToFile = System.getProperty("user.home");
+
+            // Create CharaPlanner subdirectory
+            File charaPlannerDir = new File(this.pathToFile, "CharaPlanner");
+            if (!charaPlannerDir.exists()) {
+                if (!charaPlannerDir.mkdirs()) {
+                    System.err.println("Warning: Failed to create CharaPlanner subdirectory. Using default path.");
+                    this.pathToFile = name + ".recent"; // Fallback to default
+                    return;
+                }
+            }
+
+            // Construct the path to the .recent file
+            File recentFile = new File(charaPlannerDir, name + ".recent");
+            this.pathToFile = recentFile.getAbsolutePath();
+        } catch (Exception e) {
+            // Log the error and fallback
+            System.err.println("Warning: Unable to determine path to save recent file list. " + e.getMessage());
+            this.pathToFile = name + ".recent"; // Fallback to default
         }
 
         //Load recent entries from the .recent file
