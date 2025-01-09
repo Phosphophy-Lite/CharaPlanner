@@ -1,4 +1,4 @@
-module chara.planner.charaplanner {
+module charaplanner {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -9,6 +9,6 @@ module chara.planner.charaplanner {
     requires jakarta.activation;
     requires java.desktop;
 
-    opens chara.planner.charaplanner to javafx.fxml, jakarta.xml.bind;
-    exports chara.planner.charaplanner;
+    opens charaplanner to javafx.fxml, jakarta.xml.bind;
+    exports charaplanner;
 }
