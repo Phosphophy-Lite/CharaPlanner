@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import charaplanner.StatSlider?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="charaplanner.CharacterEditDialogController">
+   <center>
+      <TabPane prefHeight="840.0" prefWidth="746.0">
+         <tabs>
+            <Tab closable="false" text="Basic Informations">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="170.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="120.0" prefWidth="135.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="374.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="First name" GridPane.rowIndex="1" />
+                                    <Label text="Last name" GridPane.rowIndex="2" />
+                                    <Label text="Gender" GridPane.rowIndex="4" />
+                                    <Label text="Age" GridPane.rowIndex="6" />
+                                    <Label text="Date of Birth" GridPane.rowIndex="7" />
+                                    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                                    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <TextField fx:id="genderField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                    <TextField fx:id="ageField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                                    <TextField fx:id="birthDateField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                    <Label text="Display name" />
+                                    <TextField fx:id="displayNameField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <Label text="Job/Class" GridPane.rowIndex="12" />
+                                    <Label text="Job Position/Rank" GridPane.rowIndex="13" />
+                                    <TextField fx:id="jobField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                                    <TextField fx:id="jobPositionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                                    <Label text="Profile picture" GridPane.rowIndex="16" />
+                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportProfilePic" styleClass="basic" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                                    <Label fx:id="labelSelectedProfilePic" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+                                    <Label text="Nicknames/Titles" GridPane.rowIndex="3" />
+                                    <Label text="Place of Birth" GridPane.rowIndex="8" />
+                                    <Label text="Nationality" GridPane.rowIndex="9" />
+                                    <Label text="Specie/Race" GridPane.rowIndex="10" />
+                                    <Label text="Religion" GridPane.rowIndex="14" />
+                                    <Label text="Affiliation/Organization" GridPane.rowIndex="11" />
+                                    <TextField fx:id="nicknamesField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                    <TextField fx:id="birthPlaceField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                                    <TextField fx:id="nationalityField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                    <TextField fx:id="specieField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                                    <TextField fx:id="affiliationField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                    <TextField fx:id="religionField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="14" />
+                                    <Label text="Pronouns" GridPane.rowIndex="5" />
+                                    <TextField fx:id="pronounsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                    <Label text="Associated Color" GridPane.rowIndex="17" />
+                                    <ColorPicker fx:id="associatedColorPicker" promptText="Associated Color" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                                    <Label text="Quote" GridPane.rowIndex="15" />
+                                    <TextArea fx:id="quoteArea" prefHeight="50.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="15">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Link 1" GridPane.rowIndex="18" />
+                                    <TextField fx:id="link1LabelField" promptText="Label (ex: Toyhouse, Spotify playlist, ...)" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                                    <TextField fx:id="link1UrlField" promptText="url (ex : https://toyhou.se/link....)" GridPane.columnIndex="2" GridPane.rowIndex="18" />
+                                    <Label text="Link 2" GridPane.rowIndex="19" />
+                                    <Label text="Link 3" GridPane.rowIndex="20" />
+                                    <TextField fx:id="link2LabelField" promptText="Label (ex: Toyhouse, Spotify playlist, ...)" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+                                    <TextField fx:id="link3LabelField" promptText="Label (ex: Toyhouse, Spotify playlist, ...)" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+                                    <TextField fx:id="link2UrlField" promptText="url (ex : https://toyhou.se/link....)" GridPane.columnIndex="2" GridPane.rowIndex="19" />
+                                    <TextField fx:id="link3UrlField" promptText="url (ex : https://toyhou.se/link....)" GridPane.columnIndex="2" GridPane.rowIndex="20" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Appearance">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="150.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="135.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="374.0" />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Skin" GridPane.rowIndex="1" />
+                                    <Label text="Eyes" GridPane.rowIndex="2" />
+                                    <Label text="Height" GridPane.rowIndex="4" />
+                                    <Label text="Weight" GridPane.rowIndex="5" />
+                                    <Label text="Body Type/Build" GridPane.rowIndex="6" />
+                                    <TextField fx:id="skinField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                                    <TextField fx:id="eyesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <TextField fx:id="heightField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                    <TextField fx:id="weightField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                    <TextField fx:id="buildField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                                    <Label text="Hair" />
+                                    <TextField fx:id="hairField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <Label text="Relevant Item(s)" GridPane.rowIndex="11" />
+                                    <Label text="Weapon(s)" GridPane.rowIndex="12" />
+                                    <TextField fx:id="itemsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                    <TextField fx:id="weaponsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                                    <Label text="Description" GridPane.rowIndex="14" />
+                                    <Label text="Facial features" GridPane.rowIndex="3" />
+                                    <Label text="Distinctive features" GridPane.rowIndex="7" />
+                                    <Label text="Clothing" GridPane.rowIndex="8" />
+                                    <Label text="Aesthetic/Style" GridPane.rowIndex="9" />
+                                    <Label text="Medical Condition(s)" GridPane.rowIndex="13" />
+                                    <Label text="Accessories" GridPane.rowIndex="10" />
+                                    <TextField fx:id="facialFeaturesField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                    <TextField fx:id="distFeaturesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                    <TextField fx:id="clothingField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                                    <TextField fx:id="aestheticField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                    <TextField fx:id="accessoriesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                                    <TextField fx:id="medicalField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                                    <TextArea fx:id="physDescArea" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="14">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Button minWidth="71.0" mnemonicParsing="false" onAction="#handleImportRefsheet" styleClass="basic" text="Import..." GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                                    <Label text="Reference Sheet" GridPane.rowIndex="15" />
+                                    <Label fx:id="labelSelectedRefsheet" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Personality">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="192.0" prefWidth="205.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Strengths" GridPane.rowIndex="1" />
+                                    <Label text="Weaknesses" GridPane.rowIndex="2" />
+                                    <Label text="Alignment" GridPane.rowIndex="4" />
+                                    <Label text="MBTI/Enneagram" GridPane.rowIndex="5" />
+                                    <Label text="Mental health/Conditions" GridPane.rowIndex="6" />
+                                    <TextField fx:id="strengthsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                                    <TextField fx:id="weaknessesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <TextField fx:id="alignmentField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                    <TextField fx:id="mbtiEnneaField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                    <TextField fx:id="mentalHealthField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                                    <Label text="Traits" />
+                                    <TextField fx:id="traitsField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <Label text="Description" GridPane.rowIndex="11" />
+                                    <Label fx:id="labelSelectedFile11" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                                    <Label text="Skills" GridPane.rowIndex="3" />
+                                    <Label text="Fears/Phobias" GridPane.rowIndex="7" />
+                                    <Label text="Hobbies" GridPane.rowIndex="8" />
+                                    <Label text="IQ" GridPane.rowIndex="9" />
+                                    <Label text="Philosophy/Morality/Values" GridPane.rowIndex="10" />
+                                    <TextField fx:id="skillsField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                    <TextField fx:id="fearsField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                    <TextField fx:id="hobbiesField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                                    <TextField fx:id="iqField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                    <TextField fx:id="philosophyField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                                    <TextArea fx:id="personaDescArea" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Story">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="186.0" prefWidth="195.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Plot Role" />
+                                    <TextField fx:id="plotRoleField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <Label text="Backstory" GridPane.rowIndex="1" />
+                                    <TextArea fx:id="backstoryArea" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Goals/Ambitions/Dreams" GridPane.rowIndex="2" />
+                                    <TextArea fx:id="goalsArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Achievements" GridPane.rowIndex="3" />
+                                    <TextArea fx:id="achievementsArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Failures/Struggles" GridPane.rowIndex="4" />
+                                    <TextArea fx:id="failuresArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Traumas" GridPane.rowIndex="5" />
+                                    <TextArea fx:id="traumasArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Crimes" GridPane.rowIndex="6" />
+                                    <TextArea fx:id="crimesArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Secrets" GridPane.rowIndex="7" />
+                                    <TextArea fx:id="secretsArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Powers" GridPane.rowIndex="8" />
+                                    <TextArea fx:id="powersArea" prefHeight="50.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Education" GridPane.rowIndex="9" />
+                                    <TextField fx:id="educationField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                    <Label text="Area of Expertise" GridPane.rowIndex="10" />
+                                    <TextField fx:id="expertiseField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                                    <Label text="Social Status" GridPane.rowIndex="11" />
+                                    <TextField fx:id="socialStatusField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                    <Label text="Wealth" GridPane.rowIndex="12" />
+                                    <TextField fx:id="wealthField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Relationships">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="175.0" prefWidth="192.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Romantic Orientation" GridPane.rowIndex="1" />
+                                    <Label text="Family Status" GridPane.rowIndex="2" />
+                                    <TextField fx:id="romanticOrientationField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                                    <TextField fx:id="familyStatusField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <Label text="Sexual Orientation" />
+                                    <TextField fx:id="sexualOrientationField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <Label text="Relationship Status" GridPane.rowIndex="3" />
+                                    <TextField fx:id="relationshipStatusField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                    <Label text="Parent A" GridPane.rowIndex="4" />
+                                    <ComboBox fx:id="parentA" editable="true" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="Parent B" GridPane.rowIndex="5" />
+                                    <Label text="Sibling(s)" GridPane.rowIndex="6" />
+                                    <Label text="Best Friend(s)" GridPane.rowIndex="7" />
+                                    <Label text="Significant Other(s)" GridPane.rowIndex="8" />
+                                    <Label text="Rival(s)" GridPane.rowIndex="9" />
+                                    <Label text="Mentor(s)" GridPane.rowIndex="10" />
+                                    <Label text="Apprentice(s)/Student(s)" GridPane.rowIndex="11" />
+                                    <Label text="Nemesis" GridPane.rowIndex="12" />
+                                    <ComboBox fx:id="parentB" editable="true" layoutX="202.0" layoutY="155.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <ComboBox fx:id="siblings" editable="true" layoutX="202.0" layoutY="190.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <ComboBox fx:id="bestFriend" editable="true" layoutX="202.0" layoutY="225.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <ComboBox fx:id="significantOther" editable="true" layoutX="202.0" layoutY="260.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                    <ComboBox fx:id="rival" editable="true" layoutX="202.0" layoutY="295.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <ComboBox fx:id="mentor" editable="true" layoutX="202.0" layoutY="330.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                    <ComboBox fx:id="apprentice" editable="true" layoutX="202.0" layoutY="365.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                    <ComboBox fx:id="nemesis" editable="true" layoutX="202.0" layoutY="400.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Trivia">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="180.0" prefWidth="190.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="374.0" />
+                                    <ColumnConstraints />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Learnt Language(s)" GridPane.rowIndex="1" />
+                                    <Label text="Speech Style/Accent" GridPane.rowIndex="2" />
+                                    <Label text="Theme Songs" GridPane.rowIndex="4" />
+                                    <Label text="Favorite/Symbolic animal" GridPane.rowIndex="5" />
+                                    <Label text="Favorite/Symbolic plant" GridPane.rowIndex="6" />
+                                    <TextField fx:id="speechField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <TextField fx:id="animalField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                    <TextField fx:id="plantField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                                    <Label text="Native Language(s)" />
+                                    <TextField fx:id="nativeLanguagesField" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <Label text="Dislikes" GridPane.rowIndex="13" />
+                                    <Label fx:id="labelSelectedFile111" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                                    <Label text="Voiceclaim" GridPane.rowIndex="3" />
+                                    <Label prefHeight="42.0" prefWidth="299.0" text="Favorite/Symbolic gemstone" wrapText="true" GridPane.rowIndex="7" />
+                                    <Label text="Favorite/Symbolic season" GridPane.rowIndex="8" />
+                                    <Label text="Favorite/Symbolic place" GridPane.rowIndex="9" />
+                                    <Label text="Favorite/Symbolic food" GridPane.rowIndex="10" />
+                                    <TextField fx:id="voiceclaimField" prefWidth="96.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                    <TextField fx:id="gemstoneField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                    <TextField fx:id="seasonField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+                                    <TextField fx:id="placeField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                    <TextField fx:id="foodField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                                    <TextArea fx:id="dislikesArea" prefHeight="80.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="13">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Label text="Favorite/Symbolic drink" GridPane.rowIndex="11" />
+                                    <Label text="Likes" GridPane.rowIndex="12" />
+                                    <TextArea fx:id="likesArea" prefHeight="80.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <TextField fx:id="drinkField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                    <TextArea fx:id="themeSongsArea" prefHeight="80.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <TextArea fx:id="learntLanguagesArea" prefHeight="20.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Stats">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <GridPane layoutX="17.0" layoutY="29.0" maxWidth="1.7976931348623157E308" prefWidth="863.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="120.0" prefWidth="164.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="210.0" prefWidth="683.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Mind Strength" GridPane.rowIndex="1" />
+                                    <Label text="Perception" GridPane.rowIndex="2" />
+                                    <Label text="Physical Strength" />
+                                    <Label text="Speed" GridPane.rowIndex="3" />
+                                    <Label text="Dexterity" GridPane.rowIndex="4" />
+                                    <Label text="Combat" GridPane.rowIndex="5" />
+                                    <Label text="Persuasion" GridPane.rowIndex="6" />
+                                    <Label text="Charisma" GridPane.rowIndex="7" />
+                                    <Label text="Health" GridPane.rowIndex="8" />
+                                    <Label text="Social Skills" GridPane.rowIndex="9" />
+                                    <Label text="Bravery" GridPane.rowIndex="10" />
+                                    <Label text="Intelligence" GridPane.rowIndex="11" />
+                                    <Label text="Confidence" GridPane.rowIndex="12" />
+                                    <Label text="Self-esteem" GridPane.rowIndex="13" />
+                                    <Label text="Views" GridPane.rowIndex="14" />
+                                    <Label text="Humor" GridPane.rowIndex="16" />
+                                    <Label text="Wisdom" GridPane.rowIndex="15" />
+                                    <Label text="Empathy" GridPane.rowIndex="17" />
+                                    <Label text="Sensitivity" GridPane.rowIndex="18" />
+                                    <Label text="Creativity" GridPane.rowIndex="19" />
+                                    <StatSlider fx:id="physicalStrengthSlider" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="mindStrengthSlider" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="perceptionSlider" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="speedSlider" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="dexteritySlider" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="combatSlider" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="creativitySlider" GridPane.columnIndex="1" GridPane.rowIndex="19">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="sensitivitySlider" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="empathySlider" GridPane.columnIndex="1" GridPane.rowIndex="17">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="humorSlider" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="wisdomSlider" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="viewsSlider" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="selfEsteemSlider" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="confidenceSlider" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="intelligenceSlider" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="braverySlider" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="socialSkillsSlider" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="healthSlider" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="charismaSlider" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                    <StatSlider fx:id="persuasionSlider" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </StatSlider>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <ButtonBar prefHeight="60.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+         <buttons>
+            <Button mnemonicParsing="false" onAction="#handleOk" styleClass="basic" text="OK" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="delete" text="Cancel" />
+         </buttons>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </ButtonBar>
+   </bottom>
+</BorderPane>
