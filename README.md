@@ -43,9 +43,9 @@ It is not intended for commercial use and may undergo further development in the
 <img src="demo/demo2.png">
 1. Go to Releases and find the latest version for Windows
 <img src="demo/demo3.png">
-2. In Assets, download the .zip archive **"CharaPlanner_{version}_Windows"** of the latest version. No need to download other directories.
+2. In Assets, download the .zip archive <b>"CharaPlanner_{version}_Windows"</b> of the latest version. No need to download other directories.
 <img src="demo/demo4.png">
-3. Unzip the archive and execute **CharaPlanner_Setup.exe**<br>
+3. Unzip the archive and execute <b>CharaPlanner_Setup.exe</b><br>
 4. Follow the steps of the installer, and you're done!
 
 <!-- CONTRIBUTING -->
