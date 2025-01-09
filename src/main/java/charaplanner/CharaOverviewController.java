@@ -442,8 +442,8 @@ public class CharaOverviewController {
         //initialize with everything empty
         setLabelsEmpty();
         colorPicker.setValue(Color.WHITE); //reset Color Picker so it doesn't display the color of the character previously selected
-        setImageView(profilePicImageView, "/chara/planner/img/Portrait_Placeholder.png",true, true);
-        setImageView(refsheetImageView, "/chara/planner/img/RefSheet_Placeholder.png",true, false);
+        setImageView(profilePicImageView, "/img/Portrait_Placeholder.png",true, true);
+        setImageView(refsheetImageView, "/img/RefSheet_Placeholder.png",true, false);
 
         //fill non blank fields of character
         if(chara != null){

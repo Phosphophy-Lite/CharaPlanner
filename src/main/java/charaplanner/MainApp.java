@@ -14,9 +14,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.prefs.Preferences;
 
 import jakarta.xml.bind.JAXBContext;
@@ -41,6 +44,16 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         this.stage = stage;
         this.stage.setTitle("Character Planner");
+
+        //Icon setting
+        this.stage.getIcons().addAll(
+                new Image(MainApp.class.getResourceAsStream("/img/icon_16.png")),
+                new Image(MainApp.class.getResourceAsStream("/img/icon_32.png")),
+                new Image(MainApp.class.getResourceAsStream("/img/icon_48.png")),
+                new Image(MainApp.class.getResourceAsStream("/img/icon_64.png")),
+                new Image(MainApp.class.getResourceAsStream("/img/icon_128.png")),
+                new Image(MainApp.class.getResourceAsStream("/img/icon_612.png"))
+        );
 
         stage.setMinHeight(675);
         stage.setMinWidth(800);
