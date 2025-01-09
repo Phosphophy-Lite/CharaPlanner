@@ -43,7 +43,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
-        this.stage.setTitle("Character Planner");
+        this.stage.setTitle("CharaPlanner");
 
         //Icon setting
         this.stage.getIcons().addAll(
@@ -136,10 +136,10 @@ public class MainApp extends Application {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         if(file != null){
             prefs.put("filePath", file.getAbsolutePath());
-            stage.setTitle("Character Planner - " + file.getName());
+            stage.setTitle("CharaPlanner - " + file.getName());
         }else{
             prefs.remove("filePath");
-            stage.setTitle("Character Planner");
+            stage.setTitle("CharaPlanner");
 
             //Reset modified status for the new created file
             fileIsModified = false;
@@ -311,8 +311,8 @@ public class MainApp extends Application {
                 "This project is my first JavaFX experience, meant mainly for personal use, so sorry for any malfunction or lack of optimization.\n"
         );
 
-        Hyperlink githubLink = new Hyperlink("Phosphophy-Lite @ Github.com");
-        handleHyperLink(githubLink, "https://github.com/Phosphophy-Lite");
+        Hyperlink githubLink = new Hyperlink("Phosphophy-Lite - CharaPlanner on Github.com");
+        handleHyperLink(githubLink, "https://github.com/Phosphophy-Lite/CharaPlanner");
 
 
         // Combine text and hyperlink in a VBox
