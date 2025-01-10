@@ -49,6 +49,7 @@ It is not intended for commercial use and may undergo further development in the
 4. Follow the steps of the installer, and you're done!
 
 ### Any OS (not recommended for Windows as it's more complex to run than the installer)
+*Note the application was untested on macOS<br>
 
 1. Go to Releases and find the latest version marked as "JAR FILE (any OS)" 
 2. In Assets, download the .zip archive <b>"CharaPlanner_{version}_JAR"</b> of the latest version. No need to download other directories.
