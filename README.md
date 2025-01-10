@@ -51,7 +51,7 @@ It is not intended for commercial use and may undergo further development in the
 ### Any OS (not recommended for Windows as it's more complex to run than the installer)
 
 1. Go to Releases and find the latest version marked as "JAR FILE (any OS)" 
-2. In Assets, download the .zip archive <b>"CharaPlanner_{version}_Windows"</b> of the latest version. No need to download other directories.
+2. In Assets, download the .zip archive <b>"CharaPlanner_{version}_JAR"</b> of the latest version. No need to download other directories.
 3. Unzip the archive and <b>FOLLOW INSTRUCTIONS INSIDE README.txt</b>. You will need to <b>install OpenJDK 21.0.5</b> and <b>execute CharaPlanner.jar with OpenJDK</b> otherwise it won't work. The steps are detailed in the README.txt.<br>
 4. Each time you will execute the app, the steps to execute the .jar file with OpenJDK will be necessary to follow.
 
