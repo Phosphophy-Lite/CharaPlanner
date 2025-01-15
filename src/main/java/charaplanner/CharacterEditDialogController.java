@@ -44,7 +44,7 @@ public class CharacterEditDialogController {
     @FXML private TextField buildField;
     @FXML private TextField distFeaturesField;
     @FXML private TextField clothingField;
-    @FXML private TextField aestheticField;
+    @FXML private TextField styleField;
     @FXML private TextField accessoriesField;
     @FXML private TextField itemsField;
     @FXML private TextField weaponsField;
@@ -85,13 +85,19 @@ public class CharacterEditDialogController {
 
     @FXML private ComboBox<Character> parentA;
     @FXML private ComboBox<Character> parentB;
+    @FXML private ComboBox<Character> children;
     @FXML private ComboBox<Character> siblings;
+    @FXML private ComboBox<Character> friends;
     @FXML private ComboBox<Character> bestFriend;
     @FXML private ComboBox<Character> significantOther;
     @FXML private ComboBox<Character> rival;
     @FXML private ComboBox<Character> mentor;
     @FXML private ComboBox<Character> apprentice;
+    @FXML private ComboBox<Character> enemies;
     @FXML private ComboBox<Character> nemesis;
+    @FXML private ComboBox<Character> grandParents;
+    @FXML private ComboBox<Character> unclesAunts;
+    @FXML private ComboBox<Character> other;
     private List<ComboBox<Character>> comboBoxesList;
 
     @FXML private TextField nativeLanguagesField;
@@ -106,6 +112,7 @@ public class CharacterEditDialogController {
     @FXML private TextField placeField;
     @FXML private TextField foodField;
     @FXML private TextField drinkField;
+    @FXML private TextField aestheticField;
     @FXML private TextArea likesArea;
     @FXML private TextArea dislikesArea;
 
@@ -157,13 +164,19 @@ public class CharacterEditDialogController {
         comboBoxesList = List.of(
                 parentA,
                 parentB,
+                children,
                 siblings,
+                friends,
                 bestFriend,
                 significantOther,
                 rival,
                 mentor,
                 apprentice,
-                nemesis
+                enemies,
+                nemesis,
+                grandParents,
+                unclesAunts,
+                other
         );
 
         statSlidersList = List.of(
@@ -319,7 +332,7 @@ public class CharacterEditDialogController {
         buildField.setText(character.getAppearance().getBuild());
         distFeaturesField.setText(character.getAppearance().getDistFeatures());
         clothingField.setText(character.getAppearance().getClothing());
-        aestheticField.setText(character.getAppearance().getAesthetic());
+        styleField.setText(character.getAppearance().getStyle());
         accessoriesField.setText(character.getAppearance().getAccessories());
         itemsField.setText(character.getAppearance().getItems());
         weaponsField.setText(character.getAppearance().getWeapons());
@@ -369,6 +382,7 @@ public class CharacterEditDialogController {
         placeField.setText(character.getTrivia().getPlace());
         foodField.setText(character.getTrivia().getFood());
         drinkField.setText(character.getTrivia().getDrink());
+        aestheticField.setText(character.getTrivia().getAesthetic());
         likesArea.setText(character.getTrivia().getLikes());
         dislikesArea.setText(character.getTrivia().getDislikes());
 
@@ -400,13 +414,19 @@ public class CharacterEditDialogController {
 
         setOrSelectName(parentA, character.getRelationships().getParentA());
         setOrSelectName(parentB, character.getRelationships().getParentB());
+        setOrSelectName(parentB, character.getRelationships().getChildren());
         setOrSelectName(siblings, character.getRelationships().getSiblings());
+        setOrSelectName(parentB, character.getRelationships().getFriends());
         setOrSelectName(bestFriend, character.getRelationships().getBestFriend());
         setOrSelectName(significantOther, character.getRelationships().getSignificantOther());
         setOrSelectName(rival, character.getRelationships().getRival());
         setOrSelectName(mentor, character.getRelationships().getMentor());
         setOrSelectName(apprentice, character.getRelationships().getApprentice());
+        setOrSelectName(parentB, character.getRelationships().getEnemies());
         setOrSelectName(nemesis, character.getRelationships().getNemesis());
+        setOrSelectName(parentB, character.getRelationships().getGrandParents());
+        setOrSelectName(parentB, character.getRelationships().getUnclesAunts());
+        setOrSelectName(parentB, character.getRelationships().getOther());
     }
 
     public boolean isOkClicked() {
@@ -471,7 +491,7 @@ public class CharacterEditDialogController {
             character.getAppearance().setBuild(buildField.getText());
             character.getAppearance().setDistFeatures(distFeaturesField.getText());
             character.getAppearance().setClothing(clothingField.getText());
-            character.getAppearance().setAesthetic(aestheticField.getText());
+            character.getAppearance().setStyle(styleField.getText());
             character.getAppearance().setAccessories(accessoriesField.getText());
             character.getAppearance().setItems(itemsField.getText());
             character.getAppearance().setWeapons(weaponsField.getText());
@@ -522,6 +542,7 @@ public class CharacterEditDialogController {
             character.getTrivia().setPlace(placeField.getText());
             character.getTrivia().setFood(foodField.getText());
             character.getTrivia().setDrink(drinkField.getText());
+            character.getTrivia().setAesthetic(aestheticField.getText());
             character.getTrivia().setLikes(likesArea.getText());
             character.getTrivia().setDislikes(dislikesArea.getText());
 
@@ -551,13 +572,19 @@ public class CharacterEditDialogController {
 
             character.getRelationships().setParentA(parentA.getEditor().getText());
             character.getRelationships().setParentB(parentB.getEditor().getText());
+            character.getRelationships().setChildren(children.getEditor().getText());
             character.getRelationships().setSiblings(siblings.getEditor().getText());
+            character.getRelationships().setFriends(friends.getEditor().getText());
             character.getRelationships().setBestFriend(bestFriend.getEditor().getText());
             character.getRelationships().setSignificantOther(significantOther.getEditor().getText());
             character.getRelationships().setRival(rival.getEditor().getText());
             character.getRelationships().setMentor(mentor.getEditor().getText());
             character.getRelationships().setApprentice(apprentice.getEditor().getText());
+            character.getRelationships().setEnemies(enemies.getEditor().getText());
             character.getRelationships().setNemesis(nemesis.getEditor().getText());
+            character.getRelationships().setGrandParents(grandParents.getEditor().getText());
+            character.getRelationships().setUnclesAunts(unclesAunts.getEditor().getText());
+            character.getRelationships().setOther(other.getEditor().getText());
 
             okClicked = true;
             dialogStage.close();
@@ -637,7 +664,7 @@ public class CharacterEditDialogController {
     }
 
     private String setLastVisitedDirectoryPath(File file){
-        if(file!= null && file.getParent() != null){
+        if(file!= null && file.getParent() != null && file.getParentFile().isDirectory()){
             Preferences prefs = Preferences.userNodeForPackage(CharacterEditDialogController.class);
             prefs.put("imgLastVisitedDirectory", file.getParent());
             return file.getParent();
@@ -648,11 +675,13 @@ public class CharacterEditDialogController {
     private String getLastVisitedDirectoryPath(){
         Preferences prefs = Preferences.userNodeForPackage(CharacterEditDialogController.class);
         String dirPath = prefs.get("imgLastVisitedDirectory", null);
+
         if(dirPath != null){
-            return dirPath;
+            File dir = new File(dirPath);
+            if(dir.isDirectory()){ // check if directory still exists (hasn't been deleted by user since)
+                return dirPath;
+            }
         }
-        else{
-            return System.getProperty("user.home");
-        }
+        return System.getProperty("user.home");
     }
 }

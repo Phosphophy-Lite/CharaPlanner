@@ -38,7 +38,7 @@ public class CharaOverviewController {
     @FXML private Label buildLabel;
     @FXML private Label distFeaturesLabel;
     @FXML private Label clothingLabel;
-    @FXML private Label aestheticLabel;
+    @FXML private Label styleLabel;
     @FXML private Label accessoriesLabel;
     @FXML private Label itemsLabel;
     @FXML private Label weaponsLabel;
@@ -89,6 +89,12 @@ public class CharaOverviewController {
     @FXML private Label mentorLabel;
     @FXML private Label apprenticeLabel;
     @FXML private Label nemesisLabel;
+    @FXML private Label friendsLabel;
+    @FXML private Label childrenLabel;
+    @FXML private Label enemiesLabel;
+    @FXML private Label unclesAuntsLabel;
+    @FXML private Label grandParentsLabel;
+    @FXML private Label otherLabel;
 
     /* Trivia */
     @FXML private Label nativeLanguagesLabel;
@@ -103,6 +109,7 @@ public class CharaOverviewController {
     @FXML private Label placeLabel;
     @FXML private Label foodLabel;
     @FXML private Label drinkLabel;
+    @FXML private Label aestheticLabel;
     @FXML private Label likesLabel;
     @FXML private Label dislikesLabel;
 
@@ -296,7 +303,7 @@ public class CharaOverviewController {
         buildLabel.setText("");
         distFeaturesLabel.setText("");
         clothingLabel.setText("");
-        aestheticLabel.setText("");
+        styleLabel.setText("");
         accessoriesLabel.setText("");
         itemsLabel.setText("");
         weaponsLabel.setText("");
@@ -330,6 +337,12 @@ public class CharaOverviewController {
         mentorLabel.setText("");
         apprenticeLabel.setText("");
         nemesisLabel.setText("");
+        friendsLabel.setText("");
+        childrenLabel.setText("");
+        enemiesLabel.setText("");
+        unclesAuntsLabel.setText("");
+        grandParentsLabel.setText("");
+        otherLabel.setText("");
 
         nativeLanguagesLabel.setText("");
         learntLanguagesLabel.setText("");
@@ -343,6 +356,7 @@ public class CharaOverviewController {
         placeLabel.setText("");
         foodLabel.setText("");
         drinkLabel.setText("");
+        aestheticLabel.setText("");
         likesLabel.setText("");
         dislikesLabel.setText("");
 
@@ -473,7 +487,7 @@ public class CharaOverviewController {
                 buildLabel.setText(chara.getAppearance().getBuild());
                 distFeaturesLabel.setText(chara.getAppearance().getDistFeatures());
                 clothingLabel.setText(chara.getAppearance().getClothing());
-                aestheticLabel.setText(chara.getAppearance().getAesthetic());
+                styleLabel.setText(chara.getAppearance().getStyle());
                 accessoriesLabel.setText(chara.getAppearance().getAccessories());
                 itemsLabel.setText(chara.getAppearance().getItems());
                 weaponsLabel.setText(chara.getAppearance().getWeapons());
@@ -524,6 +538,12 @@ public class CharaOverviewController {
                 mentorLabel.setText(chara.getRelationships().getMentor());
                 apprenticeLabel.setText(chara.getRelationships().getApprentice());
                 nemesisLabel.setText(chara.getRelationships().getNemesis());
+                friendsLabel.setText(chara.getRelationships().getFriends());
+                childrenLabel.setText(chara.getRelationships().getChildren());
+                enemiesLabel.setText(chara.getRelationships().getEnemies());
+                unclesAuntsLabel.setText(chara.getRelationships().getUnclesAunts());
+                grandParentsLabel.setText(chara.getRelationships().getGrandParents());
+                otherLabel.setText(chara.getRelationships().getOther());
             }
             if(chara.getTrivia() != null){
                 nativeLanguagesLabel.setText(chara.getTrivia().getNativeLanguages());
@@ -538,6 +558,7 @@ public class CharaOverviewController {
                 placeLabel.setText(chara.getTrivia().getPlace());
                 foodLabel.setText(chara.getTrivia().getFood());
                 drinkLabel.setText(chara.getTrivia().getDrink());
+                aestheticLabel.setText(chara.getTrivia().getAesthetic());
                 likesLabel.setText(chara.getTrivia().getLikes());
                 dislikesLabel.setText(chara.getTrivia().getDislikes());
             }

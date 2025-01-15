@@ -9,6 +9,10 @@
     -fx-text-fill: black;
 }
 
+.hyperlink{
+    -fx-font-size: 11pt;
+}
+
 .background {
     -fx-background-color: #ffffff;
 }

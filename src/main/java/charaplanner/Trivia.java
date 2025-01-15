@@ -16,6 +16,7 @@ public class Trivia {
     private final StringProperty place;
     private final StringProperty food;
     private final StringProperty drink;
+    private final StringProperty aesthetic;
     private final StringProperty likes;
     private final StringProperty dislikes;
 
@@ -34,6 +35,7 @@ public class Trivia {
         this.drink = new SimpleStringProperty("");
         this.likes = new SimpleStringProperty("");
         this.dislikes = new SimpleStringProperty("");
+        this.aesthetic = new SimpleStringProperty("");
 
     }
 
@@ -92,6 +94,10 @@ public class Trivia {
     public String getDislikes() { return dislikes.get(); }
     public void setDislikes(String dislikes) { this.dislikes.set(dislikes); }
     public StringProperty getDislikesProperty() { return dislikes; }
+
+    public String getAesthetic() { return aesthetic.get(); }
+    public void setAesthetic(String aesthetic) { this.aesthetic.set(aesthetic); }
+    public StringProperty getAestheticProperty() { return aesthetic; }
 
 
 }

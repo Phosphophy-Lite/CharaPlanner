@@ -13,7 +13,7 @@ public class Appearance {
     private final StringProperty build;
     private final StringProperty distFeatures;
     private final StringProperty clothing;
-    private final StringProperty aesthetic;
+    private final StringProperty style;
     private final StringProperty accessories;
     private final StringProperty items;
     private final StringProperty weapons;
@@ -31,7 +31,7 @@ public class Appearance {
         this.build = new SimpleStringProperty("");
         this.distFeatures = new SimpleStringProperty("");
         this.clothing = new SimpleStringProperty("");
-        this.aesthetic = new SimpleStringProperty("");
+        this.style = new SimpleStringProperty("");
         this.accessories = new SimpleStringProperty("");
         this.items = new SimpleStringProperty("");
         this.weapons = new SimpleStringProperty("");
@@ -77,9 +77,9 @@ public class Appearance {
     public void setClothing(String clothing) { this.clothing.set(clothing); }
     public StringProperty getClothingProperty() { return clothing; }
 
-    public String getAesthetic() { return aesthetic.get(); }
-    public void setAesthetic(String aesthetic) { this.aesthetic.set(aesthetic); }
-    public StringProperty getAestheticProperty() { return aesthetic; }
+    public String getStyle() { return style.get(); }
+    public void setStyle(String style) { this.style.set(style); }
+    public StringProperty getStyleProperty() { return style; }
 
     public String getAccessories() { return accessories.get(); }
     public void setAccessories(String accessories) { this.accessories.set(accessories); }

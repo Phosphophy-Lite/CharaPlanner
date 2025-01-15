@@ -12,12 +12,19 @@ public class Relationships {
     private final StringProperty parentA;
     private final StringProperty parentB;
     private final StringProperty siblings;
+    private final StringProperty children;
+    private final StringProperty friends;
     private final StringProperty bestFriend;
     private final StringProperty significantOther;
     private final StringProperty rival;
     private final StringProperty mentor;
     private final StringProperty apprentice;
+    private final StringProperty enemies;
     private final StringProperty nemesis;
+    private final StringProperty unclesAunts;
+    private final StringProperty grandParents;
+    private final StringProperty other;
+
 
     
     public Relationships(){
@@ -34,6 +41,12 @@ public class Relationships {
         this.mentor = new SimpleStringProperty("");
         this.apprentice = new SimpleStringProperty("");
         this.nemesis = new SimpleStringProperty("");
+        this.unclesAunts = new SimpleStringProperty("");
+        this.grandParents = new SimpleStringProperty("");
+        this.other = new SimpleStringProperty("");
+        this.enemies = new SimpleStringProperty("");
+        this.friends = new SimpleStringProperty("");
+        this.children = new SimpleStringProperty("");
     }
 
     public String getSexualOrientation() { return sexualOrientation.get(); }
@@ -87,5 +100,29 @@ public class Relationships {
     public String getNemesis() { return nemesis.get(); }
     public void setNemesis(String nemesis) { this.nemesis.set(nemesis); }
     public StringProperty getNemesisProperty() { return nemesis; }
+
+    public String getChildren() { return children.get(); }
+    public void setChildren(String children) { this.children.set(children); }
+    public StringProperty getChildrenProperty() { return children; }
+
+    public String getFriends() { return friends.get(); }
+    public void setFriends(String friends) { this.friends.set(friends); }
+    public StringProperty getFriendsProperty() { return friends; }
+
+    public String getEnemies() { return enemies.get(); }
+    public void setEnemies(String enemies) { this.enemies.set(enemies); }
+    public StringProperty getEnemiesProperty() { return enemies; }
+
+    public String getUnclesAunts() { return unclesAunts.get(); }
+    public void setUnclesAunts(String unclesAunts) { this.unclesAunts.set(unclesAunts); }
+    public StringProperty getUnclesAuntsProperty() { return unclesAunts; }
+
+    public String getGrandParents() { return grandParents.get(); }
+    public void setGrandParents(String grandParents) { this.grandParents.set(grandParents); }
+    public StringProperty getGrandParentsProperty() { return grandParents; }
+
+    public String getOther() { return other.get(); }
+    public void setOther(String other) { this.other.set(other); }
+    public StringProperty getOtherProperty() { return other; }
 
 }

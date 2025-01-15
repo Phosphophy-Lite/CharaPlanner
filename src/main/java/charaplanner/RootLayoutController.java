@@ -204,7 +204,7 @@ public class RootLayoutController {
     }
 
     private String setLastVisitedDirectoryPath(File file){
-        if(file!= null && file.getParent() != null){
+        if(file!= null && file.getParent() != null && file.getParentFile().isDirectory()){
             Preferences prefs = Preferences.userNodeForPackage(RootLayoutController.class);
             prefs.put("xmlLastVisitedDirectory", file.getParent());
             return file.getParent();
@@ -215,11 +215,13 @@ public class RootLayoutController {
     private String getLastVisitedDirectoryPath(){
         Preferences prefs = Preferences.userNodeForPackage(RootLayoutController.class);
         String dirPath = prefs.get("xmlLastVisitedDirectory", null);
+
         if(dirPath != null){
-            return dirPath;
+            File dir = new File(dirPath);
+            if(dir.isDirectory()){
+                return dirPath;
+            }
         }
-        else{
-            return System.getProperty("user.home");
-        }
+        return System.getProperty("user.home");
     }
 }

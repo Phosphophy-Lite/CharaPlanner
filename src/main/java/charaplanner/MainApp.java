@@ -1,6 +1,8 @@
 package charaplanner;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,9 @@ import javafx.scene.image.Image;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.prefs.Preferences;
 
@@ -148,12 +153,18 @@ public class MainApp extends Application {
 
     public void loadDataFile(File file){
         try{
-            JAXBContext context = JAXBContext
-                    .newInstance(CharaListWrapper.class);
+            JAXBContext context = JAXBContext.newInstance(CharaListWrapper.class);
             Unmarshaller um = context.createUnmarshaller();
 
             // Reading XML from the file and unmarshalling.
             CharaListWrapper wrapper = (CharaListWrapper) um.unmarshal(file);
+
+            // If a new version of the project was released with new classes/new attributes in classes
+            // update the character objects to be initialized with the new attributes
+            // otherwise the characters would become uneditable for new versions
+            for(Character character : wrapper.getCharacters()){
+                updateObjectFields(character);
+            }
 
             charaData.clear();
             charaData.addAll(wrapper.getCharacters());
@@ -176,8 +187,7 @@ public class MainApp extends Application {
 
     public void saveCharaDataToFile(File file){
         try {
-            JAXBContext context = JAXBContext
-                    .newInstance(CharaListWrapper.class);
+            JAXBContext context = JAXBContext.newInstance(CharaListWrapper.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
@@ -202,6 +212,66 @@ public class MainApp extends Application {
             alert.showAndWait();
             System.out.println(exception);
         }
+    }
+
+    /**
+     * Check if retrieved Object from preexisting XML file lacks fields (null attributes) due to a newer
+     * update in the project's Object class, and adds the missing fields
+     * @param obj
+     */
+    private void updateObjectFields(Object obj){
+        if(obj == null){return;} //safety check
+
+        try{
+            Field[] fields = obj.getClass().getDeclaredFields();
+            for(Field field : fields){
+                field.setAccessible(true); //Allow access to private fields
+
+                // Check if field was initialized, if not (field is null), initialize it
+                if(field.get(obj) == null){
+                    Class<?> fieldType = field.getType(); //retrieve type of field
+
+                    //Handle SimpleStringProperty (just setting it to blank would be enough for this project)
+                    if(fieldType == SimpleStringProperty.class){
+                        field.set(obj, new SimpleStringProperty(""));
+                    }
+
+                    //Handle SimpleObjectProperty<?>
+                    else if(SimpleObjectProperty.class.isAssignableFrom(fieldType)){
+                        Class<?> genericType = getGenericType(field); //Retrieve the Class parameter of the SimpleObjectProperty
+                        if(genericType != null){
+                            Object newInstance = genericType.getDeclaredConstructor().newInstance(); //retrieve constructor for said class
+                            field.set(obj, new SimpleObjectProperty<>(newInstance));
+                            updateObjectFields(newInstance); //recursively updates the attributes of this subclass
+                        }
+                    }
+                    //No other option, we only use SimpleStringProperties or SimpleObjectProperties for sub classes
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Helper method to determine the generic type of a SimpleObjectProperty
+     * @param field
+     * @return
+     */
+    private Class<?> getGenericType(Field field){
+        try{
+            Type genericType = field.getGenericType();
+            if(genericType instanceof ParameterizedType){
+                ParameterizedType paramType = (ParameterizedType) genericType;
+                Type[] typeArgs = paramType.getActualTypeArguments();
+                if(typeArgs.length > 0 && typeArgs[0] instanceof Class){
+                    return (Class<?>) typeArgs[0];
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public boolean showCharaEditDialog(Character character) {
