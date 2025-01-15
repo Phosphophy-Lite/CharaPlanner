@@ -130,7 +130,9 @@ For the following, consider using a scrollable tab with an add item option => sc
 ## Other
 - <strike>CSS UI styling</strike>
 - <strike>Dialog boxes warnings for unsaved changes / keep track of changes in file</strike>
-- App icon
+- <strike>App icon</strike>
+- <strike>Handling repercussions of updates on preexisting user's XML files created with an older version</strike>
+- Crash/error reports
 
 # Ideas of potential additional features
 - User creating custom templates for the sheets or add a new custom row and field option
