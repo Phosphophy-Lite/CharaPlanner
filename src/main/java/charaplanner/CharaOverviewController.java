@@ -546,21 +546,21 @@ public class CharaOverviewController {
                 otherLabel.setText(chara.getRelationships().getOther());
             }
             if(chara.getTrivia() != null){
-                nativeLanguagesLabel.setText(chara.getTrivia().getNativeLanguages());
-                learntLanguagesLabel.setText(chara.getTrivia().getLearntLanguages());
-                speechLabel.setText(chara.getTrivia().getSpeech());
-                voiceclaimLabel.setText(chara.getTrivia().getVoiceclaim());
-                themeSongsLabel.setText(chara.getTrivia().getThemeSongs());
-                animalLabel.setText(chara.getTrivia().getAnimal());
-                plantLabel.setText(chara.getTrivia().getPlant());
-                gemstoneLabel.setText(chara.getTrivia().getGemstone());
-                seasonLabel.setText(chara.getTrivia().getSeason());
-                placeLabel.setText(chara.getTrivia().getPlace());
-                foodLabel.setText(chara.getTrivia().getFood());
-                drinkLabel.setText(chara.getTrivia().getDrink());
-                aestheticLabel.setText(chara.getTrivia().getAesthetic());
-                likesLabel.setText(chara.getTrivia().getLikes());
-                dislikesLabel.setText(chara.getTrivia().getDislikes());
+                nativeLanguagesLabel.setText(chara.getTrivia().nativeLanguages().get());
+                learntLanguagesLabel.setText(chara.getTrivia().learntLanguages().get());
+                speechLabel.setText(chara.getTrivia().speech().get());
+                voiceclaimLabel.setText(chara.getTrivia().voiceclaim().get());
+                themeSongsLabel.setText(chara.getTrivia().themeSongs().get());
+                animalLabel.setText(chara.getTrivia().animal().get());
+                plantLabel.setText(chara.getTrivia().plant().get());
+                gemstoneLabel.setText(chara.getTrivia().gemstone().get());
+                seasonLabel.setText(chara.getTrivia().season().get());
+                placeLabel.setText(chara.getTrivia().place().get());
+                foodLabel.setText(chara.getTrivia().food().get());
+                drinkLabel.setText(chara.getTrivia().drink().get());
+                aestheticLabel.setText(chara.getTrivia().aesthetic().get());
+                likesLabel.setText(chara.getTrivia().likes().get());
+                dislikesLabel.setText(chara.getTrivia().dislikes().get());
             }
             if(chara.getStats() != null){
                 physicalStrengthSlider.setValue(chara.getStats().getPhysicalStrength());
