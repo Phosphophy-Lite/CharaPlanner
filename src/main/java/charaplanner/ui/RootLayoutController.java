@@ -166,8 +166,13 @@ public class RootLayoutController {
             alert.getButtonTypes().setAll(buttonTypeSave, buttonTypeDontSave, buttonTypeCancel);
 
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == buttonTypeSave) {
-                handleSave();
+            if(result.isPresent()) {
+                if (result.get() == buttonTypeSave) {
+                    handleSave();
+                }
+                else if (result.get() == buttonTypeCancel) {
+                    return false;
+                }
             }
             else {
                 return false;
