@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
 
+@Slf4j
 public class RecentFilesMenu extends Menu {
 
     private String pathToFile;
@@ -48,7 +50,7 @@ public class RecentFilesMenu extends Menu {
             // Create CharaPlanner subdirectory
             File charaPlannerDir = new File(pathToFile, "CharaPlanner");
             if (!charaPlannerDir.exists() && !charaPlannerDir.mkdirs()) {
-                    System.err.println("Warning: Failed to create CharaPlanner subdirectory. Using default path.");
+                   log.warn("Failed to create CharaPlanner subdirectory. Using default path.");
                     pathToFile = name + recentFileExt; // Fallback to default
                     return;
                 }
@@ -59,7 +61,7 @@ public class RecentFilesMenu extends Menu {
             pathToFile = recentFile.getAbsolutePath();
         } catch (Exception e) {
             // Log the error and fallback
-            System.err.println("Warning: Unable to determine path to save recent file list. " + e.getMessage());
+            log.warn("Unable to determine path to save recent file list. {}", e.getMessage());
             pathToFile = name + recentFileExt; // Fallback to default
         }
 
@@ -83,7 +85,7 @@ public class RecentFilesMenu extends Menu {
                     recentEntries.add(line);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("Failed to load recent entries from file: {}", recentFile.getAbsolutePath(), e);
             }
         }
     }
@@ -100,7 +102,7 @@ public class RecentFilesMenu extends Menu {
                 //Not all platforms use newline character ('\n').
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Failed to save recent entries to file: {}", new File(pathToFile).getAbsolutePath(), e);
         }
     }
 
