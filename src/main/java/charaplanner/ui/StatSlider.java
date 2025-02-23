@@ -36,7 +36,7 @@ public class StatSlider extends VBox {
     }
 
     public void setValue(int value){
-        slider.setValue((double) value);
+        slider.setValue(value);
     }
 
     public int getValue(){
