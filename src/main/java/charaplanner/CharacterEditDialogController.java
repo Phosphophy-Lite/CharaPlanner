@@ -136,7 +136,7 @@ public class CharacterEditDialogController {
     @FXML private StatSlider empathySlider;
     @FXML private StatSlider sensitivitySlider;
     @FXML private StatSlider creativitySlider;
-    private List<StatSlider> statSlidersList;
+
 
     @FXML private Label labelSelectedProfilePic;
     private String profilePicPath = "";
@@ -161,6 +161,7 @@ public class CharacterEditDialogController {
 
     @FXML
     private void initialize() {
+        List<StatSlider> statSlidersList;
         comboBoxesList = List.of(
                 parentA,
                 parentB,
@@ -206,7 +207,11 @@ public class CharacterEditDialogController {
         enableAllStatSliders(statSlidersList);
         setupAllComboBoxes(comboBoxesList);
 
-        lastVisitedDirectory = getLastVisitedDirectoryPath();
+        setLastVisitedDirectory(getLastVisitedDirectoryPath());
+    }
+
+    public static void setLastVisitedDirectory(String path) {
+        lastVisitedDirectory = path;
     }
 
     public void setDialogStage(Stage dialogStage){
@@ -218,7 +223,7 @@ public class CharacterEditDialogController {
             setupComboBox(comboBox);
         }
     }
-    private void setupComboBox(ComboBox<Character> comboBox){
+    private void setupComboBox(ComboBox<Character> comboBox) {
         // cell factory to display the displayName of each Character in the comboBox
         comboBox.setCellFactory(box -> new ListCell<Character>() {
             @Override
@@ -265,7 +270,7 @@ public class CharacterEditDialogController {
         });
     }
 
-    private void setStatSlidersLabels(){
+    private void setStatSlidersLabels() {
         physicalStrengthSlider.setCustomLabels("Weak", "Average", "Strong");
         mindStrengthSlider.setCustomLabels("Vulnerable", "Average", "Resilient");
         perceptionSlider.setCustomLabels("Oblivious", "Average", "Attentive");
@@ -622,20 +627,20 @@ public class CharacterEditDialogController {
     }
 
     @FXML
-    private void handleImportImage(int num){
+    private void handleImportImage(int num) {
         FileChooser fc = new FileChooser();
         fc.setInitialDirectory(new File(lastVisitedDirectory));
         fc.setTitle("Open picture file");
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
         File f = fc.showOpenDialog(null);
 
-        if(f!=null){
-            lastVisitedDirectory = setLastVisitedDirectoryPath(f);
-            if(num == 0){
+        if (f != null) {
+            setLastVisitedDirectory(getLastVisitedDirectoryPath(f));
+            if (num == 0) {
                 profilePicPath = f.getAbsolutePath();
                 labelSelectedProfilePic.setText("Selected File: " + f.getAbsolutePath());
             }
-            else{
+            else {
                 refsheetPath = f.getAbsolutePath();
                 labelSelectedRefsheet.setText("Selected File: " + f.getAbsolutePath());
             }
@@ -658,13 +663,13 @@ public class CharacterEditDialogController {
                 .filter(item -> !item.getDisplayName().equals(this.character.getDisplayName()))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList)); //make a new observable list without modifying the original one
 
-        for(ComboBox<Character> comboBox : this.comboBoxesList){
+        for(ComboBox<Character> comboBox : this.comboBoxesList) {
             comboBox.setItems(charaData);
         }
     }
 
-    private String setLastVisitedDirectoryPath(File file){
-        if(file!= null && file.getParent() != null && file.getParentFile().isDirectory()){
+    private static String getLastVisitedDirectoryPath(File file) {
+        if (file!= null && file.getParent() != null && file.getParentFile().isDirectory()) {
             Preferences prefs = Preferences.userNodeForPackage(CharacterEditDialogController.class);
             prefs.put("imgLastVisitedDirectory", file.getParent());
             return file.getParent();
@@ -672,13 +677,13 @@ public class CharacterEditDialogController {
         return System.getProperty("user.home");
     }
 
-    private String getLastVisitedDirectoryPath(){
+    private static String getLastVisitedDirectoryPath() {
         Preferences prefs = Preferences.userNodeForPackage(CharacterEditDialogController.class);
         String dirPath = prefs.get("imgLastVisitedDirectory", null);
 
-        if(dirPath != null){
+        if (dirPath != null) {
             File dir = new File(dirPath);
-            if(dir.isDirectory()){ // check if directory still exists (hasn't been deleted by user since)
+            if (dir.isDirectory()) { // check if directory still exists (hasn't been deleted by user since)
                 return dirPath;
             }
         }
