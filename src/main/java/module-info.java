@@ -8,6 +8,7 @@ module charaplanner {
     requires jakarta.xml.bind;
     requires jakarta.activation;
     requires java.desktop;
+    requires static lombok;
 
     opens charaplanner to javafx.fxml, jakarta.xml.bind;
     exports charaplanner;
