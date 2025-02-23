@@ -35,23 +35,21 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 public class MainApp extends Application {
 
     @Getter
     @Setter
     private boolean fileModified;
-    private RootLayoutController rootController;
+    @Getter
     private Stage stage;
     private BorderPane rootLayout;
 
     //ObservableList : array that is an ArrayList but that is necessary for javaFx to add a listener to the changes made to it so the UI can be updated
     private final ObservableList<Character> charaData = FXCollections.observableArrayList();
-
-    public MainApp(){
-
-    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -71,7 +69,7 @@ public class MainApp extends Application {
         stage.setMinHeight(675);
         stage.setMinWidth(800);
 
-        rootController = initRootLayout();
+        RootLayoutController rootController = initRootLayout();
         CharaOverviewController charaOverviewController = initCharaOverview();
 
         rootController.setCharaOverviewController(charaOverviewController);
@@ -120,10 +118,6 @@ public class MainApp extends Application {
         charaOverviewController.setMainApp(this);
 
         return charaOverviewController;
-    }
-
-    public Stage getStage() {
-        return stage;
     }
 
     public ObservableList<Character> getCharaList() {
