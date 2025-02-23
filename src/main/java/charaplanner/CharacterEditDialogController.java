@@ -284,26 +284,28 @@ public class CharacterEditDialogController {
     }
 
     private void setStatSlidersLabels() {
-        physicalStrengthSlider.setCustomLabels("Weak", "Average", "Strong");
-        mindStrengthSlider.setCustomLabels("Vulnerable", "Average", "Resilient");
-        perceptionSlider.setCustomLabels("Oblivious", "Average", "Attentive");
-        speedSlider.setCustomLabels("Slow", "Average", "Fast");
-        dexteritySlider.setCustomLabels("Clumsy", "Average", "Handy");
-        combatSlider.setCustomLabels("Can't fight", "Average", "Warrior");
+        final String average = "Average";
+        final String balanced = "Balanced";
+        physicalStrengthSlider.setCustomLabels("Weak", average, "Strong");
+        mindStrengthSlider.setCustomLabels("Vulnerable", average, "Resilient");
+        perceptionSlider.setCustomLabels("Oblivious", average, "Attentive");
+        speedSlider.setCustomLabels("Slow", average, "Fast");
+        dexteritySlider.setCustomLabels("Clumsy", average, "Handy");
+        combatSlider.setCustomLabels("Can't fight", average, "Warrior");
         persuasionSlider.setCustomLabels("Unpersuasive", "Moderate", "Influential");
         charismaSlider.setCustomLabels("Low", "Lambda", "High");
-        healthSlider.setCustomLabels("Very Bad", "Average", "Very Healthy");
-        socialSkillsSlider.setCustomLabels("Very Awkward", "Balanced", "Social Butterfly");
-        braverySlider.setCustomLabels("Coward", "Balanced", "Audacious");
-        intelligenceSlider.setCustomLabels("Low", "Average", "Genius");
-        confidenceSlider.setCustomLabels("Insecure", "Balanced", "Arrogant");
-        selfEsteemSlider.setCustomLabels("Low", "Balanced", "High");
-        viewsSlider.setCustomLabels("Idealistic", "Balanced", "Pragmatic");
+        healthSlider.setCustomLabels("Very Bad", average, "Very Healthy");
+        socialSkillsSlider.setCustomLabels("Very Awkward", balanced, "Social Butterfly");
+        braverySlider.setCustomLabels("Coward", balanced, "Audacious");
+        intelligenceSlider.setCustomLabels("Low", average, "Genius");
+        confidenceSlider.setCustomLabels("Insecure", balanced, "Arrogant");
+        selfEsteemSlider.setCustomLabels("Low", balanced, "High");
+        viewsSlider.setCustomLabels("Idealistic", balanced, "Pragmatic");
         humorSlider.setCustomLabels("Serious", "Occasional", "Comedian");
-        wisdomSlider.setCustomLabels("Foolish", "Average", "Very Wise");
-        empathySlider.setCustomLabels("None", "Average", "Empath");
-        sensitivitySlider.setCustomLabels("Insensitive", "Average", "Hypersensitive");
-        creativitySlider.setCustomLabels("Low", "Average", "High");
+        wisdomSlider.setCustomLabels("Foolish", average, "Very Wise");
+        empathySlider.setCustomLabels("None", average, "Empath");
+        sensitivitySlider.setCustomLabels("Insensitive", average, "Hypersensitive");
+        creativitySlider.setCustomLabels("Low", average, "High");
     }
 
     private void enableAllStatSliders(List<StatSlider> statSlidersList){
