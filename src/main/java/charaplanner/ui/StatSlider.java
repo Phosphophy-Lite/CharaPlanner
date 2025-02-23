@@ -14,6 +14,7 @@ import java.util.List;
 @Slf4j
 public class StatSlider extends VBox {
 
+    @SuppressWarnings("unused")
     @FXML
     private Slider slider;
 
