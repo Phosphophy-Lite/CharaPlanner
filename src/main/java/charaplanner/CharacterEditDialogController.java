@@ -263,7 +263,7 @@ public class CharacterEditDialogController {
                 // search for an existing character by displayName,
                 // or handle the custom input
                 return comboBox.getItems().stream()
-                        .filter(character -> character.getDisplayName().equals(string))
+                        .filter(c -> c.getDisplayName().equals(string))
                         .findFirst()
                         .orElse(null);
             }
@@ -442,7 +442,7 @@ public class CharacterEditDialogController {
         // search for a character with the specified name in the comboBox
         Optional<Character> matchingCharacter = comboBox.getItems()
                 .stream()
-                .filter(character -> character.getDisplayName().equals(name))
+                .filter(c -> c.getDisplayName().equals(name))
                 .findFirst();
 
         if (matchingCharacter.isPresent()) {
