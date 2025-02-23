@@ -225,40 +225,53 @@ public class CharacterEditDialogController {
     }
     private void setupComboBox(ComboBox<Character> comboBox) {
         // cell factory to display the displayName of each Character in the comboBox
-        comboBox.setCellFactory(box -> new ListCell<Character>() {
+        comboBox.setCellFactory(box -> new ListCell<>()
+        {
             @Override
-            protected void updateItem(Character c, boolean empty) {
+            protected void updateItem(Character c, boolean empty)
+            {
                 super.updateItem(c, empty);
-                if (empty || c == null) {
+                if (empty || c == null)
+                {
                     setText(null);
-                } else {
+                }
+                else
+                {
                     setText(c.getDisplayName()); // Display displayName
                 }
             }
         });
 
         // set the button cell to display displayName when an item is selected
-        comboBox.setButtonCell(new ListCell<Character>() {
+        comboBox.setButtonCell(new ListCell<>()
+        {
             @Override
-            protected void updateItem(Character c, boolean empty) {
+            protected void updateItem(Character c, boolean empty)
+            {
                 super.updateItem(c, empty);
-                if (empty || c == null) {
+                if (empty || c == null)
+                {
                     setText(null);
-                } else {
+                }
+                else
+                {
                     setText(c.getDisplayName());
                 }
             }
         });
 
-        comboBox.setConverter(new StringConverter<Character>() {
+        comboBox.setConverter(new StringConverter<>()
+        {
             @Override
-            public String toString(Character c) {
+            public String toString(Character c)
+            {
                 // defines how a character should be displayed in the editable text field (by displayName)
                 return (c != null) ? c.getDisplayName() : "";
             }
 
             @Override
-            public Character fromString(String string) {
+            public Character fromString(String string)
+            {
                 // when user types a new string into the editable text box
                 // search for an existing character by displayName,
                 // or handle the custom input
