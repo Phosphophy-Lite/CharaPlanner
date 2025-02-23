@@ -1,5 +1,6 @@
 package charaplanner.ui;
 
+import charaplanner.MainApp;
 import javafx.scene.control.Slider;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ public class StatSlider extends VBox {
     private Slider slider;
 
     public StatSlider() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("statslider.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("statslider.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
