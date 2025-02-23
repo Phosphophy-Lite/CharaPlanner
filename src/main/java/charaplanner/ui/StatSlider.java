@@ -1,4 +1,4 @@
-package charaplanner;
+package charaplanner.ui;
 
 import javafx.scene.control.Slider;
 import javafx.fxml.FXML;

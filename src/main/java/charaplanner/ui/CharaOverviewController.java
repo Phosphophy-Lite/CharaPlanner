@@ -1,5 +1,8 @@
-package charaplanner;
+package charaplanner.ui;
 
+import charaplanner.MainApp;
+import charaplanner.data.Character;
+import charaplanner.data.Link;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
@@ -136,8 +139,8 @@ public class CharaOverviewController {
     @FXML private StatSlider creativitySlider;
 
     /* Character table */
-    @FXML private TableView<Character> tableView;
-    @FXML private TableColumn<Character, String> nameColumn;
+    @FXML private TableView<charaplanner.data.Character> tableView;
+    @FXML private TableColumn<charaplanner.data.Character, String> nameColumn;
 
     /* Right pane for more infos */
     @FXML private Label nameRightLabel;
@@ -170,7 +173,7 @@ public class CharaOverviewController {
 
         //Creates a custom TableRow object for each row in the TableView to specify each row's behavior
         tableView.setRowFactory(tv -> {
-            TableRow<Character> row = new TableRow<>();
+            TableRow<charaplanner.data.Character> row = new TableRow<>();
 
             //Attach a ContextMenu to the row
             ContextMenu rowMenu = new ContextMenu();
@@ -179,7 +182,7 @@ public class CharaOverviewController {
 
             //Specify action of Delete item (remove character from the Table)
             deleteItem.setOnAction(event -> {
-                Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
+                charaplanner.data.Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
                 if(selectedCharacter != null) {
                     handleDeleteChara();
                 }
@@ -187,7 +190,7 @@ public class CharaOverviewController {
 
             //Specify action of Delete item (remove character from the Table)
             editItem.setOnAction(event -> {
-                Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
+                charaplanner.data.Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
                 if(selectedCharacter != null) {
                     handleEditChara();
                 }
@@ -452,7 +455,7 @@ public class CharaOverviewController {
         }
     }
 
-    private void showCharaDetails(Character chara){
+    private void showCharaDetails(charaplanner.data.Character chara){
         //initialize with everything empty
         setLabelsEmpty();
         colorPicker.setValue(Color.WHITE); //reset Color Picker so it doesn't display the color of the character previously selected
@@ -633,7 +636,7 @@ public class CharaOverviewController {
 
     @FXML
     public void handleNewChara() {
-        Character tempChara = new Character();
+        charaplanner.data.Character tempChara = new charaplanner.data.Character();
         boolean okClicked = mainApp.showCharaNewDialog(tempChara);
         if (okClicked) {
             mainApp.getCharaList().add(tempChara);

@@ -1,4 +1,4 @@
-package charaplanner;
+package charaplanner.data;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

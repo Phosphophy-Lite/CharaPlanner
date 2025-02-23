@@ -1,8 +1,7 @@
-package charaplanner;
+package charaplanner.data;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
 
 public class Stats {
     private final IntegerProperty physicalStrength;

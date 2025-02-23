@@ -1,5 +1,11 @@
 package charaplanner;
 
+import charaplanner.ui.CharaListWrapper;
+import charaplanner.ui.CharaOverviewController;
+import charaplanner.data.Character;
+import charaplanner.ui.CharacterEditDialogController;
+import charaplanner.ui.CharacterNewDialogController;
+import charaplanner.ui.RootLayoutController;
 import javafx.application.Application;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,13 +24,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.net.URL;
 import java.util.prefs.Preferences;
 
 import jakarta.xml.bind.JAXBContext;

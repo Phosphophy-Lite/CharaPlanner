@@ -1,7 +1,8 @@
-package charaplanner;
+package charaplanner.ui;
 
 import java.io.File;
 
+import charaplanner.MainApp;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

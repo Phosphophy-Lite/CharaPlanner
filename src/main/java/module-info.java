@@ -12,4 +12,8 @@ module charaplanner {
 
     opens charaplanner to javafx.fxml, jakarta.xml.bind;
     exports charaplanner;
+    exports charaplanner.data;
+    opens charaplanner.data to jakarta.xml.bind, javafx.fxml;
+    exports charaplanner.ui;
+    opens charaplanner.ui to jakarta.xml.bind, javafx.fxml;
 }

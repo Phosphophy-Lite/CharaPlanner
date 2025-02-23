@@ -1,5 +1,6 @@
-package charaplanner;
+package charaplanner.ui;
 
+import charaplanner.data.Character;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -11,7 +12,7 @@ public class CharacterNewDialogController {
     private TextField displayNameField;
 
     private Stage dialogStage;
-    private Character character;
+    private charaplanner.data.Character character;
     private boolean okClicked = false;
 
     @FXML

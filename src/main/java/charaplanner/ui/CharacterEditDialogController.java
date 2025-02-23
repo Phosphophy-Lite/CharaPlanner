@@ -1,5 +1,7 @@
-package charaplanner;
+package charaplanner.ui;
 
+import charaplanner.MainApp;
+import charaplanner.data.Character;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -83,22 +85,22 @@ public class CharacterEditDialogController {
     @FXML private TextField familyStatusField;
     @FXML private TextField relationshipStatusField;
 
-    @FXML private ComboBox<Character> parentA;
-    @FXML private ComboBox<Character> parentB;
-    @FXML private ComboBox<Character> children;
-    @FXML private ComboBox<Character> siblings;
-    @FXML private ComboBox<Character> friends;
-    @FXML private ComboBox<Character> bestFriend;
-    @FXML private ComboBox<Character> significantOther;
-    @FXML private ComboBox<Character> rival;
-    @FXML private ComboBox<Character> mentor;
-    @FXML private ComboBox<Character> apprentice;
-    @FXML private ComboBox<Character> enemies;
-    @FXML private ComboBox<Character> nemesis;
-    @FXML private ComboBox<Character> grandParents;
-    @FXML private ComboBox<Character> unclesAunts;
-    @FXML private ComboBox<Character> other;
-    private List<ComboBox<Character>> comboBoxesList;
+    @FXML private ComboBox<charaplanner.data.Character> parentA;
+    @FXML private ComboBox<charaplanner.data.Character> parentB;
+    @FXML private ComboBox<charaplanner.data.Character> children;
+    @FXML private ComboBox<charaplanner.data.Character> siblings;
+    @FXML private ComboBox<charaplanner.data.Character> friends;
+    @FXML private ComboBox<charaplanner.data.Character> bestFriend;
+    @FXML private ComboBox<charaplanner.data.Character> significantOther;
+    @FXML private ComboBox<charaplanner.data.Character> rival;
+    @FXML private ComboBox<charaplanner.data.Character> mentor;
+    @FXML private ComboBox<charaplanner.data.Character> apprentice;
+    @FXML private ComboBox<charaplanner.data.Character> enemies;
+    @FXML private ComboBox<charaplanner.data.Character> nemesis;
+    @FXML private ComboBox<charaplanner.data.Character> grandParents;
+    @FXML private ComboBox<charaplanner.data.Character> unclesAunts;
+    @FXML private ComboBox<charaplanner.data.Character> other;
+    private List<ComboBox<charaplanner.data.Character>> comboBoxesList;
 
     @FXML private TextField nativeLanguagesField;
     @FXML private TextArea learntLanguagesArea;
@@ -152,7 +154,7 @@ public class CharacterEditDialogController {
     @FXML private TextField link3LabelField;
     @FXML private TextField link3UrlField;
 
-    private Character character;
+    private charaplanner.data.Character character;
     private static String lastVisitedDirectory;
 
 
@@ -218,17 +220,17 @@ public class CharacterEditDialogController {
         this.dialogStage = dialogStage;
     }
 
-    private void setupAllComboBoxes(List<ComboBox<Character>> comboBoxesList){
-        for (ComboBox<Character> comboBox : comboBoxesList) {
+    private void setupAllComboBoxes(List<ComboBox<charaplanner.data.Character>> comboBoxesList){
+        for (ComboBox<charaplanner.data.Character> comboBox : comboBoxesList) {
             setupComboBox(comboBox);
         }
     }
-    private void setupComboBox(ComboBox<Character> comboBox) {
+    private void setupComboBox(ComboBox<charaplanner.data.Character> comboBox) {
         // cell factory to display the displayName of each Character in the comboBox
         comboBox.setCellFactory(box -> new ListCell<>()
         {
             @Override
-            protected void updateItem(Character c, boolean empty)
+            protected void updateItem(charaplanner.data.Character c, boolean empty)
             {
                 super.updateItem(c, empty);
                 if (empty || c == null)
@@ -246,7 +248,7 @@ public class CharacterEditDialogController {
         comboBox.setButtonCell(new ListCell<>()
         {
             @Override
-            protected void updateItem(Character c, boolean empty)
+            protected void updateItem(charaplanner.data.Character c, boolean empty)
             {
                 super.updateItem(c, empty);
                 if (empty || c == null)
@@ -263,14 +265,14 @@ public class CharacterEditDialogController {
         comboBox.setConverter(new StringConverter<>()
         {
             @Override
-            public String toString(Character c)
+            public String toString(charaplanner.data.Character c)
             {
                 // defines how a character should be displayed in the editable text field (by displayName)
                 return (c != null) ? c.getDisplayName() : "";
             }
 
             @Override
-            public Character fromString(String string)
+            public charaplanner.data.Character fromString(String string)
             {
                 // when user types a new string into the editable text box
                 // search for an existing character by displayName,
@@ -314,7 +316,7 @@ public class CharacterEditDialogController {
         }
     }
 
-    public void setCharacter(Character character) {
+    public void setCharacter(charaplanner.data.Character character) {
         this.character = character;
         displayNameField.setText(character.getDisplayName());
         firstNameField.setText(character.getBasicInfos().getFirstName());
@@ -453,9 +455,9 @@ public class CharacterEditDialogController {
         return okClicked;
     }
 
-    private void setOrSelectName(ComboBox<Character> comboBox, String name) {
+    private void setOrSelectName(ComboBox<charaplanner.data.Character> comboBox, String name) {
         // search for a character with the specified name in the comboBox
-        Optional<Character> matchingCharacter = comboBox.getItems()
+        Optional<charaplanner.data.Character> matchingCharacter = comboBox.getItems()
                 .stream()
                 .filter(c -> c.getDisplayName().equals(name))
                 .findFirst();
@@ -673,7 +675,7 @@ public class CharacterEditDialogController {
     }
 
     public void populateComboBoxes(MainApp mainApp) {  //populate comboBoxes with the charaData list without the edited character
-        ObservableList<Character> charaData = mainApp.getCharaList()
+        ObservableList<charaplanner.data.Character> charaData = mainApp.getCharaList()
                 .stream()
                 .filter(item -> !item.getDisplayName().equals(this.character.getDisplayName()))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList)); //make a new observable list without modifying the original one
