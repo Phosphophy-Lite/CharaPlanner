@@ -28,19 +28,19 @@ public class Character {
     //With arguments for testing purposes
     public Character(String displayName, String firstName, String lastName, String birthDate, String gender, String age, String job, String jobPosition, String profilePicPath) {
         this.displayName = new SimpleStringProperty(displayName);
-        this.basicInfos = new SimpleObjectProperty<BasicInfos>(new BasicInfos(firstName, lastName, birthDate, gender, age, job, jobPosition));
-        this.appearance = new SimpleObjectProperty<Appearance>(new Appearance());
-        this.personality = new SimpleObjectProperty<Personality>(new Personality());
-        this.story = new SimpleObjectProperty<Story>(new Story());
-        this.relationships = new SimpleObjectProperty<Relationships>(new Relationships());
-        this.trivia = new SimpleObjectProperty<Trivia>(new Trivia());
-        this.stats = new SimpleObjectProperty<Stats>(new Stats());
+        this.basicInfos = new SimpleObjectProperty<>(new BasicInfos(firstName, lastName, birthDate, gender, age, job, jobPosition));
+        this.appearance = new SimpleObjectProperty<>(new Appearance());
+        this.personality = new SimpleObjectProperty<>(new Personality());
+        this.story = new SimpleObjectProperty<>(new Story());
+        this.relationships = new SimpleObjectProperty<>(new Relationships());
+        this.trivia = new SimpleObjectProperty<>(new Trivia());
+        this.stats = new SimpleObjectProperty<>(new Stats());
         this.profilePicPath = new SimpleStringProperty(profilePicPath);
         this.associatedColor = new SimpleStringProperty("#FFFFFF");
         this.quote = new SimpleStringProperty("");
-        this.link1 = new SimpleObjectProperty<Link>(new Link());
-        this.link2 = new SimpleObjectProperty<Link>(new Link());
-        this.link3 = new SimpleObjectProperty<Link>(new Link());
+        this.link1 = new SimpleObjectProperty<>(new Link());
+        this.link2 = new SimpleObjectProperty<>(new Link());
+        this.link3 = new SimpleObjectProperty<>(new Link());
     }
 
     public String getDisplayName() {
