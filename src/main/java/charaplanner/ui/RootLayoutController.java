@@ -80,7 +80,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleNew() {
-        if(canCloseFile(mainApp.fileIsModified)){
+        if(canCloseFile(mainApp.isFileModified())){
             mainApp.getCharaList().clear();
             mainApp.setDataFilePath(null);
         }
@@ -91,7 +91,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleOpen() {
-        if(canCloseFile(mainApp.fileIsModified)) {
+        if(canCloseFile(mainApp.isFileModified())) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
 
@@ -178,7 +178,7 @@ public class RootLayoutController {
 
     @FXML
     private void handleExit() {
-        if(canCloseFile(mainApp.fileIsModified)){
+        if(canCloseFile(mainApp.isFileModified())){
             System.exit(0);
         }
     }

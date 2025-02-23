@@ -151,7 +151,7 @@ public class RecentFilesMenu extends Menu {
      * @param filePath The path of the recently opened file that gets clicked on
      */
     public void openRecentFile(String filePath) {
-        if(rootController.canCloseFile(mainApp.fileIsModified)){ //check first with user if current file is okay to close (if modifications)
+        if(rootController.canCloseFile(mainApp.isFileModified())){ //check first with user if current file is okay to close (if modifications)
             File file = new File(filePath);
             if (file.exists()) {
                 mainApp.loadDataFile(file); // Call loadDataFile from MainApp

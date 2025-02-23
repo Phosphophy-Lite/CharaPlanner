@@ -34,16 +34,20 @@ import java.util.prefs.Preferences;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import lombok.Getter;
+import lombok.Setter;
 
 public class MainApp extends Application {
 
+    @Getter
+    @Setter
+    private boolean fileModified;
+    private RootLayoutController rootController;
     private Stage stage;
     private BorderPane rootLayout;
-    public boolean fileIsModified = false;
-    private RootLayoutController rootController;
 
     //ObservableList : array that is an ArrayList but that is necessary for javaFx to add a listener to the changes made to it so the UI can be updated
-    private ObservableList<Character> charaData = FXCollections.observableArrayList();
+    private final ObservableList<Character> charaData = FXCollections.observableArrayList();
 
     public MainApp(){
 
@@ -74,7 +78,7 @@ public class MainApp extends Application {
 
         // If user clicks on cross to close the app, show warning dialog box if fileIsModified = true and cancel event depending on user choice
         stage.setOnCloseRequest(event -> {
-            if (!rootController.canCloseFile(fileIsModified)) {
+            if (!rootController.canCloseFile(fileModified)) {
                 // If the function returns false, consume the event to prevent closing
                 event.consume();
             }
@@ -151,7 +155,7 @@ public class MainApp extends Application {
             stage.setTitle("CharaPlanner");
 
             //Reset modified status for the new created file
-            fileIsModified = false;
+            fileModified = false;
         }
     }
 
@@ -177,7 +181,7 @@ public class MainApp extends Application {
             setDataFilePath(file);
 
             //Reset modified status for the new opened file
-            fileIsModified = false;
+            fileModified = false;
         }catch (Exception exception){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -206,7 +210,7 @@ public class MainApp extends Application {
             setDataFilePath(file);
 
             //Update status of current file
-            fileIsModified = false;
+            fileModified = false;
         } catch (Exception exception) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -314,7 +318,7 @@ public class MainApp extends Application {
                 if(!stage.getTitle().endsWith("*")){
                     stage.setTitle(stage.getTitle() + "*");
                 }
-                fileIsModified = true;
+                fileModified = true;
             }
 
             return controller.isOkClicked();
@@ -356,7 +360,7 @@ public class MainApp extends Application {
                 if(!stage.getTitle().endsWith("*")){
                     stage.setTitle(stage.getTitle() + "*");
                 }
-                fileIsModified = true;
+                fileModified = true;
             }
 
             return controller.isOkClicked();
