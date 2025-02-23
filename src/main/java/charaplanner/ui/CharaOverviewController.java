@@ -465,7 +465,7 @@ public class CharaOverviewController {
         setImageView(profilePicImageView, "/img/Portrait_Placeholder.png",true, true);
         setImageView(refsheetImageView, "/img/RefSheet_Placeholder.png",true, false);
 
-        //fill non blank fields of character
+        //fill fields of character
         if (chara != null) {
             firstNameLabel.setText(chara.basicInfos().get().firstName().get());
             lastNameLabel.setText(chara.basicInfos().get().lastName().get());
