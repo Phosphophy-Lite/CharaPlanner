@@ -37,7 +37,9 @@ import jakarta.xml.bind.Unmarshaller;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @NoArgsConstructor
 public class MainApp extends Application {
 
@@ -212,7 +214,7 @@ public class MainApp extends Application {
             alert.setContentText("Could not save data to file:\n" + file.getPath());
 
             alert.showAndWait();
-            System.out.println(exception);
+            log.error("Could not save data to file: {}", file.getPath(), exception);
         }
     }
 
@@ -222,9 +224,11 @@ public class MainApp extends Application {
      * @param obj
      */
     private void updateObjectFields(Object obj){
-        if(obj == null){return;} //safety check
+        if (obj == null) {
+            return; //safety check
+        }
 
-        try{
+        try {
             Field[] fields = obj.getClass().getDeclaredFields();
             for(Field field : fields){
                 field.setAccessible(true); //Allow access to private fields
@@ -250,18 +254,19 @@ public class MainApp extends Application {
                     //No other option, we only use SimpleStringProperties or SimpleObjectProperties for sub classes
                 }
             }
-        }catch(Exception e){
-            e.printStackTrace();
+        }
+        catch (Exception e) {
+            log.error("Failed to update object fields", e);
         }
     }
 
     /**
-     * Helper method to determine the generic type of a SimpleObjectProperty
+     * Helper method to determine the generic type of SimpleObjectProperty
      * @param field
      * @return
      */
     private Class<?> getGenericType(Field field){
-        try{
+        try {
             Type genericType = field.getGenericType();
             if(genericType instanceof ParameterizedType){
                 ParameterizedType paramType = (ParameterizedType) genericType;
@@ -270,8 +275,9 @@ public class MainApp extends Application {
                     return (Class<?>) typeArgs[0];
                 }
             }
-        }catch(Exception e){
-            e.printStackTrace();
+        }
+        catch (Exception e) {
+            log.error("Failed to determine generic type", e);
         }
         return null;
     }
@@ -317,7 +323,7 @@ public class MainApp extends Application {
 
             return controller.isOkClicked();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Failed to load the fxml file", e);
             return false;
         }
     }
@@ -327,7 +333,7 @@ public class MainApp extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("CharacterNewDialog.fxml"));
-            BorderPane page = (BorderPane) loader.load();
+            BorderPane page = loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
@@ -350,8 +356,8 @@ public class MainApp extends Application {
             dialogStage.showAndWait();
 
             //if OK button is clicked, consider there are unsaved modifications to the character database
-            if(controller.isOkClicked()){
-                if(!stage.getTitle().endsWith("*")){
+            if (controller.isOkClicked()) {
+                if (!stage.getTitle().endsWith("*")) {
                     stage.setTitle(stage.getTitle() + "*");
                 }
                 fileModified = true;
@@ -359,7 +365,7 @@ public class MainApp extends Application {
 
             return controller.isOkClicked();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Failed to load the fxml file", e);
             return false;
         }
     }
@@ -368,7 +374,7 @@ public class MainApp extends Application {
         try {
             hyperlink.setOnAction(a->getHostServices().showDocument(url));
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to handle hyperlink {}", url, e);
         }
     }
 
