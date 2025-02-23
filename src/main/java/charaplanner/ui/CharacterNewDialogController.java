@@ -6,30 +6,26 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 
 public class CharacterNewDialogController {
     @FXML
     private TextField displayNameField;
 
+    @Setter
     private Stage dialogStage;
     private charaplanner.data.Character character;
+    @Getter
     private boolean okClicked = false;
 
     @FXML
     private void initialize() {
     }
 
-    public void setDialogStage(Stage dialogStage){
-        this.dialogStage = dialogStage;
-    }
-
     public void setCharacter(Character character) {
         this.character = character;
-        displayNameField.setText(character.getDisplayName());
-    }
-
-    public boolean isOkClicked() {
-        return okClicked;
+        displayNameField.setText(character.displayName().get());
     }
 
     /**
@@ -38,15 +34,15 @@ public class CharacterNewDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            character.setDisplayName(displayNameField.getText());
-            character.getBasicInfos().setFirstName("");
-            character.getBasicInfos().setLastName("");
-            character.getBasicInfos().setBirthDate("");
-            character.getBasicInfos().setAge("");
-            character.getBasicInfos().setGender("");
-            character.getBasicInfos().setJob("");
-            character.getBasicInfos().setJobPosition("");
-            character.setProfilePicPath("");
+            character.displayName().set(displayNameField.getText());
+            character.basicInfos().get().firstName().set("");
+            character.basicInfos().get().lastName().set("");
+            character.basicInfos().get().birthDate().set("");
+            character.basicInfos().get().age().set("");
+            character.basicInfos().get().gender().set("");
+            character.basicInfos().get().job().set("");
+            character.basicInfos().get().jobPosition().set("");
+            character.profilePicPath().set("");
 
             okClicked = true;
             dialogStage.close();

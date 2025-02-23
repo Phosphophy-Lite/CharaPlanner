@@ -14,6 +14,8 @@ import javafx.util.StringConverter;
 import java.util.List;
 import java.util.Optional;
 import javafx.collections.FXCollections;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
@@ -155,10 +157,13 @@ public class CharacterEditDialogController {
     @FXML private TextField link3UrlField;
 
     private charaplanner.data.Character character;
+    @Setter
     private static String lastVisitedDirectory;
 
 
+    @Getter
     private boolean okClicked = false;
+    @Setter
     private Stage dialogStage;
 
     @FXML
@@ -212,14 +217,6 @@ public class CharacterEditDialogController {
         setLastVisitedDirectory(getLastVisitedDirectoryPath());
     }
 
-    public static void setLastVisitedDirectory(String path) {
-        lastVisitedDirectory = path;
-    }
-
-    public void setDialogStage(Stage dialogStage){
-        this.dialogStage = dialogStage;
-    }
-
     private void setupAllComboBoxes(List<ComboBox<charaplanner.data.Character>> comboBoxesList){
         for (ComboBox<charaplanner.data.Character> comboBox : comboBoxesList) {
             setupComboBox(comboBox);
@@ -239,7 +236,7 @@ public class CharacterEditDialogController {
                 }
                 else
                 {
-                    setText(c.getDisplayName()); // Display displayName
+                    setText(c.displayName().get()); // Display displayName
                 }
             }
         });
@@ -257,7 +254,7 @@ public class CharacterEditDialogController {
                 }
                 else
                 {
-                    setText(c.getDisplayName());
+                    setText(c.displayName().get());
                 }
             }
         });
@@ -268,7 +265,7 @@ public class CharacterEditDialogController {
             public String toString(charaplanner.data.Character c)
             {
                 // defines how a character should be displayed in the editable text field (by displayName)
-                return (c != null) ? c.getDisplayName() : "";
+                return (c != null) ? c.displayName().get() : "";
             }
 
             @Override
@@ -278,7 +275,7 @@ public class CharacterEditDialogController {
                 // search for an existing character by displayName,
                 // or handle the custom input
                 return comboBox.getItems().stream()
-                        .filter(c -> c.getDisplayName().equals(string))
+                        .filter(c -> c.displayName().get().equals(string))
                         .findFirst()
                         .orElse(null);
             }
@@ -318,7 +315,7 @@ public class CharacterEditDialogController {
 
     public void setCharacter(charaplanner.data.Character character) {
         this.character = character;
-        displayNameField.setText(character.getDisplayName());
+        displayNameField.setText(character.displayName().get());
         firstNameField.setText(character.getBasicInfos().getFirstName());
         lastNameField.setText(character.getBasicInfos().getLastName());
         birthDateField.setText(character.getBasicInfos().getBirthDate());
@@ -451,15 +448,11 @@ public class CharacterEditDialogController {
         setOrSelectName(parentB, character.getRelationships().getOther());
     }
 
-    public boolean isOkClicked() {
-        return okClicked;
-    }
-
     private void setOrSelectName(ComboBox<charaplanner.data.Character> comboBox, String name) {
         // search for a character with the specified name in the comboBox
         Optional<charaplanner.data.Character> matchingCharacter = comboBox.getItems()
                 .stream()
-                .filter(c -> c.getDisplayName().equals(name))
+                .filter(c -> c.displayName().get().equals(name))
                 .findFirst();
 
         if (matchingCharacter.isPresent()) {
@@ -677,10 +670,10 @@ public class CharacterEditDialogController {
     public void populateComboBoxes(MainApp mainApp) {  //populate comboBoxes with the charaData list without the edited character
         ObservableList<charaplanner.data.Character> charaData = mainApp.getCharaList()
                 .stream()
-                .filter(item -> !item.getDisplayName().equals(this.character.getDisplayName()))
+                .filter(item -> !item.displayName().get().equals(character.displayName().get()))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList)); //make a new observable list without modifying the original one
 
-        for(ComboBox<Character> comboBox : this.comboBoxesList) {
+        for(ComboBox<Character> comboBox : comboBoxesList) {
             comboBox.setItems(charaData);
         }
     }
