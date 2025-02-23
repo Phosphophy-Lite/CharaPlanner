@@ -336,12 +336,12 @@ public class CharacterEditDialogController {
         Color associatedColor = Color.web(character.getAssociatedColor());
         associatedColorPicker.setValue(associatedColor);
 
-        link1LabelField.setText(character.getLink1().getLinkLabel());
-        link1UrlField.setText(character.getLink1().getLinkUrl());
-        link2LabelField.setText(character.getLink2().getLinkLabel());
-        link2UrlField.setText(character.getLink2().getLinkUrl());
-        link3LabelField.setText(character.getLink3().getLinkLabel());
-        link3UrlField.setText(character.getLink3().getLinkUrl());
+        link1LabelField.setText(character.getLink1().label().get());
+        link1UrlField.setText(character.getLink1().url().get());
+        link2LabelField.setText(character.getLink2().label().get());
+        link2UrlField.setText(character.getLink2().url().get());
+        link3LabelField.setText(character.getLink3().label().get());
+        link3UrlField.setText(character.getLink3().url().get());
 
         hairField.setText(character.getAppearance().getHair());
         skinField.setText(character.getAppearance().getSkin());
@@ -495,12 +495,12 @@ public class CharacterEditDialogController {
             String hexAssociatedColor = "#" + associatedColorPicker.getValue().toString().substring(2);
             character.setAssociatedColor(hexAssociatedColor);
 
-            character.getLink1().setLinkLabel(link1LabelField.getText());
-            character.getLink1().setLinkUrl(link1UrlField.getText());
-            character.getLink2().setLinkLabel(link2LabelField.getText());
-            character.getLink2().setLinkUrl(link2UrlField.getText());
-            character.getLink3().setLinkLabel(link3LabelField.getText());
-            character.getLink3().setLinkUrl(link3UrlField.getText());
+            character.getLink1().label().set(link1LabelField.getText());
+            character.getLink1().url().set(link1UrlField.getText());
+            character.getLink2().label().set(link2LabelField.getText());
+            character.getLink2().url().set(link2UrlField.getText());
+            character.getLink3().label().set(link3LabelField.getText());
+            character.getLink3().url().set(link3UrlField.getText());
 
             character.getAppearance().setHair(hairField.getText());
             character.getAppearance().setSkin(skinField.getText());
