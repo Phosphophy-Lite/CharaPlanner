@@ -26,6 +26,7 @@ import javafx.scene.image.Image;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -43,6 +44,8 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 public class MainApp extends Application {
 
+    private static final String PREF_FILEPATH = "filePath";
+
     @Getter
     @Setter
     private boolean fileModified;
@@ -59,14 +62,7 @@ public class MainApp extends Application {
         this.stage.setTitle("CharaPlanner");
 
         //Icon setting
-        this.stage.getIcons().addAll(
-                new Image(MainApp.class.getResourceAsStream("/img/icon_16.png")),
-                new Image(MainApp.class.getResourceAsStream("/img/icon_32.png")),
-                new Image(MainApp.class.getResourceAsStream("/img/icon_48.png")),
-                new Image(MainApp.class.getResourceAsStream("/img/icon_64.png")),
-                new Image(MainApp.class.getResourceAsStream("/img/icon_128.png")),
-                new Image(MainApp.class.getResourceAsStream("/img/icon_612.png"))
-        );
+        loadIcons();
 
         stage.setMinHeight(675);
         stage.setMinWidth(800);
@@ -85,9 +81,35 @@ public class MainApp extends Application {
         });
     }
 
+    private void loadIcons() {
+        // Icon setting with null checks
+        String[] iconPaths = {
+            "/img/icon_16.png",
+            "/img/icon_32.png",
+            "/img/icon_48.png",
+            "/img/icon_64.png",
+            "/img/icon_128.png",
+            "/img/icon_612.png"
+        };
+
+        for (String path : iconPaths) {
+            try (InputStream iconStream = MainApp.class.getResourceAsStream(path)) {
+                if (iconStream != null) {
+                    this.stage.getIcons().add(new Image(iconStream));
+                }
+                else {
+                    log.error("Icon not found: {}", path);
+                }
+            }
+            catch (IOException e) {
+                log.error("Failed to load icon: {}", path, e);
+            }
+        }
+    }
+
     public RootLayoutController initRootLayout() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("RootLayout.fxml"));
-        rootLayout = (BorderPane) fxmlLoader.load();
+        rootLayout = fxmlLoader.load();
 
         Scene scene = new Scene(rootLayout, 1200, 675);
         stage.setScene(scene);
@@ -106,7 +128,7 @@ public class MainApp extends Application {
 
     public CharaOverviewController initCharaOverview() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("CharaOverview.fxml"));
-        AnchorPane charaOverview = (AnchorPane) fxmlLoader.load();
+        AnchorPane charaOverview = fxmlLoader.load();
 
         rootLayout.setCenter(charaOverview);
         // Bind width and height of charaOverview to the parent center
@@ -128,7 +150,7 @@ public class MainApp extends Application {
 
     public File getDataFilePath(){
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
-        String filePath = prefs.get("filePath", null);
+        String filePath = prefs.get(PREF_FILEPATH, null);
         if(filePath != null){
             return new File(filePath);
         }
@@ -144,10 +166,10 @@ public class MainApp extends Application {
     public void setDataFilePath(File file){
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         if(file != null){
-            prefs.put("filePath", file.getAbsolutePath());
+            prefs.put(PREF_FILEPATH, file.getAbsolutePath());
             stage.setTitle("CharaPlanner - " + file.getName());
         }else{
-            prefs.remove("filePath");
+            prefs.remove(PREF_FILEPATH);
             stage.setTitle("CharaPlanner");
 
             //Reset modified status for the new created file
@@ -268,8 +290,7 @@ public class MainApp extends Application {
     private Class<?> getGenericType(Field field){
         try {
             Type genericType = field.getGenericType();
-            if(genericType instanceof ParameterizedType){
-                ParameterizedType paramType = (ParameterizedType) genericType;
+            if(genericType instanceof ParameterizedType paramType){
                 Type[] typeArgs = paramType.getActualTypeArguments();
                 if(typeArgs.length > 0 && typeArgs[0] instanceof Class){
                     return (Class<?>) typeArgs[0];
@@ -287,7 +308,7 @@ public class MainApp extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("CharacterEditDialog.fxml"));
-            BorderPane page = (BorderPane) loader.load();
+            BorderPane page = loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
@@ -384,9 +405,13 @@ public class MainApp extends Application {
         alert.setHeaderText("About this application...");
 
         // Create the content
-        Text contentText = new Text("This application is developped by Phosphophy-Lite.\n" +
-                "For any issues encountered, raise an issue on the corresponding github page down below.\n" +
-                "This project is my first JavaFX experience, meant mainly for personal use, so sorry for any malfunction or lack of optimization.\n"
+        // Create the content
+        Text contentText = new Text(
+            """
+            This application is developped by Phosphophy-Lite.
+            For any issues encountered, raise an issue on the corresponding github page down below.
+            This project is my first JavaFX experience, meant mainly for personal use, so sorry for any malfunction or lack of optimization.
+            """
         );
 
         Hyperlink githubLink = new Hyperlink("Phosphophy-Lite - CharaPlanner on Github.com");
