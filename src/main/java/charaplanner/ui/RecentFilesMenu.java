@@ -12,11 +12,12 @@ import javafx.scene.control.MenuItem;
 import java.io.*;
 
 public class RecentFilesMenu extends Menu {
+
     private String pathToFile;
     private static final int MAX_RECENT_FILES = 8;
-    private ObservableList<String> recentEntries;
-    private MainApp mainApp;
-    private RootLayoutController rootController;
+    private final ObservableList<String> recentEntries;
+    private final MainApp mainApp;
+    private final RootLayoutController rootController;
 
     /**
      * Create a new instance of RecentFileMenu.
@@ -31,34 +32,35 @@ public class RecentFilesMenu extends Menu {
         this.recentEntries = FXCollections.observableArrayList();
 
         // Listen to recentEntries changes to update the GUI menu dynamically during execution
-        recentEntries.addListener((ListChangeListener<String>) change -> {
-            updateMenuItems();
-        });
+        recentEntries.addListener((ListChangeListener<String>) change -> updateMenuItems());
 
         // Figure out path to save the recent file list
-        this.pathToFile = System.getProperty("user.home"); //Try to get the home directory
+        pathToFile = System.getProperty("user.home"); //Try to get the home directory
+
+        final String recentFileExt = ".recent";
 
         try {
             // Locate user home directory
-            this.pathToFile = System.getProperty("user.home");
+            pathToFile = System.getProperty("user.home");
+
+
 
             // Create CharaPlanner subdirectory
-            File charaPlannerDir = new File(this.pathToFile, "CharaPlanner");
-            if (!charaPlannerDir.exists()) {
-                if (!charaPlannerDir.mkdirs()) {
+            File charaPlannerDir = new File(pathToFile, "CharaPlanner");
+            if (!charaPlannerDir.exists() && !charaPlannerDir.mkdirs()) {
                     System.err.println("Warning: Failed to create CharaPlanner subdirectory. Using default path.");
-                    this.pathToFile = name + ".recent"; // Fallback to default
+                    pathToFile = name + recentFileExt; // Fallback to default
                     return;
                 }
-            }
+
 
             // Construct the path to the .recent file
-            File recentFile = new File(charaPlannerDir, name + ".recent");
-            this.pathToFile = recentFile.getAbsolutePath();
+            File recentFile = new File(charaPlannerDir, name + recentFileExt);
+            pathToFile = recentFile.getAbsolutePath();
         } catch (Exception e) {
             // Log the error and fallback
             System.err.println("Warning: Unable to determine path to save recent file list. " + e.getMessage());
-            this.pathToFile = name + ".recent"; // Fallback to default
+            pathToFile = name + recentFileExt; // Fallback to default
         }
 
         //Load recent entries from the .recent file
@@ -111,7 +113,7 @@ public class RecentFilesMenu extends Menu {
         recentEntries.remove(filePath);
 
         //Add filePath at the top of the list
-        recentEntries.add(0,filePath);
+        recentEntries.addFirst(filePath);
 
         // Remove least recent entries from the list if it exceeds the maximum size allowed
         if(recentEntries.size() > MAX_RECENT_FILES){
