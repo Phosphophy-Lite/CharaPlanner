@@ -421,7 +421,8 @@ public class CharaOverviewController {
     private void setLink(Hyperlink link, Link charaLink){
         if(charaLink != null){
             String charaLinkLabel = charaLink.label().get();
-            String charaLinkUrl = charaLink.url().getName();
+            String charaLinkUrl = charaLink.url().get();
+
             if(!charaLinkLabel.isEmpty() && !charaLinkUrl.isEmpty()){
                 link.setText(charaLinkLabel);
                 link.setDisable(false);
