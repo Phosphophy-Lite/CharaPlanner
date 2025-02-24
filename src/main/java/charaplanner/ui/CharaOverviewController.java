@@ -1,5 +1,8 @@
-package charaplanner;
+package charaplanner.ui;
 
+import charaplanner.MainApp;
+import charaplanner.data.Character;
+import charaplanner.data.Link;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.*;
@@ -7,10 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import lombok.NoArgsConstructor;
+
 import java.util.Optional;
 
 import java.net.URL;
 
+@NoArgsConstructor
 public class CharaOverviewController {
     /* Basic Infos */
     @FXML private Label firstNameLabel;
@@ -136,8 +142,8 @@ public class CharaOverviewController {
     @FXML private StatSlider creativitySlider;
 
     /* Character table */
-    @FXML private TableView<Character> tableView;
-    @FXML private TableColumn<Character, String> nameColumn;
+    @FXML private TableView<charaplanner.data.Character> tableView;
+    @FXML private TableColumn<charaplanner.data.Character, String> nameColumn;
 
     /* Right pane for more infos */
     @FXML private Label nameRightLabel;
@@ -151,10 +157,6 @@ public class CharaOverviewController {
 
     private MainApp mainApp;
 
-    public CharaOverviewController() {
-
-    }
-
     @FXML
     private void initialize(){
         //initialize everything empty/default settings
@@ -165,12 +167,12 @@ public class CharaOverviewController {
         clipImgToRectangle(profilePicImageView, profilePicImageView.getFitWidth(), profilePicImageView.getFitHeight());
         clipImgToRectangle(refsheetImageView, refsheetImageView.getFitWidth(), refsheetImageView.getFitHeight());
 
-        nameColumn.setCellValueFactory(data -> data.getValue().getDisplayNameProperty());
+        nameColumn.setCellValueFactory(data -> data.getValue().displayName());
         tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue,newValue) -> showCharaDetails(newValue));
 
         //Creates a custom TableRow object for each row in the TableView to specify each row's behavior
         tableView.setRowFactory(tv -> {
-            TableRow<Character> row = new TableRow<>();
+            TableRow<charaplanner.data.Character> row = new TableRow<>();
 
             //Attach a ContextMenu to the row
             ContextMenu rowMenu = new ContextMenu();
@@ -179,7 +181,7 @@ public class CharaOverviewController {
 
             //Specify action of Delete item (remove character from the Table)
             deleteItem.setOnAction(event -> {
-                Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
+                charaplanner.data.Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
                 if(selectedCharacter != null) {
                     handleDeleteChara();
                 }
@@ -187,7 +189,7 @@ public class CharaOverviewController {
 
             //Specify action of Delete item (remove character from the Table)
             editItem.setOnAction(event -> {
-                Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
+                charaplanner.data.Character selectedCharacter = row.getItem(); //acts on the right-clicked row, not dependent on selection in the table
                 if(selectedCharacter != null) {
                     handleEditChara();
                 }
@@ -240,8 +242,10 @@ public class CharaOverviewController {
             double imageRatio = imageWidth / imageHeight;
             double imgVewRatio = fitWidth / fitHeight;
 
-            double viewportWidth, viewportHeight;
-            double x, y;
+            double viewportWidth;
+            double viewportHeight;
+            double x;
+            double y;
 
             if (imageRatio > imgVewRatio) {
                 // Image is wider than the view: adjust width and crop horizontally
@@ -365,27 +369,29 @@ public class CharaOverviewController {
         link3.setText("");
     }
 
-    private void setStatSlidersLabels(){
-        physicalStrengthSlider.setCustomLabels("Weak", "Average", "Strong");
-        mindStrengthSlider.setCustomLabels("Vulnerable", "Average", "Resilient");
-        perceptionSlider.setCustomLabels("Oblivious", "Average", "Attentive");
-        speedSlider.setCustomLabels("Slow", "Average", "Fast");
-        dexteritySlider.setCustomLabels("Clumsy", "Average", "Handy");
-        combatSlider.setCustomLabels("Can't fight", "Average", "Warrior");
+    private void setStatSlidersLabels() {
+        final String average = "Average";
+        final String balanced = "Balanced";
+        physicalStrengthSlider.setCustomLabels("Weak", average, "Strong");
+        mindStrengthSlider.setCustomLabels("Vulnerable", average, "Resilient");
+        perceptionSlider.setCustomLabels("Oblivious", average, "Attentive");
+        speedSlider.setCustomLabels("Slow", average, "Fast");
+        dexteritySlider.setCustomLabels("Clumsy", average, "Handy");
+        combatSlider.setCustomLabels("Can't fight", average, "Warrior");
         persuasionSlider.setCustomLabels("Unpersuasive", "Moderate", "Influential");
         charismaSlider.setCustomLabels("Low", "Lambda", "High");
-        healthSlider.setCustomLabels("Very Bad", "Average", "Very Healthy");
-        socialSkillsSlider.setCustomLabels("Very Awkward", "Balanced", "Social Butterfly");
-        braverySlider.setCustomLabels("Coward", "Balanced", "Audacious");
-        intelligenceSlider.setCustomLabels("Low", "Average", "Genius");
-        confidenceSlider.setCustomLabels("Insecure", "Balanced", "Arrogant");
-        selfEsteemSlider.setCustomLabels("Low", "Balanced", "High");
-        viewsSlider.setCustomLabels("Idealistic", "Balanced", "Pragmatic");
+        healthSlider.setCustomLabels("Very Bad", average, "Very Healthy");
+        socialSkillsSlider.setCustomLabels("Very Awkward", balanced, "Social Butterfly");
+        braverySlider.setCustomLabels("Coward", balanced, "Audacious");
+        intelligenceSlider.setCustomLabels("Low", average, "Genius");
+        confidenceSlider.setCustomLabels("Insecure", balanced, "Arrogant");
+        selfEsteemSlider.setCustomLabels("Low", balanced, "High");
+        viewsSlider.setCustomLabels("Idealistic", balanced, "Pragmatic");
         humorSlider.setCustomLabels("Serious", "Occasional", "Comedian");
-        wisdomSlider.setCustomLabels("Foolish", "Average", "Very Wise");
-        empathySlider.setCustomLabels("None", "Average", "Empath");
-        sensitivitySlider.setCustomLabels("Insensitive", "Average", "Hypersensitive");
-        creativitySlider.setCustomLabels("Low", "Average", "High");
+        wisdomSlider.setCustomLabels("Foolish", average, "Very Wise");
+        empathySlider.setCustomLabels("None", average, "Empath");
+        sensitivitySlider.setCustomLabels("Insensitive", average, "Hypersensitive");
+        creativitySlider.setCustomLabels("Low", average, "High");
     }
 
     private double[] getScaledDimensions(ImageView imgView) {
@@ -414,8 +420,8 @@ public class CharaOverviewController {
 
     private void setLink(Hyperlink link, Link charaLink){
         if(charaLink != null){
-            String charaLinkLabel = charaLink.getLinkLabel();
-            String charaLinkUrl = charaLink.getLinkUrl();
+            String charaLinkLabel = charaLink.label().get();
+            String charaLinkUrl = charaLink.url().getName();
             if(!charaLinkLabel.isEmpty() && !charaLinkUrl.isEmpty()){
                 link.setText(charaLinkLabel);
                 link.setDisable(false);
@@ -459,141 +465,133 @@ public class CharaOverviewController {
         setImageView(profilePicImageView, "/img/Portrait_Placeholder.png",true, true);
         setImageView(refsheetImageView, "/img/RefSheet_Placeholder.png",true, false);
 
-        //fill non blank fields of character
-        if(chara != null){
-            if(chara.getBasicInfos() != null){
-                firstNameLabel.setText(chara.getBasicInfos().getFirstName());
-                lastNameLabel.setText(chara.getBasicInfos().getLastName());
-                genderLabel.setText(chara.getBasicInfos().getGender());
-                ageLabel.setText(chara.getBasicInfos().getAge());
-                birthDateLabel.setText(chara.getBasicInfos().getBirthDate());
-                jobLabel.setText(chara.getBasicInfos().getJob());
-                jobPositionLabel.setText(chara.getBasicInfos().getJobPosition());
-                pronounsLabel.setText(chara.getBasicInfos().getPronouns());
-                nationalityLabel.setText(chara.getBasicInfos().getNationality());
-                birthPlaceLabel.setText(chara.getBasicInfos().getBirthPlace());
-                nicknamesLabel.setText(chara.getBasicInfos().getNicknames());
-                specieLabel.setText(chara.getBasicInfos().getSpecie());
-                affiliationLabel.setText(chara.getBasicInfos().getAffiliation());
-                religionLabel.setText(chara.getBasicInfos().getReligion());
-            }
-            if(chara.getAppearance() != null) {
-                hairLabel.setText(chara.getAppearance().getHair());
-                skinLabel.setText(chara.getAppearance().getSkin());
-                eyesLabel.setText(chara.getAppearance().getEyes());
-                facialFeaturesLabel.setText(chara.getAppearance().getFacialFeatures());
-                heightLabel.setText(chara.getAppearance().getHeight());
-                weightLabel.setText(chara.getAppearance().getWeight());
-                buildLabel.setText(chara.getAppearance().getBuild());
-                distFeaturesLabel.setText(chara.getAppearance().getDistFeatures());
-                clothingLabel.setText(chara.getAppearance().getClothing());
-                styleLabel.setText(chara.getAppearance().getStyle());
-                accessoriesLabel.setText(chara.getAppearance().getAccessories());
-                itemsLabel.setText(chara.getAppearance().getItems());
-                weaponsLabel.setText(chara.getAppearance().getWeapons());
-                medicalLabel.setText(chara.getAppearance().getMedical());
-                physDescLabel.setText(chara.getAppearance().getDesc());
-                setImageView(refsheetImageView, chara.getAppearance().getRefsheetPath(),false, false);
-            }
-            if(chara.getPersonality() != null){
-                traitsLabel.setText(chara.getPersonality().getTraits());
-                strengthsLabel.setText(chara.getPersonality().getStrengths());
-                weaknessesLabel.setText(chara.getPersonality().getWeaknesses());
-                skillsLabel.setText(chara.getPersonality().getSkills());
-                alignmentLabel.setText(chara.getPersonality().getAlignment());
-                mbtiEnneaLabel.setText(chara.getPersonality().getMbtiEnnea());
-                mentalHealthLabel.setText(chara.getPersonality().getMentalHealth());
-                fearsLabel.setText(chara.getPersonality().getFears());
-                hobbiesLabel.setText(chara.getPersonality().getHobbies());
-                iqLabel.setText(chara.getPersonality().getIq());
-                philosophyLabel.setText(chara.getPersonality().getPhilosophy());
-                personaDescLabel.setText(chara.getPersonality().getDesc());
-            }
-            if(chara.getStory() != null){
-                plotRoleLabel.setText(chara.getStory().getPlotRole());
-                backstoryLabel.setText(chara.getStory().getBackstory());
-                goalsLabel.setText(chara.getStory().getGoals());
-                achievementsLabel.setText(chara.getStory().getAchievements());
-                failuresLabel.setText(chara.getStory().getFailures());
-                traumasLabel.setText(chara.getStory().getTraumas());
-                crimesLabel.setText(chara.getStory().getCrimes());
-                secretsLabel.setText(chara.getStory().getSecrets());
-                powersLabel.setText(chara.getStory().getPowers());
-                educationLabel.setText(chara.getStory().getEducation());
-                expertiseLabel.setText(chara.getStory().getExpertise());
-                socialStatusLabel.setText(chara.getStory().getSocialStatus());
-                wealthLabel.setText(chara.getStory().getWealth());
-            }
-            if(chara.getRelationships() != null){
-                sexualOrientationLabel.setText(chara.getRelationships().getSexualOrientation());
-                romanticOrientationLabel.setText(chara.getRelationships().getRomanticOrientation());
-                familyStatusLabel.setText(chara.getRelationships().getFamilyStatus());
-                relationshipStatusLabel.setText(chara.getRelationships().getRelationshipStatus());
-                parentALabel.setText(chara.getRelationships().getParentA());
-                parentBLabel.setText(chara.getRelationships().getParentB());
-                siblingsLabel.setText(chara.getRelationships().getSiblings());
-                bestFriendLabel.setText(chara.getRelationships().getBestFriend());
-                significantOtherLabel.setText(chara.getRelationships().getSignificantOther());
-                rivalLabel.setText(chara.getRelationships().getRival());
-                mentorLabel.setText(chara.getRelationships().getMentor());
-                apprenticeLabel.setText(chara.getRelationships().getApprentice());
-                nemesisLabel.setText(chara.getRelationships().getNemesis());
-                friendsLabel.setText(chara.getRelationships().getFriends());
-                childrenLabel.setText(chara.getRelationships().getChildren());
-                enemiesLabel.setText(chara.getRelationships().getEnemies());
-                unclesAuntsLabel.setText(chara.getRelationships().getUnclesAunts());
-                grandParentsLabel.setText(chara.getRelationships().getGrandParents());
-                otherLabel.setText(chara.getRelationships().getOther());
-            }
-            if(chara.getTrivia() != null){
-                nativeLanguagesLabel.setText(chara.getTrivia().getNativeLanguages());
-                learntLanguagesLabel.setText(chara.getTrivia().getLearntLanguages());
-                speechLabel.setText(chara.getTrivia().getSpeech());
-                voiceclaimLabel.setText(chara.getTrivia().getVoiceclaim());
-                themeSongsLabel.setText(chara.getTrivia().getThemeSongs());
-                animalLabel.setText(chara.getTrivia().getAnimal());
-                plantLabel.setText(chara.getTrivia().getPlant());
-                gemstoneLabel.setText(chara.getTrivia().getGemstone());
-                seasonLabel.setText(chara.getTrivia().getSeason());
-                placeLabel.setText(chara.getTrivia().getPlace());
-                foodLabel.setText(chara.getTrivia().getFood());
-                drinkLabel.setText(chara.getTrivia().getDrink());
-                aestheticLabel.setText(chara.getTrivia().getAesthetic());
-                likesLabel.setText(chara.getTrivia().getLikes());
-                dislikesLabel.setText(chara.getTrivia().getDislikes());
-            }
-            if(chara.getStats() != null){
-                physicalStrengthSlider.setValue(chara.getStats().getPhysicalStrength());
-                mindStrengthSlider.setValue(chara.getStats().getMindStrength());
-                perceptionSlider.setValue(chara.getStats().getPerception());
-                speedSlider.setValue(chara.getStats().getSpeed());
-                dexteritySlider.setValue(chara.getStats().getDexterity());
-                combatSlider.setValue(chara.getStats().getCombat());
-                persuasionSlider.setValue(chara.getStats().getPersuasion());
-                charismaSlider.setValue(chara.getStats().getCharisma());
-                healthSlider.setValue(chara.getStats().getHealth());
-                socialSkillsSlider.setValue(chara.getStats().getSocialSkills());
-                braverySlider.setValue(chara.getStats().getBravery());
-                intelligenceSlider.setValue(chara.getStats().getIntelligence());
-                confidenceSlider.setValue(chara.getStats().getConfidence());
-                selfEsteemSlider.setValue(chara.getStats().getSelfEsteem());
-                viewsSlider.setValue(chara.getStats().getViews());
-                humorSlider.setValue(chara.getStats().getHumor());
-                wisdomSlider.setValue(chara.getStats().getWisdom());
-                empathySlider.setValue(chara.getStats().getEmpathy());
-                sensitivitySlider.setValue(chara.getStats().getSensitivity());
-                creativitySlider.setValue(chara.getStats().getCreativity());
-            }
+        //fill fields of character
+        if (chara != null) {
+            firstNameLabel.setText(chara.basicInfos().get().firstName().get());
+            lastNameLabel.setText(chara.basicInfos().get().lastName().get());
+            genderLabel.setText(chara.basicInfos().get().gender().get());
+            ageLabel.setText(chara.basicInfos().get().age().get());
+            birthDateLabel.setText(chara.basicInfos().get().birthDate().get());
+            jobLabel.setText(chara.basicInfos().get().job().get());
+            jobPositionLabel.setText(chara.basicInfos().get().jobPosition().get());
+            pronounsLabel.setText(chara.basicInfos().get().pronouns().get());
+            nationalityLabel.setText(chara.basicInfos().get().nationality().get());
+            birthPlaceLabel.setText(chara.basicInfos().get().birthPlace().get());
+            nicknamesLabel.setText(chara.basicInfos().get().nicknames().get());
+            specieLabel.setText(chara.basicInfos().get().specie().get());
+            affiliationLabel.setText(chara.basicInfos().get().affiliation().get());
+            religionLabel.setText(chara.basicInfos().get().religion().get());
+            
+            hairLabel.setText(chara.appearance().get().hair().get());
+            skinLabel.setText(chara.appearance().get().skin().get());
+            eyesLabel.setText(chara.appearance().get().eyes().get());
+            facialFeaturesLabel.setText(chara.appearance().get().facialFeatures().get());
+            heightLabel.setText(chara.appearance().get().height().get());
+            weightLabel.setText(chara.appearance().get().weight().get());
+            buildLabel.setText(chara.appearance().get().build().get());
+            distFeaturesLabel.setText(chara.appearance().get().distFeatures().get());
+            clothingLabel.setText(chara.appearance().get().clothing().get());
+            styleLabel.setText(chara.appearance().get().style().get());
+            accessoriesLabel.setText(chara.appearance().get().accessories().get());
+            itemsLabel.setText(chara.appearance().get().items().get());
+            weaponsLabel.setText(chara.appearance().get().weapons().get());
+            medicalLabel.setText(chara.appearance().get().medical().get());
+            physDescLabel.setText(chara.appearance().get().desc().get());
+            setImageView(refsheetImageView, chara.appearance().get().refsheetPath().get(),false, false);
+        
+            traitsLabel.setText(chara.personality().get().traits().get());
+            strengthsLabel.setText(chara.personality().get().strengths().get());
+            weaknessesLabel.setText(chara.personality().get().weaknesses().get());
+            skillsLabel.setText(chara.personality().get().skills().get());
+            alignmentLabel.setText(chara.personality().get().alignment().get());
+            mbtiEnneaLabel.setText(chara.personality().get().mbtiEnnea().get());
+            mentalHealthLabel.setText(chara.personality().get().mentalHealth().get());
+            fearsLabel.setText(chara.personality().get().fears().get());
+            hobbiesLabel.setText(chara.personality().get().hobbies().get());
+            iqLabel.setText(chara.personality().get().iq().get());
+            philosophyLabel.setText(chara.personality().get().philosophy().get());
+            personaDescLabel.setText(chara.personality().get().desc().get());
+        
+            plotRoleLabel.setText(chara.story().get().plotRole().get());
+            backstoryLabel.setText(chara.story().get().backstory().get());
+            goalsLabel.setText(chara.story().get().goals().get());
+            achievementsLabel.setText(chara.story().get().achievements().get());
+            failuresLabel.setText(chara.story().get().failures().get());
+            traumasLabel.setText(chara.story().get().traumas().get());
+            crimesLabel.setText(chara.story().get().crimes().get());
+            secretsLabel.setText(chara.story().get().secrets().get());
+            powersLabel.setText(chara.story().get().powers().get());
+            educationLabel.setText(chara.story().get().education().get());
+            expertiseLabel.setText(chara.story().get().expertise().get());
+            socialStatusLabel.setText(chara.story().get().socialStatus().get());
+            wealthLabel.setText(chara.story().get().wealth().get());
+        
+            sexualOrientationLabel.setText(chara.relationships().get().sexualOrientation().get());
+            romanticOrientationLabel.setText(chara.relationships().get().romanticOrientation().get());
+            familyStatusLabel.setText(chara.relationships().get().familyStatus().get());
+            relationshipStatusLabel.setText(chara.relationships().get().relationshipStatus().get());
+            parentALabel.setText(chara.relationships().get().parentA().get());
+            parentBLabel.setText(chara.relationships().get().parentB().get());
+            siblingsLabel.setText(chara.relationships().get().siblings().get());
+            bestFriendLabel.setText(chara.relationships().get().bestFriend().get());
+            significantOtherLabel.setText(chara.relationships().get().significantOther().get());
+            rivalLabel.setText(chara.relationships().get().rival().get());
+            mentorLabel.setText(chara.relationships().get().mentor().get());
+            apprenticeLabel.setText(chara.relationships().get().apprentice().get());
+            nemesisLabel.setText(chara.relationships().get().nemesis().get());
+            friendsLabel.setText(chara.relationships().get().friends().get());
+            childrenLabel.setText(chara.relationships().get().children().get());
+            enemiesLabel.setText(chara.relationships().get().enemies().get());
+            unclesAuntsLabel.setText(chara.relationships().get().unclesAunts().get());
+            grandParentsLabel.setText(chara.relationships().get().grandParents().get());
+            otherLabel.setText(chara.relationships().get().other().get());
+        
+            nativeLanguagesLabel.setText(chara.trivia().get().nativeLanguages().get());
+            learntLanguagesLabel.setText(chara.trivia().get().learntLanguages().get());
+            speechLabel.setText(chara.trivia().get().speech().get());
+            voiceclaimLabel.setText(chara.trivia().get().voiceclaim().get());
+            themeSongsLabel.setText(chara.trivia().get().themeSongs().get());
+            animalLabel.setText(chara.trivia().get().animal().get());
+            plantLabel.setText(chara.trivia().get().plant().get());
+            gemstoneLabel.setText(chara.trivia().get().gemstone().get());
+            seasonLabel.setText(chara.trivia().get().season().get());
+            placeLabel.setText(chara.trivia().get().place().get());
+            foodLabel.setText(chara.trivia().get().food().get());
+            drinkLabel.setText(chara.trivia().get().drink().get());
+            aestheticLabel.setText(chara.trivia().get().aesthetic().get());
+            likesLabel.setText(chara.trivia().get().likes().get());
+            dislikesLabel.setText(chara.trivia().get().dislikes().get());
 
-            nameRightLabel.setText(chara.getDisplayName());
-            quoteLabel.setText(chara.getQuote());
-            Color associatedColor = Color.web(chara.getAssociatedColor());
+            physicalStrengthSlider.setValue(chara.stats().get().physicalStrength().get());
+            mindStrengthSlider.setValue(chara.stats().get().mindStrength().get());
+            perceptionSlider.setValue(chara.stats().get().perception().get());
+            speedSlider.setValue(chara.stats().get().speed().get());
+            dexteritySlider.setValue(chara.stats().get().dexterity().get());
+            combatSlider.setValue(chara.stats().get().combat().get());
+            persuasionSlider.setValue(chara.stats().get().persuasion().get());
+            charismaSlider.setValue(chara.stats().get().charisma().get());
+            healthSlider.setValue(chara.stats().get().health().get());
+            socialSkillsSlider.setValue(chara.stats().get().socialSkills().get());
+            braverySlider.setValue(chara.stats().get().bravery().get());
+            intelligenceSlider.setValue(chara.stats().get().intelligence().get());
+            confidenceSlider.setValue(chara.stats().get().confidence().get());
+            selfEsteemSlider.setValue(chara.stats().get().selfEsteem().get());
+            viewsSlider.setValue(chara.stats().get().views().get());
+            humorSlider.setValue(chara.stats().get().humor().get());
+            wisdomSlider.setValue(chara.stats().get().wisdom().get());
+            empathySlider.setValue(chara.stats().get().empathy().get());
+            sensitivitySlider.setValue(chara.stats().get().sensitivity().get());
+            creativitySlider.setValue(chara.stats().get().creativity().get());
+
+            nameRightLabel.setText(chara.displayName().get());
+            quoteLabel.setText(chara.quote().get());
+            Color associatedColor = Color.web(chara.associatedColor().get());
             colorPicker.setValue(associatedColor);
-            setLink(link1, chara.getLink1());
-            setLink(link2, chara.getLink2());
-            setLink(link3, chara.getLink3());
-
-            setImageView(profilePicImageView, chara.getProfilePicPath(),false, true);
+            setLink(link1, chara.link1().get());
+            setLink(link2, chara.link2().get());
+            setLink(link3, chara.link3().get());
+            
+            setImageView(profilePicImageView, chara.profilePicPath().get(),false, true);
         }
     }
 
@@ -611,9 +609,9 @@ public class CharaOverviewController {
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 tableView.getItems().remove(selectedIndex);
-                mainApp.fileIsModified = true;
+                mainApp.setFileModified(true);
                 String title = mainApp.getStage().getTitle();
-                if(!title.endsWith("*")){
+                if (!title.endsWith("*")) {
                     mainApp.getStage().setTitle(title + "*");
                 }
 

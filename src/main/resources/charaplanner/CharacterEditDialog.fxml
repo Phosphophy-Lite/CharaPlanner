@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import charaplanner.StatSlider?>
+<?import charaplanner.ui.StatSlider?>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="800.0" prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="charaplanner.CharacterEditDialogController">
+<BorderPane prefHeight="800.0" prefWidth="746.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="charaplanner.ui.CharacterEditDialogController">
    <center>
       <TabPane prefHeight="840.0" prefWidth="746.0">
          <tabs>

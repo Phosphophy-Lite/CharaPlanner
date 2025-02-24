@@ -1,26 +1,34 @@
-package charaplanner;
+package charaplanner.ui;
 
 import java.io.File;
 
+import charaplanner.MainApp;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import lombok.Setter;
+
 import java.util.Optional;
 import java.util.prefs.Preferences;
 
 public class RootLayoutController {
+
     private MainApp mainApp;
+
+    @Setter
     private CharaOverviewController charaOverviewController;
     private RecentFilesMenu recentFilesMenu;
+
+    @Setter
     private static String lastVisitedDirectory;
 
     @FXML private Menu recentMenu;
 
     @FXML
     private void initialize() {
-        lastVisitedDirectory = getLastVisitedDirectoryPath();
+        setLastVisitedDirectory(getLastVisitedDirectoryPath());
     }
 
     /**
@@ -47,7 +55,7 @@ public class RootLayoutController {
                     for (String item : change.getAddedSubList()) {
                         MenuItem menuItem = new MenuItem(item);
                         menuItem.setOnAction(event -> recentFilesMenu.openRecentFile(menuItem.getText()));
-                        menu.getItems().add(0,menuItem);
+                        menu.getItems().addFirst(menuItem);
                     }
                 }
                 if (change.wasRemoved()) {
@@ -67,15 +75,12 @@ public class RootLayoutController {
         }
     }
 
-    public void setCharaOverviewController(CharaOverviewController charaOverviewController) {
-        this.charaOverviewController = charaOverviewController;
-    }
     /**
      * Creates an empty database.
      */
     @FXML
     private void handleNew() {
-        if(canCloseFile(mainApp.fileIsModified)){
+        if(canCloseFile(mainApp.isFileModified())){
             mainApp.getCharaList().clear();
             mainApp.setDataFilePath(null);
         }
@@ -86,7 +91,7 @@ public class RootLayoutController {
      */
     @FXML
     private void handleOpen() {
-        if(canCloseFile(mainApp.fileIsModified)) {
+        if(canCloseFile(mainApp.isFileModified())) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialDirectory(new File(lastVisitedDirectory));
 
@@ -99,7 +104,7 @@ public class RootLayoutController {
             File file = fileChooser.showOpenDialog(mainApp.getStage());
 
             if (file != null) {
-                lastVisitedDirectory = setLastVisitedDirectoryPath(file);
+                setLastVisitedDirectory(setLastVisitedDirectoryPath(file));
                 mainApp.loadDataFile(file);
                 recentFilesMenu.addEntry(file.getPath()); // adds the opened file to the recent files menu
             }
@@ -141,14 +146,14 @@ public class RootLayoutController {
             if (!file.getPath().endsWith(".xml")) {
                 file = new File(file.getPath() + ".xml");
             }
-            lastVisitedDirectory = setLastVisitedDirectoryPath(file);
+            setLastVisitedDirectory(setLastVisitedDirectoryPath(file));
             mainApp.saveCharaDataToFile(file);
             recentFilesMenu.addEntry(file.getPath()); // add in the recently opened files
         }
     }
 
     public boolean canCloseFile(boolean fileIsModified) {
-        if(fileIsModified){
+        if (fileIsModified) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Exit");
             alert.setHeaderText("File contains unsaved changes");
@@ -161,15 +166,15 @@ public class RootLayoutController {
             alert.getButtonTypes().setAll(buttonTypeSave, buttonTypeDontSave, buttonTypeCancel);
 
             Optional<ButtonType> result = alert.showAndWait();
-            if(result.isPresent()){
-                if(result.get() == buttonTypeSave){
+            if(result.isPresent()) {
+                if (result.get() == buttonTypeSave) {
                     handleSave();
                 }
                 else if (result.get() == buttonTypeCancel) {
                     return false;
                 }
             }
-            else{
+            else {
                 return false;
             }
         }
@@ -178,7 +183,7 @@ public class RootLayoutController {
 
     @FXML
     private void handleExit() {
-        if(canCloseFile(mainApp.fileIsModified)){
+        if(canCloseFile(mainApp.isFileModified())){
             System.exit(0);
         }
     }
@@ -204,7 +209,7 @@ public class RootLayoutController {
     }
 
     private String setLastVisitedDirectoryPath(File file){
-        if(file!= null && file.getParent() != null && file.getParentFile().isDirectory()){
+        if (file!= null && file.getParent() != null && file.getParentFile().isDirectory()) {
             Preferences prefs = Preferences.userNodeForPackage(RootLayoutController.class);
             prefs.put("xmlLastVisitedDirectory", file.getParent());
             return file.getParent();
@@ -216,9 +221,9 @@ public class RootLayoutController {
         Preferences prefs = Preferences.userNodeForPackage(RootLayoutController.class);
         String dirPath = prefs.get("xmlLastVisitedDirectory", null);
 
-        if(dirPath != null){
+        if (dirPath != null) {
             File dir = new File(dirPath);
-            if(dir.isDirectory()){
+            if (dir.isDirectory()) {
                 return dirPath;
             }
         }
